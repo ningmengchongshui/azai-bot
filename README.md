@@ -1,19 +1,20 @@
-# 使用方法
+# A-Yunzai-Bot
 
-> AlemonJS用于直接运行 yunzai 插件直连频道
+> AlemonJS框架下直接运行Yunzai-Bot插件
+
+拉取项目
 
 ```sh
 git clone --depth=1 -b main https://gitee.com/ningmengchongshui/a-yunzai.git
 ```
 
-`./plugins`中 使用`main.js`进行识别 yunzai 插件
+增加插件识别文件`main.js`
+
+> 放置于每个插件目录中
 
 ```js
 import { createApps, getAppName } from 'alemonjs'
 const AppName = getAppName(import.meta.url)
-/**
- * 插件main.js示例代码
- */
 /**
  * ******
  * yunzai
@@ -48,6 +49,8 @@ app.component(apps)
 app.mount()
 ```
 
+# 开放平台
+
 [QQ 开放平台](https://q.qq.com/#/)
 
 [Miyoushe 开放平台](https://open.miyoushe.com/#/login)
@@ -59,5 +62,7 @@ app.mount()
 > 配置了解[https://alemonjs.com](https://alemonjs.com/alemon/v2.x/examples/introduction/config.html)
 
 > 更多指令请看[package.json](./package.json)
+
+# 原生开发
 
 > 最新模板查看[create-alemonjs](https://gitee.com/ningmengchongshui/alemon/tree/cli/bin/template)

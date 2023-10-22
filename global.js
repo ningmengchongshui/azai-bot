@@ -10,11 +10,11 @@ logger.yellow = val => val
 logger.mark = val => val
 logger.green = val => val
 global.logger = logger
-import { Redis as redis } from './db/redis/index.js'
-import { getPathBuffer } from 'alemonjs'
-import plugin from './lib/plugins/plugin.js'
 import { existsSync } from 'fs'
 import { join } from 'path'
+import { getPathBuffer } from 'alemonjs'
+import { Redis as redis } from './db/redis/index.js'
+import plugin from './lib/plugins/plugin.js'
 /**
  * yunzai
  */
