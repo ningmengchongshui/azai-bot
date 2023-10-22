@@ -62,7 +62,6 @@ app.mount()
 ```js
 import { createApps, getAppName } from 'alemonjs'
 import { apps } from './apps/index.j'
-const AppName = getAppName(import.meta.url)
 const app = createApps(import.meta.url)
 app.component(apps)
 app.mount()
@@ -75,7 +74,6 @@ app.mount()
 ```js
 import { createApps, getAppName } from 'alemonjs'
 import { apps } from './index.js'
-const AppName = getAppName(import.meta.url)
 const app = createApps(import.meta.url)
 app.component(apps)
 app.mount()
