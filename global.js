@@ -11,7 +11,7 @@ import { Redis as redis } from './db/redis/index.js'
 import { getPathBuffer } from 'alemonjs'
 import plugin from './lib/plugins/plugin.js'
 
-global.redis = plugin
+global.plugin = plugin
 
 global.redis = redis
 
