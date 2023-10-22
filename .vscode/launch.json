@@ -1,37 +1,26 @@
 {
   "version": "0.0.1",
   "configurations": [
-    //kook debug
     {
-      "command": "npm run app kook", // 运行的命令
+      "command": "npm run app kook",
       "name": "AlemonJS kook Debug",
       "request": "launch",
       "type": "node-terminal"
     },
-    // QQ 频道 debug
     {
-      "command": "npm run app qq", // 运行的命令
+      "command": "npm run app qq",
       "name": "AlemonJS qq Debug",
       "request": "launch",
       "type": "node-terminal"
     },
-    // dc debug
     {
-      "command": "npm run app discord", // 运行的命令
-      "name": "AlemonJS dc Debug",
-      "request": "launch",
-      "type": "node-terminal"
-    },
-    // mys debug
-    {
-      "command": "npm run app villa", // 运行的命令
+      "command": "npm run app villa",
       "name": "AlemonJS villa Debug",
       "request": "launch",
       "type": "node-terminal"
     },
-    // ntqq debug
     {
-      "command": "npm run app ntqq", // 运行的命令
+      "command": "npm run app ntqq",
       "name": "AlemonJS ntqq Debug",
       "request": "launch",
       "type": "node-terminal"

@@ -7,12 +7,14 @@ logger.mark = val => val
 logger.green = val => val
 global.logger = logger
 import { Redis as redis } from './db/redis/index.js'
+import { getPathBuffer } from 'alemonjs'
 global.redis = redis
 const segment = {
   // 如果是 bufeer
   image: val => {
     if (Buffer.isBuffer(val)) return val
     // 如果地址
+    if (typeof val == 'string') return getPathBuffer(val)
     return val
   },
   //
@@ -25,12 +27,15 @@ const segment = {
   record: val => val
 }
 global.segment = segment
+
 const Bot = {
   uin: '',
   logger,
   makeForwardMsg: val => val,
-  pickUser: val => {
-    return val => val
+  pickUser: uid => {
+    return {
+      sendMsg: val => val
+    }
   },
   nickname: val => val,
   getGroupMemberInfo: val => val,
