@@ -55,8 +55,6 @@ app.mount()
 
 [Miyoushe 开放平台](https://open.miyoushe.com/#/login)
 
-[Discord 平台](https://discord.com/developers/applications)
-
 [KOOK 平台](https://developer.kookapp.cn/doc/)
 
 > 配置了解[https://alemonjs.com](https://alemonjs.com/alemon/v2.x/examples/introduction/config.html)

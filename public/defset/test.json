@@ -1,0 +1,10 @@
+[
+  {
+    "event": "MESSAGES",
+    "eventType": "CREATE",
+    "reg": "/你好/",
+    "dsc": "/正则",
+    "doc": "这条正则的意思",
+    "priority": 9000
+  }
+]

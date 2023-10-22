@@ -19,7 +19,9 @@ import plugin from './lib/plugins/plugin.js'
  * yunzai
  */
 global.plugin = plugin
+export { plugin }
 global.redis = redis
+export { redis }
 /**
  * ars
  */
@@ -34,14 +36,10 @@ const segment = {
    * @returns
    */
   image: val => {
-    // 直接buffer
     if (Buffer.isBuffer(val)) return val
-    // 相对于机器人地址的
     const add = join(process.cwd(), val)
-    if (existsSync(add)) getPathBuffer(val)
-    // 直接全地址的
-    if (existsSync(val)) Buffer.from(val)
-    // 未知的
+    if (existsSync(add)) return getPathBuffer(val)
+    if (existsSync(val)) return Buffer.from(val)
     return val
   },
   /**
@@ -84,18 +82,15 @@ const segment = {
    * @returns
    */
   record: val => {
-    // 直接buffer
     if (Buffer.isBuffer(val)) return val
-    // 相对于机器人地址的
     const add = join(process.cwd(), val)
-    if (existsSync(add)) getPathBuffer(val)
-    // 直接全地址的
-    if (existsSync(val)) Buffer.from(val)
-    // 未知的
+    if (existsSync(add)) return getPathBuffer(val)
+    if (existsSync(val)) return Buffer.from(val)
     return val
   }
 }
 global.segment = segment
+export { segment }
 /**
  * icqq
  */
@@ -115,3 +110,4 @@ const Bot = {
   }
 }
 global.Bot = Bot
+export { Bot }
