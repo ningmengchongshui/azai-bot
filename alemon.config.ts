@@ -1,7 +1,7 @@
 import { defineAlemonConfig, analysis } from 'alemonjs'
 import { login } from './a.login.config.js'
 // yunzai
-import './app.js'
+import './global.js'
 // alemonjs
 const AlemonJS = '[AlemonJS]'
 console.log('-------------------------')
