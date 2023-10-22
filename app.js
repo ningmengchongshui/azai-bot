@@ -6,9 +6,12 @@ logger.yellow = val => val
 logger.mark = val => val
 logger.green = val => val
 global.logger = logger
+
 import { Redis as redis } from './db/redis/index.js'
 import { getPathBuffer } from 'alemonjs'
+
 global.redis = redis
+
 const segment = {
   // 如果是 bufeer
   image: val => {
@@ -20,12 +23,20 @@ const segment = {
   //
   video: val => `[video](${val})`,
   at: uid => {
-    //如果是all
-    // `<@!everyone>` || `<@everyone>`
+    // villa
+    if (uid == 'all') return `<@!everyone>`
+    // qq
+    //  <@${uid}>  || `<@everyone>`
     return `<@!${uid}>`
   },
-  record: val => val
+  record: val => {
+    if (Buffer.isBuffer(val)) return val
+    // 如果地址
+    if (typeof val == 'string') return getPathBuffer(val)
+    return val
+  }
 }
+
 global.segment = segment
 
 const Bot = {
@@ -43,4 +54,5 @@ const Bot = {
     get: val => val
   }
 }
+
 global.Bot = Bot
