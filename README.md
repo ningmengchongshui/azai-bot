@@ -2,6 +2,8 @@
 
 > AlemonJS框架下直接运行Yunzai-Bot插件
 
+`Node >16.24 && <=18.18.2`
+
 拉取项目
 
 ```sh

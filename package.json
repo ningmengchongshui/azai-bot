@@ -61,6 +61,10 @@
   "pre-commit": [
     "format"
   ],
+  "workspaces": [
+    "application/*",
+    "plugins/*"
+  ],
   "engines": {
     "node": ">=16.14.0"
   },
