@@ -63,4 +63,4 @@ app.mount()
 
 # 原生开发
 
-> 最新模板查看[create-alemonjs](https://gitee.com/ningmengchongshui/alemon/tree/cli/bin/template)
+> 最新模板查看[create-alemonjs](https://gitee.com/ningmengchongshui/alemon/tree/cli/bin)
