@@ -1,0 +1,29 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    "node_modules",
+    ".nuxt",
+    ".cache",
+    ".output",
+    ".vscode",
+    ".apps",
+    "dist",
+    "config",
+    "data",
+    "logs",
+    "help",
+    "application/*/*.json",
+    "application/*/*.js",
+    "apps.js"
+  ],
+  "delay": 1000,
+  "verbose": true,
+  "execMap": {
+    "ts": "ts-node"
+  },
+  "watch": ["application", "apps", "src", "db"],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ext": "js,ts,css"
+}
