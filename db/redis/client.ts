@@ -1,5 +1,4 @@
 import redisClient, { RedisOptions } from 'ioredis'
-export { Redis as RedisClient } from 'ioredis'
 /**
  * 创建REDIS
  * @param cfg

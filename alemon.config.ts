@@ -1,8 +1,8 @@
-import { defineAlemonConfig, analysis } from 'alemonjs'
-import { login } from './a.login.config.js'
-// yunzai
+// yunzai.global
 import './global.js'
 // alemonjs
+import { defineAlemonConfig, analysis } from 'alemonjs'
+import { login } from './a.login.config.js'
 const AlemonJS = '[AlemonJS]'
 console.log('-------------------------')
 console.log(AlemonJS, 'DOCS')
@@ -14,12 +14,11 @@ console.log('-------------------------')
 export default defineAlemonConfig({
   login: analysis(login),
   app: {
+    // close
     init: false
   },
-  // yunzai
   plugin: {
-    directory: '/plugins',
-    main: '/main',
-    type: 'js'
+    // yunzai
+    directory: '/plugins'
   }
 })

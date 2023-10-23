@@ -1,27 +1,26 @@
 /**
- * ************************
- * 设置一些yunzai的全局变量
- * ************************
+ * *************
+ * Yunzai global
+ * *************
  */
-const logger = console
+interface Logtype extends Console {
+  red: (val: string) => string
+  yellow: (val: string) => string
+  mark: (val: string) => string
+  green: (val: string) => string
+}
+const logger: Logtype = console as Logtype
 logger.red = val => val
 logger.debug = val => val
 logger.yellow = val => val
 logger.mark = val => val
 logger.green = val => val
 global.logger = logger
+import { Redis as redis } from './db/redis/index.js'
+global.redis = redis
 import { existsSync } from 'fs'
 import { join } from 'path'
 import { getPathBuffer } from 'alemonjs'
-import { Redis as redis } from './db/redis/index.js'
-import plugin from './lib/plugins/plugin.js'
-/**
- * yunzai
- */
-global.plugin = plugin
-export { plugin }
-global.redis = redis
-export { redis }
 /**
  * ars
  */
@@ -29,13 +28,13 @@ const ars = process.argv.slice(2)
 /**
  * icqq
  */
-const segment = {
+global.segment = {
   /**
    * 图片
-   * @param {*} val
+   * @param val
    * @returns
    */
-  image: val => {
+  image: (val: string | Buffer) => {
     if (Buffer.isBuffer(val)) return val
     const add = join(process.cwd(), val)
     if (existsSync(add)) return getPathBuffer(val)
@@ -44,16 +43,16 @@ const segment = {
   },
   /**
    * 视频
-   * @param {*} val
+   * @param val
    * @returns
    */
-  video: val => `[video](${val})`,
+  video: (val: Buffer) => `[video](${val})`,
   /**
    * at用户
-   * @param {*} uid
+   * @param  uid
    * @returns
    */
-  at: uid => {
+  at: (uid: string) => {
     if (ars.includes('villa')) {
       if (uid == 'all') return `<@!everyone>`
       return `<@!${uid}>`
@@ -78,10 +77,10 @@ const segment = {
   },
   /**
    * 语音
-   * @param {*} val
+   * @param val
    * @returns
    */
-  record: val => {
+  record: (val: Buffer | string) => {
     if (Buffer.isBuffer(val)) return val
     const add = join(process.cwd(), val)
     if (existsSync(add)) return getPathBuffer(val)
@@ -89,12 +88,10 @@ const segment = {
     return val
   }
 }
-global.segment = segment
-export { segment }
 /**
  * icqq
  */
-const Bot = {
+global.Bot = {
   uin: '',
   logger,
   makeForwardMsg: val => val,
@@ -109,5 +106,8 @@ const Bot = {
     get: val => val
   }
 }
-global.Bot = Bot
-export { Bot }
+import plugin from './lib/plugins/plugin.js'
+/**
+ * yunzai
+ */
+global.plugin = plugin

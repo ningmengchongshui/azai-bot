@@ -37,6 +37,7 @@
   "include": [
     "plugins",
     "application",
+    "lib",
     "apps",
     "src",
     "db",
