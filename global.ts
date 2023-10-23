@@ -107,6 +107,8 @@ global.Bot = {
   }
 }
 import plugin from './lib/plugins/plugin.js'
+import runtime from './lib/plugins/runtime.js'
+global.runtime = runtime
 /**
  * yunzai
  */

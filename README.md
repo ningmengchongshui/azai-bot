@@ -49,6 +49,48 @@ app.component(apps)
 app.mount()
 ```
 
+- 模板3 原神服务
+
+> V3
+
+```js
+import { createApps } from 'alemonjs'
+import { apps } from './index.js'
+const app = createApps(import.meta.url)
+app.setMessage(async e => {
+  const data = await runtime.init(e)
+  e = data.e
+  return e
+})
+app.component(apps)
+app.mount()
+```
+
+> V2
+
+```js
+import { createApps } from 'alemonjs'
+import * as apps from './index.js'
+const rule = apps['rule']
+const rules = []
+for (const item in rule) {
+  rules.push({
+    reg: rule[item]['reg'],
+    priority: rule[item]['priority'],
+    fnc: item
+  })
+}
+const xiaoyao = YUNZAIV2(rules, apps)
+const app = createApps(import.meta.url)
+app.setMessage(async e => {
+  const data = await runtime.init(e)
+  e = data.e
+  return e
+})
+app.component({ xiaoyao })
+app.mount()
+```
+
 # 开放平台
 
 [QQ 开放平台](https://q.qq.com/#/)
