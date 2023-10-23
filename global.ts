@@ -113,3 +113,24 @@ global.runtime = runtime
  * yunzai
  */
 global.plugin = plugin
+const assignPropertiesAndMethods = (rule: any[], sourceObject: any) => {
+  class APP extends plugin {
+    constructor() {
+      super({
+        rule
+      })
+    }
+  }
+  const propertyNames = Object.getOwnPropertyNames(sourceObject)
+  propertyNames.forEach(propertyName => {
+    const descriptor = Object.getOwnPropertyDescriptor(
+      sourceObject,
+      propertyName
+    )
+    if (descriptor) {
+      Object.defineProperty(APP.prototype, propertyName, descriptor)
+    }
+  })
+  return APP
+}
+global.YUNZAIV2 = assignPropertiesAndMethods
