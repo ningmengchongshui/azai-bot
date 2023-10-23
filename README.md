@@ -1,8 +1,8 @@
 # A-Yunzai-Bot
 
-> AlemonJS框架下直接运行Yunzai-Bot插件
+> AlemonJS框架下直接运行Yunzai-Bot&&miao-plugn
 
-拉取Yunzai项目
+拉取A-Yunzai项目
 
 ```sh
 git clone --depth=1 -b main https://gitee.com/ningmengchongshui/a-yunzai.git
@@ -12,13 +12,6 @@ git clone --depth=1 -b main https://gitee.com/ningmengchongshui/a-yunzai.git
 
 ```sh
 git clone --depth=1 https://github.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin
-```
-
-```js
-// 注释掉miao-plugin/apps/index.js中的
-// import poke from './poke.js'
-// 去掉
-//  apps = {  poke }
 ```
 
 插件中放置识别文件`main.js`
@@ -62,33 +55,15 @@ app.component(apps)
 app.mount()
 ```
 
-- 模板3 原神服务
+- 模板3 兼容式
 
-> V3
-
-```js
-import { createApps } from 'alemonjs'
-import { apps } from './index.js'
-const app = createApps(import.meta.url)
-app.setMessage(async e => {
-  const data = await runtime.init(e)
-  e = data.e
-  e.sender = {}
-  e.sender.card = e.user_name
-  return e
-})
-app.component(apps)
-app.mount()
-```
-
-> V2
+> V2 转义
 
 ```js
 import { createApps } from 'alemonjs'
 import * as apps from './index.js'
-const rule = apps['rule']
 const rules = []
-for (const item in rule) {
+for (const item in apps['rule']) {
   rules.push({
     reg: rule[item]['reg'],
     priority: rule[item]['priority'],
@@ -97,13 +72,6 @@ for (const item in rule) {
 }
 const xiaoyao = YUNZAIV2(rules, apps)
 const app = createApps(import.meta.url)
-app.setMessage(async e => {
-  const data = await runtime.init(e)
-  e = data.e
-  e.sender = {}
-  e.sender.card = e.user_name
-  return e
-})
 app.component({ xiaoyao })
 app.mount()
 ```
