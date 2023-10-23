@@ -14,9 +14,11 @@ console.log('-------------------------')
 export default defineAlemonConfig({
   login: analysis(login),
   app: {
-    // close
+    // close app dev
     init: false
   },
+  // close yunzai poke
+  shieldEvent: ['poke', 'notice.*.poke'],
   plugin: {
     // yunzai
     directory: '/plugins'
