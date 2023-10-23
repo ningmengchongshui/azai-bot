@@ -117,6 +117,12 @@ import Renderer from './lib/renderer/Renderer.js'
 global.runtime = runtime
 global.plugin = plugin
 global.Renderer = Renderer
+/**
+ * V2转义成V3
+ * @param rule 指令数组
+ * @param sourceObject 方法集合
+ * @returns calss
+ */
 const assignPropertiesAndMethods = (rule: any[], sourceObject: any) => {
   class APP extends plugin {
     constructor() {
