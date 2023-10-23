@@ -4,9 +4,6 @@ import lodash from 'lodash'
 import template from 'art-template'
 import chokidar from 'chokidar'
 import puppeteer from 'puppeteer'
-// 暂时保留对原config的兼容
-import cfg from '../../../lib/config/config.js'
-import { Data } from '#miao'
 
 const _path = process.cwd()
 
@@ -23,22 +20,16 @@ export default class PuppeteerRenderer {
     /** 截图次数 */
     this.renderNum = 0
     this.config = {
-      headless: Data.def(config.headless, true),
-      args: Data.def(config.args, [
+      headless: 'new',
+      args: [
         '--disable-gpu',
+        '--disable-dev-shm-usage',
         '--disable-setuid-sandbox',
+        '--no-first-run',
         '--no-sandbox',
-        '--no-zygote'
-      ])
-    }
-    if (config.chromiumPath || cfg?.bot?.chromium_path) {
-      /** chromium其他路径 */
-      this.config.executablePath =
-        config.chromiumPath || cfg?.bot?.chromium_path
-    }
-    if (config.puppeteerWS || cfg?.bot?.puppeteer_ws) {
-      /** chromium其他路径 */
-      this.config.wsEndpoint = config.puppeteerWS || cfg?.bot?.puppeteer_ws
+        '--no-zygote',
+        '--single-process'
+      ]
     }
 
     this.html = {}
@@ -273,7 +264,7 @@ export default class PuppeteerRenderer {
           } else {
             buff = await page.screenshot(randData)
           }
-          if (num > 2) await Data.sleep(200)
+          if (num > 2) new Promise(resolve => setTimeout(resolve, 200))
           this.renderNum++
 
           /** 计算图片大小 */
