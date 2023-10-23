@@ -1,4 +1,4 @@
-import fs from 'node:fs'
+import fs, { mkdirSync } from 'node:fs'
 import os from 'node:os'
 import lodash from 'lodash'
 import template from 'art-template'
@@ -47,15 +47,7 @@ export default class PuppeteerRenderer {
   }
 
   createDir(dir) {
-    if (!fs.existsSync(dir)) {
-      let dirs = dir.split('/')
-      for (let idx = 1; idx <= dirs.length; idx++) {
-        let temp = dirs.slice(0, idx).join('/')
-        if (!fs.existsSync(temp)) {
-          fs.mkdirSync(temp)
-        }
-      }
-    }
+    mkdirSync(dir, { recursive: true })
   }
 
   /**

@@ -17,8 +17,8 @@ for (let i in files) {
   let name = files[i].replace('.js', '')
 
   if (ret[i].status != 'fulfilled') {
-    logger.error(`载入插件错误：${logger.red(name)}`)
-    logger.error(ret[i].reason)
+    console.error(`载入插件错误：${name}`)
+    console.error(ret[i].reason)
     continue
   }
   apps[name] = ret[i].value[Object.keys(ret[i].value)[0]]
