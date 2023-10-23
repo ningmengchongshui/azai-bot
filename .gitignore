@@ -22,6 +22,7 @@ dev.ts
 # app
 example.js
 apps.js
+plugins
 
 # Nuxt dev/build outputs
 .output
