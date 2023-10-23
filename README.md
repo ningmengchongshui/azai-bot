@@ -14,9 +14,7 @@ git clone --depth=1 -b main https://gitee.com/ningmengchongshui/a-yunzai.git
 
 > 放置于每个插件目录中
 
-> 遍历导式
-
-- 模板1
+- 模板1 遍历式
 
 ```js
 import { createApps, getAppName } from 'alemonjs'
@@ -55,27 +53,14 @@ app.component(apps)
 app.mount()
 ```
 
-- 模板2
-
-> 用于非传统Yunzai写法
-
-> 导入式
+- 模板2 引入式
 
 ```js
-import { createApps, getAppName } from 'alemonjs'
-import { apps } from './apps/index.j'
-const app = createApps(import.meta.url)
-app.component(apps)
-app.mount()
-```
-
-- 模板3
-
-> 直接引用隔壁的apps
-
-```js
-import { createApps, getAppName } from 'alemonjs'
+import { createApps } from 'alemonjs'
 import { apps } from './index.js'
+console.log('apps', apps)
+const cl = new apps['help']()
+console.log(cl)
 const app = createApps(import.meta.url)
 app.component(apps)
 app.mount()
