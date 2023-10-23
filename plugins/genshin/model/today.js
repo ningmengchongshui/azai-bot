@@ -7,12 +7,12 @@ import gsCfg from './gsCfg.js'
 import common from '../../../lib/common/common.js'
 
 export default class Today extends base {
-  constructor(e) {
+  constructor (e) {
     super(e)
     this.model = 'todayMaterial'
   }
 
-  async getData() {
+  async getData () {
     if (moment().day() == 0 && moment().hour() > 4) {
       this.e.reply('今天周日，全部素材都可以刷哦~')
       return false
@@ -26,7 +26,7 @@ export default class Today extends base {
     return await this.todayData(avatars)
   }
 
-  async todayData(avatars) {
+  async todayData (avatars) {
     let daily = gsCfg.getdefSet('daily', 'daily')
     let other = gsCfg.getdefSet('weapon', 'other')
     // 除周日日期余三
@@ -44,7 +44,8 @@ export default class Today extends base {
     let count = 0
     let role = []
     /* eslint-disable no-labels */
-    a: for (let i in nowElement) {
+    a:
+    for (let i in nowElement) {
       lodash.forEach(nowElement[i], (ele, name) => {
         let temp = {
           name,
@@ -57,20 +58,17 @@ export default class Today extends base {
         // 获取角色数组
         let element = ele[1]
 
-        b: for (let val of avatars) {
-          // 进行天赋的数据处理
-          if (temp.isTalent && element.indexOf(val.name) != -1) {
+        b:
+        for (let val of avatars) {
+        // 进行天赋的数据处理
+          if ((temp.isTalent) && (element.indexOf(val.name) != -1)) {
             role.push(val)
             let rarity = val.rarity
             if (val.rarity > 5) {
               rarity = 5
             }
 
-            val.sort =
-              rarity * 100000 +
-              val.actived_constellation_num * 10000 +
-              val.level * 100 +
-              (val.id - 10000000)
+            val.sort = rarity * 100000 + val.actived_constellation_num * 10000 + val.level * 100 + (val.id - 10000000)
 
             // 增加神里排序
             if (val.id == 10000002) {
@@ -92,7 +90,7 @@ export default class Today extends base {
             }
 
             temp.list.push(val)
-          } else if (!temp.isTalent && element.indexOf(val.weapon.name) != -1) {
+          } else if ((!temp.isTalent) && (element.indexOf(val.weapon.name) != -1)) {
             if (val.weapon.level >= 90) continue b
             // 进行武器的数据处理
             let firstSort = 0
@@ -136,17 +134,9 @@ export default class Today extends base {
 
         // 重新排序
         if (temp.isTalent == 1) {
-          temp.list = lodash
-            .chain(temp.list)
-            .orderBy(['sortLevel'], ['desc'])
-            .orderBy(['sort'], ['desc'])
-            .value()
+          temp.list = lodash.chain(temp.list).orderBy(['sortLevel'], ['desc']).orderBy(['sort'], ['desc']).value()
         } else {
-          temp.list = lodash
-            .chain(temp.list)
-            .orderBy(['firstSort'], ['desc'])
-            .orderBy(['sort'], ['desc'])
-            .value()
+          temp.list = lodash.chain(temp.list).orderBy(['firstSort'], ['desc']).orderBy(['sort'], ['desc']).value()
         }
 
         count++
@@ -165,15 +155,7 @@ export default class Today extends base {
     }
 
     let day = moment().format('MM-DD hh:mm')
-    let weekData = [
-      '星期日',
-      '星期一',
-      '星期二',
-      '星期三',
-      '星期四',
-      '星期五',
-      '星期六'
-    ]
+    let weekData = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六']
     day += ' ' + weekData[moment().day()]
 
     // let num = mainList.length;
@@ -190,12 +172,10 @@ export default class Today extends base {
     }
   }
 
-  async getAllSkill(avatars) {
-    let skillRet = []
-    let skill = []
+  async getAllSkill (avatars) {
+    let skillRet = []; let skill = []
     // 批量获取技能数据，分组10个id一次，延迟100ms
-    let num = 10
-    let ms = 100
+    let num = 10; let ms = 100
     let avatarArr = lodash.chunk(avatars, num)
 
     let start = Date.now()
@@ -217,13 +197,9 @@ export default class Today extends base {
     return skill
   }
 
-  async getSkill(avatar) {
+  async getSkill (avatar) {
     let force = !this.e.msg.includes('force')
-    let res = await this.mysApi.getData(
-      'detail',
-      { avatar_id: avatar.id },
-      force
-    )
+    let res = await this.mysApi.getData('detail', { avatar_id: avatar.id }, force)
     if (!res || res.retcode !== 0 || !res.data.skill_list) return false
 
     let skill = {

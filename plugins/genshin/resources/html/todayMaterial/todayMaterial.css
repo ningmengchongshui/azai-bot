@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'tttgbnumber';
-  src: url('../../font/tttgbnumber.ttf');
+  font-family: "tttgbnumber";
+  src: url("../../font/tttgbnumber.ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -40,7 +40,7 @@ body {
   padding-left: 10px;
 }
 .base_info .id:before {
-  content: ' ';
+  content: " ";
   position: absolute;
   width: 5px;
   height: 24px;
@@ -307,7 +307,7 @@ body {
   border-radius: 2px;
   padding: 1px 3px;
   border-radius: 3px;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
 }
 .life1 {
   background-color: #62a8ea;
@@ -445,7 +445,7 @@ body {
   width: 100%;
   height: 18px;
   font-size: 14px;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
 }
 .role_name {
   overflow: hidden;
@@ -467,7 +467,7 @@ body {
   border-radius: 2px;
   padding: 1px 4px;
   border-radius: 3px;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
 }
 .life1 {
   background-color: #62a8ea;

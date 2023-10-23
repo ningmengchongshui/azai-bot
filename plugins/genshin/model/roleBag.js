@@ -4,18 +4,18 @@ import gsCfg from './gsCfg.js'
 import lodash from 'lodash'
 
 export default class RoleBag extends base {
-  constructor(e) {
+  constructor (e) {
     super(e)
     this.model = 'roleBag'
   }
 
-  static async get(e) {
+  static async get (e) {
     let roleBag = new RoleBag(e)
     return await roleBag.getData()
   }
 
   /** #武器 */
-  async getData(e) {
+  async getData (e) {
     let res = await MysInfo.get(this.e, 'character')
 
     if (!res || res.retcode !== 0) return false
@@ -37,7 +37,7 @@ export default class RoleBag extends base {
     return data
   }
 
-  dealData(avatars) {
+  dealData (avatars) {
     let type = 'all'
     if (avatars.length > 8) {
       if (/(.*)(四星|4星)(.*)/.test(this.e.msg)) {
@@ -63,11 +63,7 @@ export default class RoleBag extends base {
         continue
       }
 
-      val.sort =
-        rarity * 100000 +
-        val.actived_constellation_num * 10000 +
-        val.level * 100 +
-        (val.id - 10000000)
+      val.sort = rarity * 100000 + val.actived_constellation_num * 10000 + val.level * 100 + (val.id - 10000000)
 
       // 增加神里排序
       if (val.id == 10000002) {
@@ -100,11 +96,7 @@ export default class RoleBag extends base {
       list.push(val)
     }
 
-    list = lodash
-      .chain(list)
-      .orderBy(['sortLevel'], ['desc'])
-      .orderBy(['sort'], ['desc'])
-      .value()
+    list = lodash.chain(list).orderBy(['sortLevel'], ['desc']).orderBy(['sort'], ['desc']).value()
 
     let num = list.length
 

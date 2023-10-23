@@ -103,18 +103,7 @@ export class mysNews extends plugin {
     let cfg = gsCfg.getConfig('mys', 'pushNews')
     let gids = this.gids()
 
-    let game =
-      gids == 1
-        ? 'bbb'
-        : gids == 2
-        ? 'gs'
-        : gids == 3
-        ? 'bb'
-        : gids == 4
-        ? 'wd'
-        : gids == 6
-        ? 'sr'
-        : 'zzz'
+    let game = gids == 1 ? 'bbb' : gids == 2 ? 'gs' : gids == 3 ? 'bb' : gids == 4 ? 'wd' : gids == 6 ? 'sr' : 'zzz'
     let type = `${game}announceGroup`
     let typeName = '公告'
     if (this.e.msg.includes('资讯')) {
@@ -136,9 +125,7 @@ export class mysNews extends plugin {
     } else {
       model = '关闭'
       msg += `${model}`
-      cfg[type][this.e.self_id] = lodash.difference(cfg[type][this.e.self_id], [
-        this.e.group_id
-      ])
+      cfg[type][this.e.self_id] = lodash.difference(cfg[type][this.e.self_id], [this.e.group_id])
       if (lodash.isEmpty(cfg[type][this.e.self_id]))
         delete cfg[type][this.e.self_id]
     }
@@ -151,7 +138,7 @@ export class mysNews extends plugin {
   }
 
   gids() {
-    let msg = this.e.msg.replace(/[#公告资讯活动开启关闭推送]/g, '')
+    let msg = this.e.msg.replace(/[#公告资讯活动开启关闭推送]/g, '');
     switch (msg) {
       case '崩坏三':
       case '崩三':

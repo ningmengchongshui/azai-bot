@@ -1,17 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <link rel="shortcut icon" href="#" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{pluResPath}}html/abyssFloor/abyssFloor.css"
-    />
-    <link rel="preload" href="{{resPath}}/font/tttgbnumber.ttf" as="font" />
-    <link rel="preload" href="{{pluResPath}}img/other/bg5.png" as="image" />
-    <link rel="preload" href="{{pluResPath}}img/other/bg4.png" as="image" />
-    <link rel="preload" href="{{pluResPath}}img/other/bg105.png" as="image" />
+    <link rel="stylesheet" type="text/css" href="{{pluResPath}}html/abyssFloor/abyssFloor.css" />
+    <link rel="preload" href="{{resPath}}/font/tttgbnumber.ttf" as="font">
+    <link rel="preload" href="{{pluResPath}}img/other/bg5.png" as="image">
+    <link rel="preload" href="{{pluResPath}}img/other/bg4.png" as="image">
+    <link rel="preload" href="{{pluResPath}}img/other/bg105.png" as="image">
   </head>
   <body>
     <div class="container" id="container">
@@ -51,31 +47,17 @@
                       onerror="whenError(this)"
                     />
                     <div class="desc">Lv.{{v.level}}</div>
-                    <img
-                      class="fill_img"
-                      src="{{pluResPath}}img/other/fill.png"
-                    />
+                    <img class="fill_img" src="{{pluResPath}}img/other/fill.png" />
                   </div>
                   {{/each}}
-                  <div class="split-text split-text-{{vv.index}}">
-                    {{if vv.index==1 }}上{{else}}下{{/if}}半
-                  </div>
+                  <div class="split-text split-text-{{vv.index}}">{{if vv.index==1 }}上{{else}}下{{/if}}半</div>
                 </div>
                 {{ /each}}
               </div>
               <div class="star-box">
-                <img
-                  class="{{if val.star<1 }}nostar{{/if}}"
-                  src="{{pluResPath}}img/abyss/star.png"
-                />
-                <img
-                  class="{{if val.star<2 }}nostar{{/if}}"
-                  src="{{pluResPath}}img/abyss/star.png"
-                />
-                <img
-                  class="{{if val.star<3 }}nostar{{/if}}"
-                  src="{{pluResPath}}img/abyss/star.png"
-                />
+                <img class="{{if val.star<1 }}nostar{{/if}}" src="{{pluResPath}}img/abyss/star.png" />
+                <img class="{{if val.star<2 }}nostar{{/if}}" src="{{pluResPath}}img/abyss/star.png" />
+                <img class="{{if val.star<3 }}nostar{{/if}}" src="{{pluResPath}}img/abyss/star.png" />
               </div>
             </div>
           </div>

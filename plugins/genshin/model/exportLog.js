@@ -17,39 +17,37 @@ export default class ExportLog extends base {
     /** 绑定的uid */
     this.uidKey = `Yz:genshin:mys:qq-uid:${this.userId}`
 
-    this.path = this.e.isSr
-      ? `./data/srJson/${this.e.user_id}/`
-      : `./data/gachaJson/${this.e.user_id}/`
+    this.path = this.e.isSr ? `./data/srJson/${this.e.user_id}/` : `./data/gachaJson/${this.e.user_id}/`
 
     const gsPool = [
       { type: 301, typeName: '角色活动' },
       { type: 302, typeName: '武器活动' },
       { type: 200, typeName: '常驻' }
-    ]
+    ];
 
     const srPool = [
       { type: 11, typeName: '角色活动' },
       { type: 12, typeName: '武器活动' },
       { type: 2, typeName: '新手活动' },
       { type: 1, typeName: '常驻' }
-    ]
+    ];
 
-    this.pool = this.e.isSr ? srPool : gsPool
+    this.pool = this.e.isSr ? srPool : gsPool;
 
     const gsTypeName = {
       301: '角色',
       302: '武器',
       200: '常驻'
-    }
+    };
 
     const srTypeName = {
       11: '角色',
       12: '武器',
       2: '新手',
       1: '常驻'
-    }
+    };
 
-    this.typeName = this.e.isSr ? srTypeName : gsTypeName
+    this.typeName = this.e.isSr ? srTypeName : gsTypeName;
   }
 
   async initXlsx() {
@@ -86,12 +84,12 @@ export default class ExportLog extends base {
 
     this.e.reply(`导出成功：${this.uid}.json，共${list.length}条 \n请接收文件`)
 
-    await this.e.friend.sendFile(saveFile).catch(err => {
+    await this.e.friend.sendFile(saveFile).catch((err) => {
       logger.error(`${this.e.logFnc} 发送文件失败 ${JSON.stringify(err)}`)
     })
 
     /** 删除文件 */
-    fs.unlink(saveFile, () => {})
+    fs.unlink(saveFile, () => { })
   }
 
   async exportXlsx() {
@@ -120,7 +118,7 @@ export default class ExportLog extends base {
 
     this.e.reply(`记录文件${this.uid}.xlsx上传中，请耐心等待...`)
 
-    res = await this.e.friend.sendFile(saveFile).catch(err => {
+    res = await this.e.friend.sendFile(saveFile).catch((err) => {
       this.e.reply(`发送文件${this.uid}.xlsx失败，请稍后再试`)
       logger.error(`${this.e.logFnc} 发送文件失败 ${JSON.stringify(err)}`)
     })
@@ -129,7 +127,7 @@ export default class ExportLog extends base {
     if (res) this.e.reply(`${this.uid}.xlsx上传成功，共${line}条\n请接收文件`)
 
     /** 删除文件 */
-    fs.unlink(saveFile, () => {})
+    fs.unlink(saveFile, () => { })
   }
 
   async getUid() {
@@ -195,31 +193,21 @@ export default class ExportLog extends base {
     let xlsxData = []
 
     for (let v of this.pool) {
-      let poolData = [['时间', '名称', '物品类型', '星级', '祈愿类型']]
+      let poolData = [
+        [
+          '时间', '名称', '物品类型', '星级', '祈愿类型'
+        ]
+      ]
       for (let log of data[v.type]) {
         poolData.push([
-          log.time,
-          log.name,
-          log.item_type,
-          log.rank_type,
-          log.gacha_type
+          log.time, log.name, log.item_type, log.rank_type, log.gacha_type
         ])
       }
 
       let sheetOptions = {
-        '!cols': [
-          { wch: 20 },
-          { wch: 20 },
-          { wch: 10 },
-          { wch: 10 },
-          { wch: 10 }
-        ]
+        '!cols': [{ wch: 20 }, { wch: 20 }, { wch: 10 }, { wch: 10 }, { wch: 10 }]
       }
-      xlsxData.push({
-        name: `${v.typeName}祈愿`,
-        data: poolData,
-        options: sheetOptions
-      })
+      xlsxData.push({ name: `${v.typeName}祈愿`, data: poolData, options: sheetOptions })
     }
 
     return xlsxData
@@ -228,17 +216,7 @@ export default class ExportLog extends base {
   xlsxDataAll(data) {
     let list = [
       [
-        'count',
-        'gacha_type',
-        'id',
-        'item_id',
-        'item_type',
-        'lang',
-        'name',
-        'rank_type',
-        'time',
-        'uid',
-        'uigf_gacha_type'
+        'count', 'gacha_type', 'id', 'item_id', 'item_type', 'lang', 'name', 'rank_type', 'time', 'uid', 'uigf_gacha_type'
       ]
     ]
     for (let v of data.list) {
@@ -250,19 +228,7 @@ export default class ExportLog extends base {
       list.push(tmp)
     }
     let sheetOptions = {
-      '!cols': [
-        { wch: 10 },
-        { wch: 10 },
-        { wch: 20 },
-        { wch: 10 },
-        { wch: 10 },
-        { wch: 10 },
-        { wch: 20 },
-        { wch: 10 },
-        { wch: 20 },
-        { wch: 10 },
-        { wch: 10 }
-      ]
+      '!cols': [{ wch: 10 }, { wch: 10 }, { wch: 20 }, { wch: 10 }, { wch: 10 }, { wch: 10 }, { wch: 20 }, { wch: 10 }, { wch: 20 }, { wch: 10 }, { wch: 10 }]
     }
 
     return { name: '原始数据', data: list, options: sheetOptions }
@@ -287,28 +253,26 @@ export default class ExportLog extends base {
     list = lodash.keyBy(list, 'name')
 
     // 适配StarRailExport导出的xlsx，该xlsx没有原始数据表.
-    let rawData = list['原始数据'] ? list['原始数据'] : list['rawData']
+    let rawData = list['原始数据'] ? list['原始数据'] : list['rawData'];
     if (!list['原始数据'] && list['rawData']) {
       // 获取rawData的time字段（第9列）的索引
-      const timeIndex = 8
+      const timeIndex = 8;
 
       // 对rawData进行排序（按照time字段，除第一行外）
-      const headerRow = rawData.data[0] // 保存标题行
-      const dataToSort = rawData.data.slice(1) // 除第一行外的数据
+      const headerRow = rawData.data[0]; // 保存标题行
+      const dataToSort = rawData.data.slice(1); // 除第一行外的数据
 
       dataToSort.sort((a, b) => {
-        return (
-          moment(a[timeIndex]).format('x') - moment(b[timeIndex]).format('x')
-        )
-      })
+        return moment(a[timeIndex]).format('x') - moment(b[timeIndex]).format('x');
+      });
 
       // 重新构建rawData的数据，包括标题行
-      rawData.data = [headerRow, ...dataToSort]
+      rawData.data = [headerRow, ...dataToSort];
 
       // 将数据写回原文件，重新读取
-      fs.writeFileSync(textPath, xlsx.build([rawData]))
-      list = lodash.keyBy(xlsx.parse(textPath), 'name')
-      rawData = list['rawData']
+      fs.writeFileSync(textPath, xlsx.build([rawData]));
+      list = lodash.keyBy(xlsx.parse(textPath), 'name');
+      rawData = list['rawData'];
     }
 
     if (!rawData) {
@@ -317,7 +281,7 @@ export default class ExportLog extends base {
     }
 
     /** 处理xlsx数据 */
-    let data = this.dealXlsx(rawData.data)
+    let data = this.dealXlsx(rawData.data);
     if (!data) return false
 
     /** 保存json */
@@ -333,20 +297,14 @@ export default class ExportLog extends base {
     }
 
     /** 删除文件 */
-    fs.unlink(textPath, () => {})
+    fs.unlink(textPath, () => { })
 
     await this.e.reply(`${this.e.file.name}，导入成功\n${msg.join('\n')}`)
   }
 
   dealXlsx(list) {
     /** 必要字段 */
-    let reqField = [
-      'uigf_gacha_type',
-      'gacha_type',
-      'item_type',
-      'name',
-      'time'
-    ]
+    let reqField = ['uigf_gacha_type', 'gacha_type', 'item_type', 'name', 'time']
     /** 不是必要字段 */
     let noReqField = ['id', 'uid', 'count', 'item_id', 'lang', 'rank_type']
 
@@ -369,10 +327,7 @@ export default class ExportLog extends base {
     }
 
     /** 倒序 */
-    if (
-      moment(list[1][field.time]).format('x') <
-      moment(list[list.length - 1][field.time]).format('x')
-    ) {
+    if (moment(list[1][field.time]).format('x') < moment(list[list.length - 1][field.time]).format('x')) {
       list = list.reverse()
     }
 
@@ -443,7 +398,7 @@ export default class ExportLog extends base {
     }
 
     /** 删除文件 */
-    fs.unlink(textPath, () => {})
+    fs.unlink(textPath, () => { })
 
     await this.e.reply(`${this.e.file.name}，导入成功\n${msg.join('\n')}`)
   }
@@ -463,14 +418,11 @@ export default class ExportLog extends base {
 
     // 对json进行排序（按照time字段）
     list.sort((a, b) => {
-      return moment(a.time).format('x') - moment(b.time).format('x')
-    })
+      return moment(a.time).format('x') - moment(b.time).format('x');
+    });
 
     /** 倒序 */
-    if (
-      moment(list[0].time).format('x') <
-      moment(list[list.length - 1].time).format('x')
-    ) {
+    if (moment(list[0].time).format('x') < moment(list[list.length - 1].time).format('x')) {
       list = list.reverse()
     }
 
@@ -479,7 +431,7 @@ export default class ExportLog extends base {
       if (!v['uigf_gacha_type'] && v['gacha_type']) {
         v['uigf_gacha_type'] = v['gacha_type']
       }
-
+      
       if (!data[v.uigf_gacha_type]) data[v.uigf_gacha_type] = []
       data[v.uigf_gacha_type].push(v)
     }

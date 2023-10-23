@@ -1,12 +1,12 @@
 @font-face {
-  font-family: '华文中宋';
-  src: url('../../font/华文中宋.TTF');
+  font-family: "华文中宋";
+  src: url("../../font/华文中宋.TTF");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'tttgbnumber';
-  src: url('../../font/tttgbnumber.ttf');
+  font-family: "tttgbnumber";
+  src: url("../../font/tttgbnumber.ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -19,7 +19,7 @@
 body {
   font-size: 16px;
   color: #fff;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
   transform: scale(1.6);
   transform-origin: 0 0;
 }
@@ -58,7 +58,7 @@ body {
   align-items: flex-end;
 }
 .role_name {
-  font-family: '华文中宋';
+  font-family: "华文中宋";
 }
 .lv {
   font-size: 16px;
@@ -95,7 +95,7 @@ body {
   position: relative;
 }
 .text_box::before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   background-image: linear-gradient(
@@ -111,12 +111,10 @@ body {
   left: -15px;
   width: 300px;
   opacity: 1;
-  transition:
-    width 0.3s 0.1s,
-    opacity 0.3s 0.1s;
+  transition: width 0.3s 0.1s, opacity 0.3s 0.1s;
 }
 .text_box::after {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   background-image: linear-gradient(
@@ -132,9 +130,7 @@ body {
   left: -15px;
   width: 300px;
   opacity: 1;
-  transition:
-    width 0.3s 0.1s,
-    opacity 0.3s 0.1s;
+  transition: width 0.3s 0.1s, opacity 0.3s 0.1s;
 }
 .detail p,
 .skill p {
@@ -213,8 +209,7 @@ body {
   font-size: 15px;
   padding: 5px 5px 1px 7px;
   border-radius: 10px;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    rgba(114, 102, 104, 0.3);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), rgba(114, 102, 104, 0.3);
   margin-left: 5px;
 }
 .equiv_info .text {

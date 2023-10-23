@@ -5,7 +5,7 @@ import fs from 'node:fs'
 import lodash from 'lodash'
 import puppeteer from '../../../lib/puppeteer/puppeteer.js'
 export class gacha extends plugin {
-  constructor() {
+  constructor () {
     super({
       name: '十连',
       dsc: '模拟抽卡，每天十连一次，四点更新',
@@ -25,7 +25,7 @@ export class gacha extends plugin {
   }
 
   /** #十连 */
-  async gacha() {
+  async gacha () {
     this.GachaData = await GachaData.init(this.e)
 
     if (this.checkLimit()) return
@@ -48,7 +48,7 @@ export class gacha extends plugin {
   }
 
   /** 检查限制 */
-  checkLimit() {
+  checkLimit () {
     /** 主人不限制 */
     if (this.e.isMaster) return false
 
@@ -87,7 +87,7 @@ export class gacha extends plugin {
   }
 
   /** #定轨 */
-  async weaponBing() {
+  async weaponBing () {
     let Gacha = await GachaData.init(this.e)
 
     let { NowPool, user, msg = '' } = Gacha
@@ -118,7 +118,7 @@ export class gacha extends plugin {
   }
 
   /** 初始化创建配置文件 */
-  async init() {
+  async init () {
     let file = './plugins/genshin/config/gacha.set.yaml'
 
     if (fs.existsSync(file)) return

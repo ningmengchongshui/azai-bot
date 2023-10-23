@@ -7,24 +7,22 @@ import fetch from 'node-fetch'
 import common from '../../../lib/common/common.js'
 
 export default class RoleDetail extends base {
-  constructor(e) {
+  constructor (e) {
     super(e)
     this.model = 'roleDetail'
 
     this.path = './data/roleDetail/'
   }
 
-  static async get(e) {
+  static async get (e) {
     if (!e.roleName) return false
     let roleDetail = new RoleDetail(e)
     return await roleDetail.getDetail()
   }
 
-  async getDetail() {
+  async getDetail () {
     let character = await MysInfo.get(this.e, 'character')
-    let detail = await MysInfo.get(this.e, 'detail', {
-      avatar_id: this.e.roleId
-    })
+    let detail = await MysInfo.get(this.e, 'detail', { avatar_id: this.e.roleId })
 
     if (!character || character.retcode !== 0) return false
 
@@ -37,7 +35,7 @@ export default class RoleDetail extends base {
       skill = this.getSkill(detail.data, avatar)
     }
 
-    if (!(await this.checkImg(avatar.name))) return false
+    if (!await this.checkImg(avatar.name)) return false
 
     /** 截图数据 */
     let data = {
@@ -53,7 +51,7 @@ export default class RoleDetail extends base {
     return data
   }
 
-  async getAvatar(data) {
+  async getAvatar (data) {
     let avatars = lodash.keyBy(data.avatars, 'id')
 
     /** 旅行者特殊处理 */
@@ -130,18 +128,7 @@ export default class RoleDetail extends base {
       if (lodash.random(0, 100) > 50) {
         bg = 3
       }
-    } else if (
-      [
-        '芭芭拉',
-        '凝光',
-        '刻晴',
-        '琴',
-        '菲谢尔',
-        '迪卢克',
-        '丽莎',
-        '神里绫华'
-      ].includes(avatars.name)
-    ) {
+    } else if (['芭芭拉', '凝光', '刻晴', '琴', '菲谢尔', '迪卢克', '丽莎', '神里绫华'].includes(avatars.name)) {
       if (avatars.costumes && avatars.costumes.length >= 1) {
         bg = 3
       }
@@ -162,12 +149,10 @@ export default class RoleDetail extends base {
     }
   }
 
-  async noAvatar() {
+  async noAvatar () {
     let msg = ''
     if (this.isBing) {
-      let randFace = lodash.sample([
-        26, 111, 110, 173, 177, 36, 37, 5, 9, 267, 264, 262, 265
-      ])
+      let randFace = lodash.sample([26, 111, 110, 173, 177, 36, 37, 5, 9, 267, 264, 262, 265])
       msg = [`\n尚未拥有${this.e.roleName}`, segment.face(randFace)]
     } else {
       msg = '\n请先在米游社展示该角色'
@@ -175,7 +160,7 @@ export default class RoleDetail extends base {
     await this.e.reply(msg, false, { at: true })
   }
 
-  getSkill(data = {}, avatar) {
+  getSkill (data = {}, avatar) {
     // if (!this.isBing) return {}
 
     let skill = {
@@ -221,7 +206,7 @@ export default class RoleDetail extends base {
     return skill
   }
 
-  async checkImg(name) {
+  async checkImg (name) {
     if (fs.existsSync(`${this.path}${name}1.png`)) return true
 
     let ret = await this.getData()
@@ -242,9 +227,8 @@ export default class RoleDetail extends base {
     return true
   }
 
-  async getData() {
-    let url =
-      'https://bbs-api.mihoyo.com/post/wapi/getPostFullInCollection?&gids=2&collection_id=1057503'
+  async getData () {
+    let url = 'https://bbs-api.mihoyo.com/post/wapi/getPostFullInCollection?&gids=2&collection_id=1057503'
 
     try {
       let ret = await fetch(url, { method: 'get' })
@@ -257,11 +241,9 @@ export default class RoleDetail extends base {
     }
   }
 
-  async downImg(name, arr) {
+  async downImg (name, arr) {
     let ret = []
-    arr.forEach((v, k) =>
-      ret.push(common.downFile(v, `${this.path}${name}${++k}.png`))
-    )
+    arr.forEach((v, k) => ret.push(common.downFile(v, `${this.path}${name}${++k}.png`)))
 
     try {
       ret = await Promise.all(ret)

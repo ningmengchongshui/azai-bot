@@ -76,13 +76,7 @@ nobr {
 }
 .uid-list .game-inner {
   display: flex;
-  background: linear-gradient(
-    to right,
-    rgba(240, 236, 228, 0.6),
-    rgba(240, 236, 228, 0.6),
-    rgba(240, 236, 228, 0),
-    rgba(240, 236, 228, 0)
-  );
+  background: linear-gradient(to right, rgba(240, 236, 228, 0.6), rgba(240, 236, 228, 0.6), rgba(240, 236, 228, 0), rgba(240, 236, 228, 0));
   padding: 4px;
   border-radius: 33px;
 }
@@ -90,9 +84,7 @@ nobr {
   width: 56px;
   height: 56px;
   border-radius: 30px;
-  box-shadow:
-    0 0 1px #000,
-    0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 1px #000, 0 0 5px rgba(0, 0, 0, 0.5);
   border: 2px solid #fff;
   overflow: hidden;
   background-size: cover;
@@ -165,15 +157,13 @@ nobr {
 }
 .uid-list .game-inner:after {
   display: block;
-  content: '';
+  content: "";
   width: 36px;
   height: 36px;
   border-radius: 50%;
   border: 2px solid #ece5d8;
   opacity: 0;
-  box-shadow:
-    0 0 1px #000,
-    0 0 5px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 1px #000, 0 0 5px rgba(0, 0, 0, 0.5);
   position: absolute;
   right: 13px;
   top: 12px;
@@ -186,9 +176,7 @@ nobr {
   margin-bottom: 0;
 }
 .uid-list .game-li.active .game-bar {
-  box-shadow:
-    0 0 1px 1px #fff,
-    0 0 5px 2px #d3bc8e;
+  box-shadow: 0 0 1px 1px #fff, 0 0 5px 2px #d3bc8e;
 }
 .uid-list .game-li.active .game-inner:after {
   opacity: 1;
@@ -198,9 +186,7 @@ nobr {
 .uid-list .game-li.active .game-idx span {
   background: #d3bc8e;
   color: #3a2702;
-  box-shadow:
-    0 0 1px 1px #fff,
-    0 0 5px 2px #d3bc8e;
+  box-shadow: 0 0 1px 1px #fff, 0 0 5px 2px #d3bc8e;
 }
 .tips {
   border-radius: 10px;

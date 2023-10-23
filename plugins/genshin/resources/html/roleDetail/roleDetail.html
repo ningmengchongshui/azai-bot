@@ -1,36 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <link rel="shortcut icon" href="#" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{pluResPath}}html/roleDetail/roleDetail.css"
-    />
-    <link rel="preload" href="{{resPath}}/font/tttgbnumber.ttf" as="font" />
-    <link rel="preload" href="{{resPath}}/font/华文中宋.TTF" as="font" />
-    <link
-      rel="preload"
-      href="{{cwd}}/data/roleDetail/{{name}}1.png"
-      as="image"
-    />
-    <link
-      rel="preload"
-      href="{{cwd}}/data/roleDetail/{{name}}2.png"
-      as="image"
-    />
-    <link
-      rel="preload"
-      href="{{pluResPath}}html/roleDetail/星星.png"
-      as="image"
-    />
+    <link rel="stylesheet" type="text/css" href="{{pluResPath}}html/roleDetail/roleDetail.css" />
+    <link rel="preload" href="{{resPath}}/font/tttgbnumber.ttf" as="font">
+    <link rel="preload" href="{{resPath}}/font/华文中宋.TTF" as="font">
+    <link rel="preload" href="{{cwd}}/data/roleDetail/{{name}}1.png" as="image">
+    <link rel="preload" href="{{cwd}}/data/roleDetail/{{name}}2.png" as="image">
+    <link rel="preload" href="{{pluResPath}}html/roleDetail/星星.png" as="image">
     {{each list val}}
-    <link
-      rel="preload"
-      href="{{pluResPath}}img/{{val.type}}/{{val.name}}.png"
-      as="image"
-    />
+      <link rel="preload" href="{{pluResPath}}img/{{val.type}}/{{val.name}}.png" as="image">      
     {{/each}}
   </head>
   <body>
@@ -48,30 +28,30 @@
         <div class="text_box">
           <div class="detail {{ if !skill.a }}no_skill{{/if}}">
             <p>
-              <img class="star" src="{{pluResPath}}html/roleDetail/星星.png" />
+              <img class="star" src="{{pluResPath}}html/roleDetail/星星.png"/>
               等级：<span>{{level}}</span>
             </p>
             <p>
-              <img class="star" src="{{pluResPath}}html/roleDetail/星星.png" />
+              <img class="star" src="{{pluResPath}}html/roleDetail/星星.png"/>
               命座：<span>{{actived_constellation_num}}</span>
             </p>
             <p>
-              <img class="star" src="{{pluResPath}}html/roleDetail/星星.png" />
+              <img class="star" src="{{pluResPath}}html/roleDetail/星星.png"/>
               好感：<span>{{fetter}}</span>
             </p>
           </div>
           {{ if skill.a }}
           <div class="skill">
             <p>
-              <img class="star" src="{{pluResPath}}html/roleDetail/星星.png" />
+              <img class="star" src="{{pluResPath}}html/roleDetail/星星.png"/>
               爆发：<span>{{ skill.q.level_current}}</span>
             </p>
             <p>
-              <img class="star" src="{{pluResPath}}html/roleDetail/星星.png" />
+              <img class="star" src="{{pluResPath}}html/roleDetail/星星.png"/>
               战技：<span>{{ skill.e.level_current}}</span>
             </p>
             <p>
-              <img class="star" src="{{pluResPath}}html/roleDetail/星星.png" />
+              <img class="star" src="{{pluResPath}}html/roleDetail/星星.png"/>
               普攻：<span>{{ skill.a.level_current}}</span>
             </p>
           </div>
@@ -82,7 +62,9 @@
             {{each list val}}
             <div class="item">
               <div class="img_box">
-                <img src="{{pluResPath}}img/{{val.type}}/{{val.name}}.png" />
+                <img
+                  src="{{pluResPath}}img/{{val.type}}/{{val.name}}.png"
+                />
               </div>
               {{ if val.type =='weapon'}}
               <p class="num">lv{{val.level}}</p>

@@ -6,7 +6,7 @@ import lodash from 'lodash'
 import common from '../../../lib/common/common.js'
 
 export default class RoleList extends base {
-  constructor(e) {
+  constructor (e) {
     super(e)
     this.model = 'roleList'
 
@@ -14,12 +14,12 @@ export default class RoleList extends base {
     this.cacheCd = 30
   }
 
-  static async get(e) {
+  static async get (e) {
     let roleList = new RoleList(e)
     return await roleList.getData()
   }
 
-  async getData() {
+  async getData () {
     let res = await MysInfo.get(this.e, 'character')
     if (!res || res.retcode !== 0) return false
 
@@ -49,12 +49,10 @@ export default class RoleList extends base {
     return data
   }
 
-  async getAllSkill(avatars) {
-    let skillRet = []
-    let skill = []
+  async getAllSkill (avatars) {
+    let skillRet = []; let skill = []
     // 批量获取技能数据，分组10个id一次，延迟100ms
-    let num = 10
-    let ms = 100
+    let num = 10; let ms = 100
     let avatarArr = lodash.chunk(avatars, num)
 
     let start = Date.now()
@@ -76,13 +74,9 @@ export default class RoleList extends base {
     return skill
   }
 
-  async getSkill(avatar) {
+  async getSkill (avatar) {
     let force = !this.e.msg.includes('force')
-    let res = await this.mysApi.getData(
-      'detail',
-      { avatar_id: avatar.id },
-      force
-    )
+    let res = await this.mysApi.getData('detail', { avatar_id: avatar.id }, force)
     if (!res || res.retcode !== 0 || !res.data.skill_list) return false
 
     let skill = {
@@ -129,12 +123,10 @@ export default class RoleList extends base {
     return skill
   }
 
-  dealData(avatars, skill) {
+  dealData (avatars, skill) {
     let daily = gsCfg.getdefSet('daily', 'daily')
 
-    const displayMode = /(角色|武器|练度)/.test(this.e.msg)
-      ? 'weapon'
-      : 'talent'
+    const displayMode = /(角色|武器|练度)/.test(this.e.msg) ? 'weapon' : 'talent'
 
     // 四星五星
     let star = 0
@@ -149,7 +141,7 @@ export default class RoleList extends base {
     let charTalentMap = {}
     daily.forEach((weekCfg, week) => {
       lodash.forIn(weekCfg[0], (talentCfg, talentName) => {
-        talentCfg[1].forEach(charName => {
+        talentCfg[1].forEach((charName) => {
           charTalentMap[charName] = { name: talentName, week: [3, 1, 2][week] }
         })
       })
@@ -158,13 +150,10 @@ export default class RoleList extends base {
     let avatarRet = []
     for (let idx in avatars) {
       let curr = avatars[idx]
-      let avatar = lodash.pick(
-        curr,
-        'id,name,rarity,level,rarity,fetter'.split(',')
-      )
+      let avatar = lodash.pick(curr, 'id,name,rarity,level,rarity,fetter'.split(','))
       avatar.rarity = avatar.rarity > 5 ? 5 : avatar.rarity
       // let weapon = curr.weapon || {}
-      'name,level,rarity,affix_level'.split(',').forEach(idx => {
+      'name,level,rarity,affix_level'.split(',').forEach((idx) => {
         avatar[`weapon_${idx}`] = curr.weapon[idx]
       })
       avatar.cons = curr.actived_constellation_num
@@ -202,25 +191,18 @@ export default class RoleList extends base {
       avatarRet = avatarRet.filter(item => item.rarity == star)
     }
 
-    let sortKey = {
+    let sortKey = ({
       talent: 'aeq,rarity,level,star,fetter,talentWeek',
-      weapon:
-        'level,rarity,aeq,cons,weapon_level,weapon_rarity,weapon_affix_level,fetter'
-    }[displayMode].split(',')
+      weapon: 'level,rarity,aeq,cons,weapon_level,weapon_rarity,weapon_affix_level,fetter'
+    })[displayMode].split(',')
 
-    avatarRet = lodash.orderBy(
-      avatarRet,
-      sortKey,
-      lodash.repeat('desc,', sortKey.length).split(',')
-    )
+    avatarRet = lodash.orderBy(avatarRet, sortKey, lodash.repeat('desc,', sortKey.length).split(','))
 
-    let noTalent =
-      avatarRet.length == 0 || /^-+$/.test(avatarRet.map(d => d.a).join(''))
+    let noTalent = avatarRet.length == 0 || /^-+$/.test(avatarRet.map((d) => d.a).join(''))
 
     let talentNotice = `*技能数据会缓存${this.cacheCd}分钟`
     if (noTalent) {
-      talentNotice =
-        '该uid未绑定Cookie，无法获取技能数据。回复【#体力帮助】查看教程'
+      talentNotice = '该uid未绑定Cookie，无法获取技能数据。回复【#体力帮助】查看教程'
     }
 
     let week = new Date().getDay()
@@ -231,10 +213,7 @@ export default class RoleList extends base {
     return {
       avatars: avatarRet,
       bgType: Math.ceil(Math.random() * 3),
-      abbr: {
-        ...gsCfg.getdefSet('role', 'other').sortName,
-        ...gsCfg.getdefSet('weapon', 'other').sortName
-      },
+      abbr: { ...gsCfg.getdefSet('role', 'other').sortName, ...gsCfg.getdefSet('weapon', 'other').sortName },
       displayMode,
       week: [3, 1, 2][week % 3],
       talentNotice

@@ -4,18 +4,18 @@ import base from './base.js'
 import MysInfo from './mys/mysInfo.js'
 
 export default class Note extends base {
-  constructor(e) {
+  constructor (e) {
     super(e)
     this.model = 'dailyNote'
   }
 
   /** 生成体力图片 */
-  static async get(e) {
+  static async get (e) {
     let note = new Note(e)
     return await note.getData()
   }
 
-  async getData() {
+  async getData () {
     let device_fp = await MysInfo.get(this.e, 'getFp')
     let headers = { 'x-rpc-device_fp': device_fp?.data?.device_fp }
 
@@ -41,7 +41,7 @@ export default class Note extends base {
     }
   }
 
-  noteSr(res) {
+  noteSr (res) {
     let { data } = res
     let nowDay = moment().date()
     let nowUnix = Number(moment().format('X'))
@@ -56,8 +56,7 @@ export default class Note extends base {
       resinMaxTime = hours + '小时' + minutes + '分钟' + seconds + '秒'
       // 精确到秒。。。。
       if (day > 0) {
-        resinMaxTime =
-          day + '天' + hours + '小时' + minutes + '分钟' + seconds + '秒'
+        resinMaxTime = day + '天' + hours + '小时' + minutes + '分钟' + seconds + '秒'
       } else if (hours > 0) {
         resinMaxTime = hours + '小时' + minutes + '分钟' + seconds + '秒'
       } else if (minutes > 0) {
@@ -65,7 +64,7 @@ export default class Note extends base {
       } else if (seconds > 0) {
         resinMaxTime = seconds + '秒'
       }
-      if (day > 0 || hours > 0 || seconds > 0) {
+      if ((day > 0) || (hours > 0) || (seconds > 0)) {
         let total_seconds = 3600 * hours + 60 * minutes + seconds
         const now = new Date()
         const dateTimes = now.getTime() + total_seconds * 1000
@@ -73,43 +72,28 @@ export default class Note extends base {
         const dayDiff = date.getDate() - now.getDate()
         const str = dayDiff === 0 ? '今日' : '明日'
         const timeStr = `${date.getHours().toString().padStart(2, '0')}:${date
-          .getMinutes()
-          .toString()
-          .padStart(2, '0')}`
+              .getMinutes()
+              .toString()
+              .padStart(2, '0')}`
         let recoverTimeStr = ` | [${str}]${timeStr}`
         resinMaxTime += recoverTimeStr
       }
     }
-    data.bfStamina = (data.current_stamina / data.max_stamina) * 100 + '%'
+    data.bfStamina = data.current_stamina / data.max_stamina * 100 + '%'
     /** 派遣 */
     for (let item of data.expeditions) {
       let d = moment.duration(item.remaining_time, 'seconds')
       let day = Math.floor(d.asDays())
       let hours = d.hours()
       let minutes = d.minutes()
-      item.dateTime = [day + '天', hours + '时', minutes + '分']
-        .filter(v => !['0天', '0时', '0分'].includes(v))
-        .join('')
-      item.bfTime = ((72000 - item.remaining_time) / 72000) * 100 + '%'
+      item.dateTime = ([day + '天', hours + '时', minutes + '分'].filter(v => !['0天', '0时', '0分'].includes(v))).join('')
+      item.bfTime = (72000 - item.remaining_time) / 72000 * 100 + '%'
       if (item.avatars.length == 1) {
         item.avatars.push('派遣头像')
       }
     }
     // 标识属性图标~
-    let icon = lodash.sample([
-      '希儿',
-      '白露',
-      '艾丝妲',
-      '布洛妮娅',
-      '姬子',
-      '卡芙卡',
-      '克拉拉',
-      '停云',
-      '佩拉',
-      '黑塔',
-      '希露瓦',
-      '银狼'
-    ])
+    let icon = lodash.sample(['希儿', '白露', '艾丝妲', '布洛妮娅', '姬子', '卡芙卡', '克拉拉', '停云', '佩拉', '黑塔', '希露瓦', '银狼'])
     let week = [
       '星期日',
       '星期一',
@@ -131,7 +115,7 @@ export default class Note extends base {
     }
   }
 
-  noteData(res) {
+  noteData (res) {
     let { data } = res
 
     let nowDay = moment().date()

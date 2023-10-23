@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'tttgbnumber';
-  src: url('../../font/tttgbnumber.ttf');
+  font-family: "tttgbnumber";
+  src: url("../../font/tttgbnumber.ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -15,10 +15,7 @@
 body {
   font-size: 18px;
   color: #1e1f20;
-  font-family:
-    PingFangSC-Medium,
-    PingFang SC,
-    sans-serif;
+  font-family: PingFangSC-Medium, PingFang SC, sans-serif;
   transform: scale(2);
   transform-origin: 0 0;
 }
@@ -131,7 +128,7 @@ body {
   height: 34px;
   padding: 2px;
   border-radius: 5px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, .6);
   overflow: hidden;
   margin-left: 4px;
 }
@@ -147,6 +144,7 @@ body {
 .item .text_box .weapon_img {
   width: 100%;
   transform: scale(1.2, 1.2);
+
 }
 
 .item .text_box .weapon_name_box {
@@ -284,6 +282,7 @@ body {
   height: auto;
 }
 
+
 .overlay {
   position: absolute;
   top: 0;
@@ -294,7 +293,7 @@ body {
 
 .logo {
   font-size: 12px;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
   text-align: center;
   color: #7994a7;
 }

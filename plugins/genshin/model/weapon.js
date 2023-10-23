@@ -4,18 +4,18 @@ import gsCfg from './gsCfg.js'
 import lodash from 'lodash'
 
 export default class Weapon extends base {
-  constructor(e) {
+  constructor (e) {
     super(e)
     this.model = 'weapon'
   }
 
-  static async get(e) {
+  static async get (e) {
     let weapon = new Weapon(e)
     return await weapon.getData()
   }
 
   /** #武器 */
-  async getData(e) {
+  async getData (e) {
     let res = await MysInfo.get(this.e, 'character')
 
     if (!res || res.retcode !== 0) return false
@@ -37,7 +37,7 @@ export default class Weapon extends base {
     return data
   }
 
-  dealData(avatars) {
+  dealData (avatars) {
     let actWeapon = gsCfg.getdefSet('weapon', 'other').actWeapon
     let sortName = gsCfg.getdefSet('weapon', 'other').sortName
 
@@ -101,11 +101,7 @@ export default class Weapon extends base {
     }
 
     // 重新排序
-    weapon = lodash
-      .chain(weapon)
-      .orderBy(['firstSort'], ['desc'])
-      .orderBy(['sort'], ['desc'])
-      .value()
+    weapon = lodash.chain(weapon).orderBy(['firstSort'], ['desc']).orderBy(['sort'], ['desc']).value()
 
     return { list: weapon, count }
   }

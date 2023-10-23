@@ -6,7 +6,7 @@ import fs from 'node:fs'
 import fetch from 'node-fetch'
 
 export class material extends plugin {
-  constructor() {
+  constructor () {
     super({
       name: '角色素材',
       dsc: '角色养成突破素材，来自米游社友人A',
@@ -22,28 +22,17 @@ export class material extends plugin {
 
     this.path = './temp/material/友人A'
     this.pathOther = './temp/material/other'
-    this.url =
-      'https://bbs-api.mihoyo.com/post/wapi/getPostFullInCollection?&gids=2&order_type=2&collection_id='
+    this.url = 'https://bbs-api.mihoyo.com/post/wapi/getPostFullInCollection?&gids=2&order_type=2&collection_id='
 
     this.collection_id = [428421, 1164644, 1362644]
 
-    this.special = [
-      '雷电将军',
-      '珊瑚宫心海',
-      '菲谢尔',
-      '托马',
-      '八重神子',
-      '九条裟罗',
-      '辛焱',
-      '神里绫华'
-    ]
+    this.special = ['雷电将军', '珊瑚宫心海', '菲谢尔', '托马', '八重神子', '九条裟罗', '辛焱', '神里绫华']
 
-    this.oss =
-      '?x-oss-process=image//resize,s_1000/quality,q_80/auto-orient,0/interlace,1/format,jpg'
+    this.oss = '?x-oss-process=image//resize,s_1000/quality,q_80/auto-orient,0/interlace,1/format,jpg'
   }
 
   /** 初始化创建配置文件 */
-  async init() {
+  async init () {
     for (let dir of ['./temp', './temp/material', this.path, this.pathOther]) {
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir)
@@ -52,7 +41,7 @@ export class material extends plugin {
   }
 
   /** #刻晴攻略 */
-  async material() {
+  async material () {
     let isUpdate = !!this.e.msg.includes('更新')
     let role = gsCfg.getRole(this.e.msg, '突破|材料|素材|更新')
 
@@ -92,7 +81,7 @@ export class material extends plugin {
   }
 
   /** 下载攻略图 */
-  async getImg(name) {
+  async getImg (name) {
     let ret = await this.getData(this.collection_id[0])
 
     if (!ret || ret.retcode !== 0) {
@@ -118,7 +107,7 @@ export class material extends plugin {
 
     logger.mark(`${this.e.logFnc} 下载${name}素材图`)
 
-    if (!(await common.downFile(url + this.oss, this.imgPath))) {
+    if (!await common.downFile(url + this.oss, this.imgPath)) {
       return false
     }
 
@@ -127,7 +116,7 @@ export class material extends plugin {
     return true
   }
 
-  async getImgOther(name) {
+  async getImgOther (name) {
     let ret = await this.getData(this.collection_id[1])
 
     if (!ret || ret.retcode !== 0) {
@@ -150,7 +139,7 @@ export class material extends plugin {
 
     logger.mark(`${this.e.logFnc} 下载${name}素材图`)
 
-    if (!(await common.downFile(url + this.oss, this.imgPath))) {
+    if (!await common.downFile(url + this.oss, this.imgPath)) {
       return false
     }
 
@@ -159,7 +148,7 @@ export class material extends plugin {
     return true
   }
 
-  async getImgOther2(name) {
+  async getImgOther2 (name) {
     let ret = await this.getData(this.collection_id[2])
 
     if (!ret || ret.retcode !== 0) {
@@ -182,7 +171,7 @@ export class material extends plugin {
 
     logger.mark(`${this.e.logFnc} 下载${name}素材图`)
 
-    if (!(await common.downFile(url + this.oss, this.imgPath))) {
+    if (!await common.downFile(url + this.oss, this.imgPath)) {
       return false
     }
 
@@ -192,7 +181,7 @@ export class material extends plugin {
   }
 
   /** 获取数据 */
-  async getData(collectionId) {
+  async getData (collectionId) {
     let response = await fetch(this.url + collectionId, { method: 'get' })
     if (!response.ok) {
       return false

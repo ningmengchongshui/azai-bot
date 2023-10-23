@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'tttgbnumber';
-  src: url('../../font/tttgbnumber.ttf');
+  font-family: "tttgbnumber";
+  src: url("../../font/tttgbnumber.ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -13,10 +13,7 @@
 body {
   font-size: 14px;
   color: #fff;
-  font-family:
-    PingFangSC-Medium,
-    PingFang SC,
-    sans-serif;
+  font-family: PingFangSC-Medium, PingFang SC, sans-serif;
   width: 400px;
   /*height: 265px;*/
   transform: scale(1.8);
@@ -29,7 +26,7 @@ body {
   background-size: 100%;
   background-repeat: no-repeat;
   padding: 7px 0 0 0;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
 }
 .row {
   width: 100%;
@@ -167,5 +164,5 @@ body {
   border-radius: 2px;
   padding: 0px 3px;
   border-radius: 3px;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
 }

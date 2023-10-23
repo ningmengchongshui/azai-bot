@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'tttgbnumber';
-  src: url('../../font/tttgbnumber.ttf');
+  font-family: "tttgbnumber";
+  src: url("../../font/tttgbnumber.ttf");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'HYWenHei-55W';
-  src: url('../../font/HYWenHei-55W.ttf');
+  font-family: "HYWenHei-55W";
+  src: url("../../font/HYWenHei-55W.ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -20,10 +20,7 @@
 body {
   font-size: 18px;
   color: #1e1f20;
-  font-family:
-    PingFangSC-Medium,
-    PingFang SC,
-    sans-serif;
+  font-family: PingFangSC-Medium, PingFang SC, sans-serif;
   transform: scale(1.7);
   transform-origin: 0 0;
   width: 465px;
@@ -68,7 +65,7 @@ body {
 
 .logo {
   font-size: 12px;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
   text-align: center;
   color: #7994a7;
   position: relative;
@@ -142,6 +139,7 @@ body {
 }
 
 .data_box {
+
 }
 
 .talent_list {
@@ -176,10 +174,12 @@ body {
 }
 
 .talent_list .avatar:nth-child(even) {
+
 }
 
 .talent_list .avatar:nth-child(1) {
   background: #ccc;
+
 }
 
 .talent_list .avatar > div {
@@ -194,18 +194,20 @@ body {
   color: #333;
   width: 30px;
   padding-left: 5px;
+
 }
 
 .talent_list .avatar .name_cont {
   width: 80px;
 }
 
+
 .talent_list .avatar .star4 {
-  background: rgba(137, 189, 233, 0.6);
+  background: rgba(137, 189, 233, .6);
 }
 
 .talent_list .avatar .star5 {
-  background: rgba(239, 214, 137, 0.6);
+  background: rgba(239, 214, 137, .6);
 }
 
 .talent_list .avatar .name_cont {
@@ -241,7 +243,7 @@ body {
   white-space: nowrap;
   overflow: hidden;
   width: 48px;
-  font-family: 'HYWenHei-55W';
+  font-family: "HYWenHei-55W";
 }
 
 .talent_list .avatar .res {
@@ -259,7 +261,7 @@ body {
 }
 
 .talent_list .avatar > div.fetter10 {
-  background: url('../../img/other/fetter10.png') center center no-repeat;
+  background: url("../../img/other/fetter10.png") center center no-repeat;
   background-size: contain;
 }
 
@@ -309,7 +311,7 @@ body {
 
 .talent_list .avatar .weapon {
   text-align: left;
-  width: 148px;
+  width:148px;
 }
 
 .talent_list .avatar .weapon_1 {
@@ -346,18 +348,20 @@ body {
   text-align: center;
 }
 
+
 .talent_list .avatar .weapon_icon {
   width: 20px;
   height: 20px;
   position: relative;
   display: inline-block;
+
 }
 
 .talent_list .avatar .weapon_icon span {
   position: absolute;
   top: 0;
   right: 0;
-  transform: scale(0.5);
+  transform: scale(.5);
 }
 
 .talent_list .weapon img,
@@ -368,12 +372,14 @@ body {
   margin-bottom: 2px;
 }
 
+
 .talent_list .weapon .weapon_box {
   display: flex;
   align-items: center;
 }
 
 .talent_list .weapon .weapon_box span {
+
 }
 
 .talent_list .weapon .weapon_lv {
@@ -421,6 +427,7 @@ body {
   color: #fff;
 }
 
+
 .talent_list .weapon .weapon_name {
   flex-grow: 1;
   max-width: 60px;
@@ -428,7 +435,7 @@ body {
   white-space: nowrap;
   padding-left: 2px;
   margin-left: 2px;
-  font-family: 'HYWenHei-55W';
+  font-family: "HYWenHei-55W";
 }
 
 .talent_list .talent_res {
@@ -440,11 +447,13 @@ body {
   background: #fff6dd;
 }
 
+
 .talent_list .talent {
   color: #333;
 }
 
 .talent_list .avatar > div.talent_plus {
+
 }
 
 .talent_list .talent_plus {
@@ -453,14 +462,15 @@ body {
   font-size: 13px;
   position: relative;
   text-shadow: 0px 0px 1px #fff;
+
 }
 
 .talent_list .lv1 {
-  background: rgba(60, 63, 65, 0.3);
+  background: rgba(60, 63, 65, .3)
 }
 
 .talent_list .lv2 {
-  background: rgba(23, 184, 58, 0.5);
+  background: rgba(23, 184, 58, .5)
 }
 
 .talent_list .lv2.talent_plus {
@@ -468,11 +478,11 @@ body {
 }
 
 .talent_list .lv3 {
-  background: rgba(27, 128, 212, 0.5);
+  background: rgba(27, 128, 212, .5)
 }
 
 .talent_list .lv4 {
-  background: rgba(146, 90, 255, 0.55);
+  background: rgba(146, 90, 255, .55);
 }
 
 .talent_list .lv4.talent_plus {
@@ -480,12 +490,13 @@ body {
 }
 
 .talent_list .lv5 {
-  background: url('./crown.png') center center no-repeat rgba(255, 36, 26, 0.55);
+  background: url("./crown.png") center center no-repeat rgba(255, 36, 26, .55);
   background-size: contain;
 }
 
 .talent_list .lv5.talent_plus {
   color: #b70000;
+
 }
 
 .talent_notice {

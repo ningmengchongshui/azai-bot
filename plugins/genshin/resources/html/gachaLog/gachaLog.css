@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'tttgbnumber';
-  src: url('../../font/tttgbnumber.ttf');
+  font-family: "tttgbnumber";
+  src: url("../../font/tttgbnumber.ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -15,10 +15,7 @@
 body {
   font-size: 18px;
   color: #1e1f20;
-  font-family:
-    PingFangSC-Medium,
-    PingFang SC,
-    sans-serif;
+  font-family: PingFangSC-Medium, PingFang SC, sans-serif;
   transform: scale(1.5);
   transform-origin: 0 0;
   width: 465px;
@@ -55,12 +52,13 @@ body {
 
 .logo {
   font-size: 12px;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
   text-align: center;
   color: #7994a7;
   position: relative;
   padding-left: 10px;
 }
+
 
 .data_box {
   border-radius: 15px;
@@ -125,7 +123,7 @@ body {
   margin-bottom: 10px;
 }
 
-.info_box_border {
+.info_box_border{
   border-radius: 15px;
   /* margin-top: 20px; */
   margin-bottom: 20px;
@@ -186,7 +184,7 @@ body {
   padding: 1px 5px;
   border-radius: 3px;
   background: rgb(0 0 0 / 50%);
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
 }
 
 .card_list .item .name,
@@ -203,7 +201,7 @@ body {
 }
 
 .card_list .item .num_name {
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
   font-size: 16px;
 }
 
@@ -214,7 +212,7 @@ body {
 }
 
 .uid:before {
-  content: ' ';
+  content: " ";
   position: absolute;
   width: 5px;
   height: 24px;
@@ -229,11 +227,11 @@ body {
 }
 
 .label_302 {
-  background-color: #e69449;
+  background-color: #E69449;
 }
 
 .label_200 {
-  background-color: #757cc8;
+  background-color: #757CC8;
 }
 
 .label {
@@ -277,6 +275,7 @@ body {
   border-radius: 100%;
   transform: scale(1.5);
   -webkit-transform: scale(1.5);
+
 }
 
 .ritem .role_text {
@@ -326,13 +325,13 @@ body {
 }
 
 .blue {
-  color: #4169e1;
+  color: #4169E1;
 }
 
 .purple {
   color: #7500ff;
 }
-.minimum {
+.minimum{
   position: absolute;
   top: 0px;
   right: 0px;
@@ -343,13 +342,14 @@ body {
   border-radius: 3px;
   padding: 1px 3px;
   background-color: rgb(0 0 0 / 80%);
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
 }
-.hasMore {
+.hasMore{
   font-size: 12px;
   margin: 6px 0;
   color: #7f858a;
 }
+
 
 .gold {
   background: #ffeb73;

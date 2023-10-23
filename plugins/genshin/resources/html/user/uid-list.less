@@ -13,16 +13,18 @@ nobr {
 }
 
 .uid-list {
+
   .game-cont {
-    background: rgba(255, 255, 255, 0.65);
+    background: rgba(255, 255, 255, .65);
     margin: 0 0 10px;
     border-radius: 10px;
     overflow: hidden;
 
     .game-title {
       font-size: 16px;
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, .8);
       padding: 8px 15px 5px;
+
 
       strong {
         margin-right: 15px;
@@ -48,6 +50,8 @@ nobr {
     .cont-body {
       background: none;
       padding: 0;
+
+
     }
   }
 
@@ -90,13 +94,7 @@ nobr {
 
   .game-inner {
     display: flex;
-    background: linear-gradient(
-      to right,
-      rgba(240, 236, 228, 0.6),
-      rgba(240, 236, 228, 0.6),
-      rgba(240, 236, 228, 0),
-      rgba(240, 236, 228, 0)
-    );
+    background: linear-gradient(to right, rgba(240, 236, 228, 0.6), rgba(240, 236, 228, 0.6), rgba(240, 236, 228, 0), rgba(240, 236, 228, 0));
     padding: 4px;
     border-radius: 33px;
 
@@ -104,9 +102,7 @@ nobr {
       width: 56px;
       height: 56px;
       border-radius: 30px;
-      box-shadow:
-        0 0 1px #000,
-        0 0 5px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 1px #000, 0 0 5px rgba(0, 0, 0, .5);
       border: 2px solid #fff;
       overflow: hidden;
       background-size: cover;
@@ -124,6 +120,7 @@ nobr {
       padding: 4px 10px;
       line-height: 18px;
       color: #414e64;
+
 
       div.shadow {
         position: relative;
@@ -149,6 +146,8 @@ nobr {
           font-weight: normal;
           display: block;
           padding-right: 8px;
+
+
         }
 
         .type {
@@ -162,7 +161,7 @@ nobr {
           border-radius: 4px;
           color: #fff;
           vertical-align: middle;
-          transform: scale(0.9);
+          transform: scale(.9);
 
           &.ck {
             background: #d3bc8e;
@@ -187,19 +186,19 @@ nobr {
           text-shadow: 0 0 1px #fff;
         }
       }
+
+
     }
 
     &:after {
       display: block;
-      content: '';
+      content: "";
       width: 36px;
       height: 36px;
       border-radius: 50%;
       border: 2px solid #ece5d8;
       opacity: 0;
-      box-shadow:
-        0 0 1px #000,
-        0 0 5px rgba(0, 0, 0, 0.5);
+      box-shadow: 0 0 1px #000, 0 0 5px rgba(0, 0, 0, .5);
       position: absolute;
       right: 13px;
       top: 12px;
@@ -216,24 +215,19 @@ nobr {
 
     &.active {
       .game-bar {
-        box-shadow:
-          0 0 1px 1px #fff,
-          0 0 5px 2px #d3bc8e;
+        box-shadow: 0 0 1px 1px #fff, 0 0 5px 2px #d3bc8e;
       }
 
       .game-inner:after {
         opacity: 1;
-        background: url('../../img/icon/check.webp') center center no-repeat
-          #4a5366;
+        background: url('../../img/icon/check.webp') center center no-repeat #4a5366;
         background-size: 70% auto;
       }
 
       .game-idx span {
         background: #d3bc8e;
         color: #3a2702;
-        box-shadow:
-          0 0 1px 1px #fff,
-          0 0 5px 2px #d3bc8e;
+        box-shadow: 0 0 1px 1px #fff, 0 0 5px 2px #d3bc8e;
       }
     }
   }
@@ -245,11 +239,12 @@ nobr {
   padding: 8px 12px 8px 24px;
   color: #fff;
   margin-bottom: 10px;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, .4);
 
   li {
     padding: 2px 0;
   }
+
 
   nobr {
     font-size: 12px;

@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'tttgbnumber';
-  src: url('../../../font/tttgbnumber.ttf');
+  font-family: "tttgbnumber";
+  src: url("../../../font/tttgbnumber.ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -15,10 +15,7 @@
 body {
   font-size: 18px;
   color: #1e1f20;
-  font-family:
-    PingFangSC-Medium,
-    PingFang SC,
-    sans-serif;
+  font-family: PingFangSC-Medium, PingFang SC, sans-serif;
   transform: scale(1.5);
   transform-origin: 0 0;
   position: absolute;
@@ -32,7 +29,7 @@ body {
   background-color: #f5f6fb;
   height: 100%; /* 设置容器高度，这里假设容器的父元素有固定高度或是占满整个视口 */
 }
-.info_box {
+.info_box{
   width: 465px;
   margin-right: 15px;
   margin-left: 15px;
@@ -71,12 +68,13 @@ body {
 .logo {
   width: 100%;
   font-size: 12px;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
   text-align: center;
   color: #7994a7;
   position: relative;
   padding-left: 10px;
 }
+
 
 .data_box {
   border-radius: 15px;
@@ -141,7 +139,7 @@ body {
   margin-bottom: 10px;
 }
 
-.info_box_border {
+.info_box_border{
   border-radius: 15px;
   /* margin-top: 20px; */
   margin-bottom: 20px;
@@ -181,20 +179,20 @@ body {
   height: 70px;
   border-radius: 7px 7px 20px 0;
 }
-.card_list .item.star5 {
+.card_list .item.star5{
   width: 70px;
 }
 
 .card_list .item.star5 img {
   background: #885550;
-  background: linear-gradient(180deg, #885550, #c9a36a 53%);
+  background: linear-gradient(180deg,#885550,#c9a36a 53%);
   width: 100%;
   height: 70px;
 }
 
 .card_list .item.star4 img {
   background: #343659;
-  background: linear-gradient(180deg, #343659, #8a5fcc 53%);
+  background: linear-gradient(180deg,#343659,#8a5fcc 53%);
   width: 100%;
   height: 70px;
 }
@@ -211,7 +209,7 @@ body {
   padding: 1px 5px;
   border-radius: 3px;
   background: rgb(0 0 0 / 50%);
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
 }
 
 .card_list .item .name,
@@ -228,7 +226,7 @@ body {
 }
 
 .card_list .item .num_name {
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
   font-size: 16px;
 }
 
@@ -239,7 +237,7 @@ body {
 }
 
 .uid:before {
-  content: ' ';
+  content: " ";
   position: absolute;
   width: 5px;
   height: 24px;
@@ -253,12 +251,12 @@ body {
   background-color: rgb(235 106 75);
 }
 
-.label_12 {
-  background-color: #e69449;
+.label_12{
+  background-color: #E69449;
 }
 
 .label_1 {
-  background-color: #757cc8;
+  background-color: #757CC8;
 }
 
 .label {
@@ -302,6 +300,7 @@ body {
   border-radius: 100%;
   transform: scale(1.5);
   -webkit-transform: scale(1.5);
+
 }
 
 .ritem .role_text {
@@ -351,13 +350,13 @@ body {
 }
 
 .blue {
-  color: #4169e1;
+  color: #4169E1;
 }
 
 .purple {
   color: #7500ff;
 }
-.minimum {
+.minimum{
   position: absolute;
   top: 0px;
   right: 0px;
@@ -368,13 +367,14 @@ body {
   border-radius: 3px;
   padding: 1px 3px;
   background-color: rgb(0 0 0 / 80%);
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
 }
-.hasMore {
+.hasMore{
   font-size: 12px;
   margin: 6px 0;
   color: #7f858a;
 }
+
 
 .gold {
   background: #ffeb73;

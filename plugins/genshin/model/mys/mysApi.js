@@ -13,7 +13,7 @@ export default class MysApi {
    * @param isSr 是否星铁
    * @param device 设备device_id
    */
-  constructor(uid, cookie, option = {}, isSr = false, device = '') {
+  constructor (uid, cookie, option = {}, isSr = false, device = '') {
     this.uid = uid
     this.cookie = cookie
     this.isSr = isSr
@@ -30,12 +30,12 @@ export default class MysApi {
   }
 
   /* eslint-disable quotes */
-  get device() {
+  get device () {
     if (!this._device) this._device = `Yz-${md5(this.uid).substring(0, 5)}`
     return this._device
   }
 
-  getUrl(type, data = {}) {
+  getUrl (type, data = {}) {
     let urlMap = this.apiTool.getUrlMap({ ...data, deviceId: this.device })
     if (!urlMap[type]) return false
 
@@ -49,7 +49,7 @@ export default class MysApi {
     return { url, headers, body }
   }
 
-  getServer() {
+  getServer () {
     let uid = this.uid
     switch (String(uid)[0]) {
       case '1':
@@ -69,7 +69,7 @@ export default class MysApi {
     return this.isSr ? 'prod_gf_cn' : 'cn_gf01'
   }
 
-  async getData(type, data = {}, cached = false) {
+  async getData (type, data = {}, cached = false) {
     if (!this._device_fp && !data?.Getfp) {
       this._device_fp = await this.getData('getFp', {
         seed_id: this.generateSeed(16),
@@ -117,9 +117,7 @@ export default class MysApi {
     }
 
     if (!response.ok) {
-      logger.error(
-        `[米游社接口][${type}][${this.uid}] ${response.status} ${response.statusText}`
-      )
+      logger.error(`[米游社接口][${type}][${this.uid}] ${response.status} ${response.statusText}`)
       return false
     }
     if (this.option.log) {
@@ -139,7 +137,7 @@ export default class MysApi {
     return res
   }
 
-  getHeaders(query = '', body = '') {
+  getHeaders (query = '', body = '') {
     const cn = {
       app_version: '2.40.1',
       User_Agent: `Mozilla/5.0 (Linux; Android 12; ${this.device}) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/99.0.4844.73 Mobile Safari/537.36 miHoYoBBS/2.40.1`,
@@ -166,16 +164,14 @@ export default class MysApi {
       'x-rpc-app_version': client.app_version,
       'x-rpc-client_type': client.client_type,
       'User-Agent': client.User_Agent,
-      'Referer': client.Referer,
-      'DS': this.getDs(query, body)
+      Referer: client.Referer,
+      DS: this.getDs(query, body)
     }
   }
 
-  getDs(q = '', b = '') {
+  getDs (q = '', b = '') {
     let n = ''
-    if (
-      ['cn_gf01', 'cn_qd01', 'prod_gf_cn', 'prod_qd_cn'].includes(this.server)
-    ) {
+    if (['cn_gf01', 'cn_qd01', 'prod_gf_cn', 'prod_qd_cn'].includes(this.server)) {
       n = 'xV8v4Qu54lUKrEYFZkJhB8cuOh9Asafs'
     } else if (/os_|official/.test(this.server)) {
       n = 'okr4obncj8bw5a65hbnn5oo6ixjc3l9w'
@@ -186,37 +182,24 @@ export default class MysApi {
     return `${t},${r},${DS}`
   }
 
-  getGuid() {
-    function S4() {
+  getGuid () {
+    function S4 () {
       return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1)
     }
 
-    return (
-      S4() +
-      S4() +
-      '-' +
-      S4() +
-      '-' +
-      S4() +
-      '-' +
-      S4() +
-      '-' +
-      S4() +
-      S4() +
-      S4()
-    )
+    return (S4() + S4() + '-' + S4() + '-' + S4() + '-' + S4() + '-' + S4() + S4() + S4())
   }
 
-  cacheKey(type, data) {
+  cacheKey (type, data) {
     return 'Yz:genshin:mys:cache:' + md5(this.uid + type + JSON.stringify(data))
   }
 
-  async cache(res, cacheKey) {
+  async cache (res, cacheKey) {
     if (!res || res.retcode !== 0) return
     redis.setEx(cacheKey, this.cacheCd, JSON.stringify(res))
   }
 
-  async getAgent() {
+  async getAgent () {
     let proxyAddress = cfg.bot.proxyAddress
     if (!proxyAddress) return null
     if (proxyAddress === 'http://0.0.0.0:0') return null
@@ -224,13 +207,11 @@ export default class MysApi {
     if (!this.server.startsWith('os')) return null
 
     if (HttpsProxyAgent === '') {
-      HttpsProxyAgent = await import('https-proxy-agent').catch(err => {
+      HttpsProxyAgent = await import('https-proxy-agent').catch((err) => {
         logger.error(err)
       })
 
-      HttpsProxyAgent = HttpsProxyAgent
-        ? HttpsProxyAgent.HttpsProxyAgent
-        : undefined
+      HttpsProxyAgent = HttpsProxyAgent ? HttpsProxyAgent.HttpsProxyAgent : undefined
     }
 
     if (HttpsProxyAgent) {
@@ -240,7 +221,7 @@ export default class MysApi {
     return null
   }
 
-  generateSeed(length = 16) {
+  generateSeed (length = 16) {
     const characters = '0123456789abcdef'
     let result = ''
     for (let i = 0; i < length; i++) {

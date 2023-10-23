@@ -33,11 +33,7 @@ export class takeBirthdayPhoto extends plugin {
       return true
     }
 
-    const birthday_star_list = await this.getBirthdayStar(
-      userInfo.uid,
-      e_hk4e_token,
-      userInfo.ck
-    )
+    const birthday_star_list = await this.getBirthdayStar(userInfo.uid, e_hk4e_token, userInfo.ck)
     if (!birthday_star_list) {
       e.reply('获取生日角色失败，请稍后再试~', true)
       return true
@@ -51,12 +47,7 @@ export class takeBirthdayPhoto extends plugin {
       for (const role of birthday_star_list) {
         await e.reply(`正在获取${role.name}的图片，请稍等~`, true)
         await e.reply(segment.image(role.take_picture))
-        const message = await this.getBirthdayStarImg(
-          userInfo.uid,
-          e_hk4e_token,
-          userInfo.ck,
-          role.role_id
-        )
+        const message = await this.getBirthdayStarImg(userInfo.uid, e_hk4e_token, userInfo.ck, role.role_id)
         if (message != 'success') {
           await e.reply(message)
           return true
@@ -73,15 +64,13 @@ export class takeBirthdayPhoto extends plugin {
   }
 
   async getCookie(user_id) {
-    const userInfo = (await gsCfg.getBingCk()).ckQQ[user_id]
+    const userInfo = ((await gsCfg.getBingCk()).ckQQ)[user_id]
     return userInfo
   }
 
   async getEHK4EToken(ck, uid) {
     const isCN = uid.toString().match(/^[125]/) ? true : false
-    const url = isCN
-      ? 'https://api-takumi.mihoyo.com/common/badge/v1/login/account'
-      : 'https://api-os-takumi.mihoyo.com/common/badge/v1/login/account'
+    const url = isCN ? 'https://api-takumi.mihoyo.com/common/badge/v1/login/account' : 'https://api-os-takumi.mihoyo.com/common/badge/v1/login/account'
     const game_biz = isCN ? 'hk4e_cn' : 'hk4e_global'
     const region = await this.getServer(uid)
     const headers = {
@@ -96,10 +85,8 @@ export class takeBirthdayPhoto extends plugin {
       lang: 'zh-cn',
       region: region
     })
-    let res = await fetch(url, { method: 'POST', body, headers })
-    const e_hk4e_token = res.headers
-      .get('set-cookie')
-      .match(/e_hk4e_token=(.*?);/)[1]
+    let res = await fetch(url, { method: "POST", body, headers })
+    const e_hk4e_token = res.headers.get('set-cookie').match(/e_hk4e_token=(.*?);/)[1]
     res = await res.json()
     if (res.retcode != 0) {
       return false
@@ -131,7 +118,7 @@ export class takeBirthdayPhoto extends plugin {
     const badge_region = await this.getServer(uid)
     const isCN = uid.toString().match(/^[125]/) ? true : false
     const game_biz = isCN ? 'hk4e_cn' : 'hk4e_global'
-    const headers = { Cookie: cookie }
+    const headers = { 'Cookie': cookie }
     const url = `https://hk4e-api.mihoyo.com/event/birthdaystar/account/index?lang=zh-cn&badge_uid=${uid}&badge_region=${badge_region}&game_biz=${game_biz}&activity_id=20220301153521`
     let res = await fetch(url, { headers })
     res = await res.json()
@@ -143,10 +130,10 @@ export class takeBirthdayPhoto extends plugin {
     const badge_region = await this.getServer(uid)
     const isCN = uid.toString().match(/^[125]/) ? true : false
     const game_biz = isCN ? 'hk4e_cn' : 'hk4e_global'
-    const headers = { Cookie: cookie }
+    const headers = { 'Cookie': cookie }
     const url = `https://hk4e-api.mihoyo.com/event/birthdaystar/account/post_my_draw?lang=zh-cn&badge_uid=${uid}&badge_region=${badge_region}&game_biz=${game_biz}&activity_id=20220301153521`
     const body = JSON.stringify({ role_id: Number(role_id) })
-    let res = await fetch(url, { method: 'POST', body, headers })
+    let res = await fetch(url, { method: "POST", body, headers })
     res = await res.json()
     if (res.retcode != 0) {
       return res.message

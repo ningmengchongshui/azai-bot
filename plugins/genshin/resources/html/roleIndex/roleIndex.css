@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'tttgbnumber';
-  src: url('../../font/tttgbnumber.ttf');
+  font-family: "tttgbnumber";
+  src: url("../../font/tttgbnumber.ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -13,10 +13,7 @@
 body {
   font-size: 18px;
   color: #1e1f20;
-  font-family:
-    PingFangSC-Medium,
-    PingFang SC,
-    sans-serif;
+  font-family: PingFangSC-Medium, PingFang SC, sans-serif;
   transform: scale(2);
   transform-origin: 0 0;
 }
@@ -28,10 +25,10 @@ body {
 .head_box {
   box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%);
 }
-.head_box .id_text {
+.head_box .id_text{
   font-size: 24px;
 }
-.head_box .day_text {
+.head_box .day_text{
   font-size: 20px;
 }
 .head_box .genshin_logo {
@@ -45,7 +42,7 @@ body {
   padding-left: 10px;
 }
 .uid:before {
-  content: ' ';
+  content: " ";
   position: absolute;
   width: 5px;
   height: 24px;
@@ -71,7 +68,7 @@ body {
   top: -10px;
   left: -8px;
   background: #d4b98c;
-  color: #fff;
+  color:#fff;
   font-size: 14px;
   padding: 3px 10px;
   border-radius: 15px 0px 15px 15px;
@@ -155,7 +152,7 @@ body {
   background-size: 100%;
   background-repeat: no-repeat;
 }
-.item .text_box {
+.item .text_box{
   font-size: 12px;
   background: #e9e5dc;
   padding: 5px 0px 4px 0px;
@@ -163,39 +160,40 @@ body {
   display: flex;
   align-items: flex-start;
 }
-.item .text_box .weapon_box {
+.item .text_box .weapon_box{
   flex: 0 0 34px;
   width: 34px;
   height: 34px;
   padding: 2px;
   border-radius: 5px;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0,0,0,.6);
   overflow: hidden;
   margin-left: 4px;
 }
-.item .text_box .weapon_boder {
+.item .text_box .weapon_boder{
   border: 1px solid #d3bc8d;
   border-radius: 5px;
   width: 30px;
   height: 30px;
   overflow: hidden;
 }
-.item .text_box .weapon_img {
+.item .text_box .weapon_img{
   width: 100%;
   transform: scale(1.2, 1.2);
+  
 }
-.item .text_box .weapon_name_box {
+.item .text_box .weapon_name_box{
   margin-left: 4px;
   white-space: nowrap;
 }
-.item .text_box .weapon_name_box .weapon_level {
+.item .text_box .weapon_name_box .weapon_level{
   margin-top: 2px;
 }
-.item .text_box .weapon_affix {
+.item .text_box .weapon_affix{
   border-radius: 2px;
   background-color: #ff5722;
   padding: 2px 3px;
-  color: #fff;
+  color:#fff;
   display: inline-block;
   transform: scale(0.8);
   transform-origin: 12px 7px;
@@ -213,7 +211,7 @@ body {
   position: absolute;
   bottom: 0;
   /* background: #e9e5dc; */
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0,0,0,.6);
   color: #ececec;
   width: 100%;
   height: 18px;
@@ -240,7 +238,7 @@ body {
   border-radius: 2px;
   padding: 1px 3px;
   border-radius: 3px;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
 }
 .life1 {
   background-color: #62a8ea;
@@ -280,7 +278,7 @@ body {
   background-size: 100%;
   background-repeat: no-repeat;
   padding: 7px 0 0 0;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
   color: #fff;
   margin: 10px auto;
   border-radius: 15px;
@@ -409,7 +407,7 @@ body {
   border-radius: 2px;
   padding: 0px 3px;
   border-radius: 3px;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
 }
 .tab-avatar-item {
   height: 30px;
@@ -465,20 +463,20 @@ body {
 }
 .logo {
   font-size: 12px;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
   text-align: center;
   color: #7994a7;
 }
 .bottom-msg {
   font-size: 12px;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
   text-align: center;
   color: #7994a7;
-  margin-bottom: 5px;
-  margin-top: -5px;
+  margin-bottom:5px;
+  margin-top:-5px;
 }
 
-.basicInfo {
+.basicInfo{
   padding: 5px 5px 10px;
   background: #f5f5f5;
   box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%);
@@ -486,14 +484,14 @@ body {
   position: relative;
   margin-bottom: 12px;
 }
-.basicInfo_header {
+.basicInfo_header{
   display: flex;
 }
 .basicInfo_icon {
   display: inline-block;
   position: relative;
 }
-.basicInfo_icon {
+.basicInfo_icon{
   background-image: url(../../img/icon/七圣召唤.png);
   background-size: 70px 70px;
   background-repeat: no-repeat;
@@ -504,19 +502,19 @@ body {
   line-height: 70px;
   margin: 10px 10px 0;
 }
-.basicInfo_right {
+.basicInfo_right{
   display: inline-block;
-  width: calc(78% - 15px);
+  width:calc(78% - 15px);
   padding: 10px 0px;
   margin-left: 7px;
 }
-.basicInfo_right .item {
+.basicInfo_right .item{
   width: 100%;
   padding: 5px 10px 0;
   height: 29px;
   color: #877254;
   font-size: 13px;
-  border: 1px solid #ebeadc;
+  border:1px solid #ebeadc;
   margin: 5px 0;
   background-color: #f5eee4;
   display: flex;
@@ -525,17 +523,17 @@ body {
   width: 50%;
 }
 .basicInfo_right .item div:nth-child(2) {
-  width: 50%;
-  text-align: right;
+   width: 50%;
+   text-align: right;
 }
-.basicInfo_covers {
+.basicInfo_covers{
   display: flex;
   width: 100%;
 }
-.basicInfo_covers div {
+.basicInfo_covers div{
   padding: 5px;
 }
-.basicInfo_covers img {
+.basicInfo_covers img{
   width: 100%;
   height: 100%;
   border: 2px solid #c3b6aa;

@@ -9,7 +9,7 @@ let helpData = {
 }
 
 export class help extends plugin {
-  constructor(e) {
+  constructor (e) {
     super({
       name: '云崽帮助',
       dsc: '云崽帮助',
@@ -24,7 +24,7 @@ export class help extends plugin {
     })
   }
 
-  async help() {
+  async help () {
     let data = await Help.get(this.e)
     if (!data) return
 
@@ -32,7 +32,7 @@ export class help extends plugin {
     await this.reply(img)
   }
 
-  async cache(data) {
+  async cache (data) {
     let tmp = md5(JSON.stringify(data))
     if (helpData.md5 == tmp) return helpData.img
 

@@ -5,31 +5,27 @@ import fs from 'fs'
 import MysInfo from '../model/mys/mysInfo.js'
 
 export class user extends plugin {
-  constructor(e) {
+  constructor (e) {
     super({
       name: '用户管理',
       dsc: 'CK用户管理',
       event: 'message',
       priority: 300,
-      rule: [
-        {
-          reg: '^#用户统计$',
-          fnc: 'userAdmin'
-        },
-        {
-          reg: '^#(刷新|重置)用户(缓存|统计|ck|Ck|CK)$',
-          fnc: 'resetCache'
-        },
-        {
-          reg: '^#删除(无效|失效)(用户|ck|Ck|CK)$',
-          fnc: 'delDisable'
-        }
-      ]
+      rule: [{
+        reg: '^#用户统计$',
+        fnc: 'userAdmin'
+      }, {
+        reg: '^#(刷新|重置)用户(缓存|统计|ck|Ck|CK)$',
+        fnc: 'resetCache'
+      }, {
+        reg: '^#删除(无效|失效)(用户|ck|Ck|CK)$',
+        fnc: 'delDisable'
+      }]
     })
     this.User = new User(e)
   }
 
-  checkAuth() {
+  checkAuth () {
     if (!this.e.isMaster) {
       this.e.reply('只有管理员可用...')
       return false
@@ -38,7 +34,7 @@ export class user extends plugin {
   }
 
   /** #用户统计$ */
-  async userAdmin() {
+  async userAdmin () {
     if (!this.checkAuth()) {
       return true
     }
@@ -51,21 +47,17 @@ export class user extends plugin {
   }
 
   /** #刷新用户缓存 / #重置用户缓存 */
-  async resetCache() {
+  async resetCache () {
     if (!this.checkAuth()) {
       return true
     }
     // 清空老数据
     const clearData = /重置/.test(this.e.msg)
     await MysInfo.initCache(true, clearData)
-    this.e.reply(
-      `用户缓存已${
-        clearData ? '重置' : '刷新'
-      }...\n通过【#用户统计】命令可查看详情`
-    )
+    this.e.reply(`用户缓存已${clearData ? '重置' : '刷新'}...\n通过【#用户统计】命令可查看详情`)
   }
 
-  async delDisable() {
+  async delDisable () {
     if (!this.checkAuth()) {
       return true
     }

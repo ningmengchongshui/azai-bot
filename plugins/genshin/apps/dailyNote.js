@@ -12,12 +12,10 @@ export class dailyNote extends plugin {
       dsc: '体力查询',
       event: 'message',
       priority: 300,
-      rule: [
-        {
-          reg: '^#*(原神|星铁)?(体力|树脂|查询体力)$',
-          fnc: 'note'
-        }
-      ]
+      rule: [{
+        reg: '^#*(原神|星铁)?(体力|树脂|查询体力)$',
+        fnc: 'note'
+      }]
     })
 
     this.set = gsCfg.getConfig('mys', 'set')
@@ -32,4 +30,6 @@ export class dailyNote extends plugin {
     let img = await puppeteer.screenshot(`${data.srtempFile}dailyNote`, data)
     if (img) await this.reply(img)
   }
+
+
 }

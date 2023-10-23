@@ -37,20 +37,20 @@ export class exchange extends plugin {
     if (index.data === null) {
       return await this.reply(`错误：\n${index.message}`)
     }
-
-    let index_data = index.data.live
-    let title = index_data['title']
-    this.code_ver = index_data['code_ver']
+    
+    let index_data = index.data.live;
+    let title = index_data['title'];
+    this.code_ver = index_data['code_ver'];
     if (index_data.remain > 0) {
       return await this.reply(`暂无直播兑换码\n${title}`)
     }
 
     let code = await this.getData('code')
     if (!code || !code.data?.code_list) return
-    let codes = []
+    let codes = [];
 
     for (let val of code.data.code_list) {
-      if (val.code) {
+      if (val.code){
         //let title = (val.title || '').replace(/\<.*?\>/g,'')
         codes.push(val.code)
       }
@@ -74,8 +74,7 @@ export class exchange extends plugin {
     let url = {
       index: `https://api-takumi.mihoyo.com/event/miyolive/index`,
       code: `https://api-takumi-static.mihoyo.com/event/miyolive/refreshCode?version=${this.code_ver}&time=${this.now}`,
-      actId:
-        'https://bbs-api.mihoyo.com/painter/api/user_instant/list?offset=0&size=20&uid=75276550'
+      actId: "https://bbs-api.mihoyo.com/painter/api/user_instant/list?offset=0&size=20&uid=75276550",
     }
 
     let response
@@ -92,9 +91,7 @@ export class exchange extends plugin {
     }
 
     if (!response.ok) {
-      logger.error(
-        `[兑换码接口错误][${type}] ${response.status} ${response.statusText}`
-      )
+      logger.error(`[兑换码接口错误][${type}] ${response.status} ${response.statusText}`)
       return false
     }
     const res = await response.json()
@@ -105,41 +102,38 @@ export class exchange extends plugin {
     // 获取 "act_id"
     let ret = await this.getData('actId')
     if (ret.error || ret.retcode !== 0) {
-      return ''
+      return "";
     }
 
-    let actId = ''
-    let keywords = ['来看《原神》', '版本前瞻特别节目']
+    let actId = "";
+    let keywords = ["来看《原神》", "版本前瞻特别节目"];
     for (const p of ret.data.list) {
-      const post = p.post.post
+      const post = p.post.post;
       if (!post) {
-        continue
+        continue;
       }
-      if (!keywords.every(word => post.subject.includes(word))) {
-        continue
+      if (!keywords.every((word) => post.subject.includes(word))) {
+        continue;
       }
-      let shit = JSON.parse(post.structured_content)
+      let shit = JSON.parse(post.structured_content);
       for (let segment of shit) {
-        if (
-          segment.insert.toString().includes('观看直播') &&
-          segment.attributes.link
-        ) {
-          let matched = segment.attributes.link.match(/act_id=(.*?)&/)
+        if (segment.insert.toString().includes('观看直播') && segment.attributes.link) {
+          let matched = segment.attributes.link.match(/act_id=(.*?)&/);
           if (matched) {
-            actId = matched[1]
+            actId = matched[1];
           }
         }
       }
 
       if (actId) {
-        break
+        break;
       }
     }
 
-    return actId
+    return actId;
   }
   async useCode() {
-    let cdkCode = this.e.message[0].text.split(/#(兑换码使用|cdk-u) /, 3)[2]
+    let cdkCode = this.e.message[0].text.split(/#(兑换码使用|cdk-u) /, 3)[2];
     let res = await MysInfo.get(this.e, 'useCdk', { cdk: cdkCode })
     if (res) {
       this.e.reply(`${res.data.msg}`)

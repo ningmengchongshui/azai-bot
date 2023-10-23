@@ -1,12 +1,12 @@
 @font-face {
-  font-family: 'tttgbnumber';
-  src: url('../../font/tttgbnumber.ttf');
+  font-family: "tttgbnumber";
+  src: url("../../font/tttgbnumber.ttf");
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
-  font-family: 'HYWenHei-55W';
-  src: url('../../font/HYWenHei-55W.ttf');
+  font-family: "HYWenHei-55W";
+  src: url("../../font/HYWenHei-55W.ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -29,11 +29,13 @@ body {
   background-color: #f5f6fb;
 }
 .head_box {
+  
   border-radius: 15px;
   font-family: tttgbnumber;
   padding: 10px 20px;
   position: relative;
   box-shadow: 0 5px 10px 0 rgb(0 0 0 / 15%);
+
 }
 .head_box .id_text {
   font-size: 24px;
@@ -69,10 +71,10 @@ body {
   align-items: center;
   margin-bottom: 10px;
 }
-.title {
+.title{
   white-space: nowrap;
-  max-width: 210px;
-  overflow: hidden;
+    max-width: 210px;
+    overflow: hidden;
 }
 .name_box {
   display: flex;
@@ -117,7 +119,7 @@ body {
   padding: 1px 5px;
   border-radius: 3px;
   background: rgb(0 0 0 / 50%);
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
 }
 .label_301 {
   background-color: rgb(235 106 75);
@@ -171,11 +173,11 @@ body {
 }
 .logo {
   font-size: 14px;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
   text-align: center;
   color: #7994a7;
 }
-.hasMore {
+.hasMore{
   font-size: 12px;
   margin: -6px 0 10px 6px;
   color: #7f858a;

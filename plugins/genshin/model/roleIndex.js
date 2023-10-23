@@ -29,12 +29,7 @@ export default class RoleIndex extends base {
 
     this.areaName = lodash.invert(this.area)
 
-    this.headIndexStyle = `<style> .head_box { background: url(${
-      this.screenData.pluResPath
-    }img/roleIndex/namecard/${lodash.random(
-      1,
-      8
-    )}.png) #f5f5f5; background-position-x: 30px; background-repeat: no-repeat; border-radius: 15px; font-family: tttgbnumber; padding: 10px 20px; position: relative; background-size: auto 101%; }</style>`
+    this.headIndexStyle = `<style> .head_box { background: url(${this.screenData.pluResPath}img/roleIndex/namecard/${lodash.random(1, 8)}.png) #f5f5f5; background-position-x: 30px; background-repeat: no-repeat; border-radius: 15px; font-family: tttgbnumber; padding: 10px 20px; position: relative; background-size: auto 101%; }</style>`
   }
 
   static async get(e) {
@@ -103,8 +98,7 @@ export default class RoleIndex extends base {
       // id倒序，最新出的角色拍前面
       avatars[i].sort = rarity * 100000 + liveNum * 10000 + level * 100 + id
 
-      avatars[i].weapon.showName =
-        this.wother.sortName[avatars[i].weapon.name] ?? avatars[i].weapon.name
+      avatars[i].weapon.showName = this.wother.sortName[avatars[i].weapon.name] ?? avatars[i].weapon.name
 
       avatars[i].costumesLogo = ''
       if (avatars[i].costumes && avatars[i].costumes.length >= 1) {
@@ -126,7 +120,7 @@ export default class RoleIndex extends base {
         stats.common_chest_number +
         stats.magic_chest_number) /
         this.lable.all_chest) *
-        100,
+      100,
       1
     )
 
@@ -134,26 +128,18 @@ export default class RoleIndex extends base {
       (percentage < 60
         ? 'D'
         : percentage < 70
-        ? 'C'
-        : percentage < 80
-        ? 'B'
-        : percentage < 90
-        ? 'A'
-        : 'S') + `[${percentage}%]`
+          ? 'C'
+          : percentage < 80
+            ? 'B'
+            : percentage < 90
+              ? 'A'
+              : 'S') + `[${percentage}%]`
 
     let line = [
       [
-        {
-          lable: '成就',
-          num: stats.achievement_number,
-          extra: this.lable.achievement
-        },
+        { lable: '成就', num: stats.achievement_number, extra: this.lable.achievement },
         { lable: '角色数', num: stats.avatar_number, extra: this.lable.avatar },
-        {
-          lable: '等级',
-          num: resIndex?.role?.level ?? 0,
-          extra: this.lable.level
-        },
+        { lable: '等级', num: resIndex?.role?.level ?? 0, extra: this.lable.level },
         {
           lable: '总宝箱',
           num:
@@ -165,43 +151,28 @@ export default class RoleIndex extends base {
           extra: this.lable.all_chest
         },
         {
+
           lable: '获取率',
           num: afterPercentage,
           color:
             afterPercentage.substr(0, 1) == 'D'
               ? '#12a182'
               : afterPercentage.substr(0, 1) == 'C'
-              ? '#2775b6'
-              : afterPercentage.substr(0, 1) == 'B'
-              ? '#806d9e'
-              : afterPercentage.substr(0, 1) == 'A'
-              ? '#c04851'
-              : afterPercentage.substr(0, 1) == 'S'
-              ? '#f86b1d'
-              : ''
+                ? '#2775b6'
+                : afterPercentage.substr(0, 1) == 'B'
+                  ? '#806d9e'
+                  : afterPercentage.substr(0, 1) == 'A'
+                    ? '#c04851'
+                    : afterPercentage.substr(0, 1) == 'S'
+                      ? '#f86b1d'
+                      : '',
         }
       ],
       [
-        {
-          lable: '华丽宝箱',
-          num: stats.luxurious_chest_number,
-          extra: this.lable.luxurious_chest
-        },
-        {
-          lable: '珍贵宝箱',
-          num: stats.precious_chest_number,
-          extra: this.lable.precious_chest
-        },
-        {
-          lable: '精致宝箱',
-          num: stats.exquisite_chest_number,
-          extra: this.lable.exquisite_chest
-        },
-        {
-          lable: '普通宝箱',
-          num: stats.common_chest_number,
-          extra: this.lable.common_chest
-        }
+        { lable: '华丽宝箱', num: stats.luxurious_chest_number, extra: this.lable.luxurious_chest },
+        { lable: '珍贵宝箱', num: stats.precious_chest_number, extra: this.lable.precious_chest },
+        { lable: '精致宝箱', num: stats.exquisite_chest_number, extra: this.lable.exquisite_chest },
+        { lable: '普通宝箱', num: stats.common_chest_number, extra: this.lable.common_chest }
       ]
     ]
 
@@ -224,9 +195,7 @@ export default class RoleIndex extends base {
     for (let val of expArr) {
       let tmp = {
         lable: val,
-        num: `${
-          (worldExplorations[this.area[val]]?.exploration_percentage ?? 0) / 10
-        }%`
+        num: `${(worldExplorations[this.area[val]]?.exploration_percentage ?? 0) / 10}%`
       }
       explor.push(tmp)
     }
@@ -234,9 +203,7 @@ export default class RoleIndex extends base {
     for (let val of expArr2) {
       let tmp = {
         lable: val,
-        num: `${
-          (worldExplorations[this.area[val]]?.exploration_percentage ?? 0) / 10
-        }%`
+        num: `${(worldExplorations[this.area[val]]?.exploration_percentage ?? 0) / 10}%`
       }
       explor2.push(tmp)
     }
@@ -307,13 +274,7 @@ export default class RoleIndex extends base {
     }
     totalStar = totalStar + '（' + star.join('-') + '）'
 
-    let dataName = [
-      'damage',
-      'take_damage',
-      'defeat',
-      'normal_skill',
-      'energy_skill'
-    ]
+    let dataName = ['damage', 'take_damage', 'defeat', 'normal_skill', 'energy_skill']
     let data = []
     let tmpRole = []
     for (let val of dataName) {
@@ -335,10 +296,7 @@ export default class RoleIndex extends base {
         data[val].num += ' w'
       }
 
-      if (
-        tmpRole.length < 4 &&
-        !tmpRole.includes(resAbyss[`${val}_rank`][0].avatar_id)
-      ) {
+      if (tmpRole.length < 4 && !tmpRole.includes(resAbyss[`${val}_rank`][0].avatar_id)) {
         tmpRole.push(resAbyss[`${val}_rank`][0].avatar_id)
       }
     }
@@ -368,10 +326,7 @@ export default class RoleIndex extends base {
   }
 
   dayCount(num) {
-    let daysDifference =
-      Math.floor(
-        (new Date() - new Date('2020-09-15')) / (1000 * 60 * 60 * 24)
-      ) + 1
+    let daysDifference = Math.floor((new Date() - new Date('2020-09-15')) / (1000 * 60 * 60 * 24)) + 1
     let days = Math.floor(num)
     let msg = '活跃天数：' + days + `/${daysDifference}天`
     return msg
@@ -412,23 +367,17 @@ export default class RoleIndex extends base {
         { lable: '精致宝箱', num: stats.exquisite_chest_number },
         { lable: '普通宝箱', num: stats.common_chest_number },
         { lable: '奇馈宝箱', num: stats.magic_chest_number },
-        { lable: '传送点', num: stats.way_point_number }
+        { lable: '传送点', num: stats.way_point_number },
       ]
     ]
 
     let explor1 = []
     let explor2 = []
 
-    res.world_explorations = lodash.orderBy(
-      res.world_explorations,
-      ['id'],
-      ['desc']
-    )
+    res.world_explorations = lodash.orderBy(res.world_explorations, ['id'], ['desc'])
 
     for (let val of res.world_explorations) {
-      val.name = this.areaName[val.id]
-        ? this.areaName[val.id]
-        : lodash.truncate(val.name, { length: 6 })
+      val.name = this.areaName[val.id] ? this.areaName[val.id] : lodash.truncate(val.name, { length: 6 })
 
       let tmp = { lable: val.name, num: `${val.exploration_percentage / 10}%` }
 
@@ -489,7 +438,7 @@ export default class RoleIndex extends base {
     if (!res || res[0].retcode !== 0) return false
 
     let ret = []
-    res.forEach(v => ret.push(v.data))
+    res.forEach((v) => ret.push(v.data))
 
     return this.roleExploreData(ret)
   }
@@ -505,7 +454,7 @@ export default class RoleIndex extends base {
         stats.common_chest_number +
         stats.magic_chest_number) *
         100) /
-        this.lable.all_chest,
+      this.lable.all_chest,
       2
     )
 
@@ -513,37 +462,22 @@ export default class RoleIndex extends base {
       percentage < 60
         ? 'D'
         : (percentage < 70
-            ? 'C'
-            : percentage < 80
+          ? 'C'
+          : percentage < 80
             ? 'B'
             : percentage < 90
-            ? 'A'
-            : 'S') + `[${percentage}%]`
+              ? 'A'
+              : 'S') + `[${percentage}%]`
 
-    let daysDifference =
-      Math.floor(
-        (new Date() - new Date('2020-09-15')) / (1000 * 60 * 60 * 24)
-      ) + 1
+    let daysDifference = Math.floor((new Date() - new Date('2020-09-15')) / (1000 * 60 * 60 * 24)) + 1
 
     let line = [
       [
         { lable: '角色数', num: stats.avatar_number, extra: this.lable.avatar },
-        {
-          lable: '传送点',
-          num: stats.way_point_number,
-          extra: this.lable.way_point
-        },
+        { lable: '传送点', num: stats.way_point_number, extra: this.lable.way_point },
         { lable: '秘境', num: stats.domain_number, extra: this.lable.domain },
-        {
-          lable: '成就',
-          num: stats.achievement_number,
-          extra: this.lable.achievement
-        },
-        {
-          lable: '活跃天数',
-          num: stats.active_day_number,
-          extra: `${daysDifference}`
-        }
+        { lable: '成就', num: stats.achievement_number, extra: this.lable.achievement },
+        { lable: '活跃天数', num: stats.active_day_number, extra: `${daysDifference}` }
       ],
       [
         { lable: '深境螺旋', num: stats.spiral_abyss },
@@ -564,72 +498,32 @@ export default class RoleIndex extends base {
             afterPercentage.substr(0, 1) == 'D'
               ? '#12a182'
               : afterPercentage.substr(0, 1) == 'C'
-              ? '#2775b6'
-              : afterPercentage.substr(0, 1) == 'B'
-              ? '#806d9e'
-              : afterPercentage.substr(0, 1) == 'A'
-              ? '#c04851'
-              : afterPercentage.substr(0, 1) == 'S'
-              ? '#f86b1d'
-              : ''
+                ? '#2775b6'
+                : afterPercentage.substr(0, 1) == 'B'
+                  ? '#806d9e'
+                  : afterPercentage.substr(0, 1) == 'A'
+                    ? '#c04851'
+                    : afterPercentage.substr(0, 1) == 'S'
+                      ? '#f86b1d'
+                      : '',
         },
-        {
-          lable: '普通宝箱',
-          num: stats.common_chest_number,
-          extra: this.lable.common_chest
-        },
-        {
-          lable: '精致宝箱',
-          num: stats.exquisite_chest_number,
-          extra: this.lable.exquisite_chest
-        }
+        { lable: '普通宝箱', num: stats.common_chest_number, extra: this.lable.common_chest },
+        { lable: '精致宝箱', num: stats.exquisite_chest_number, extra: this.lable.exquisite_chest },
       ],
       [
-        {
-          lable: '珍贵宝箱',
-          num: stats.precious_chest_number,
-          extra: this.lable.precious_chest
-        },
-        {
-          lable: '华丽宝箱',
-          num: stats.luxurious_chest_number,
-          extra: this.lable.luxurious_chest
-        },
-        {
-          lable: '奇馈宝箱',
-          num: stats.magic_chest_number,
-          extra: this.lable.magic_chest
-        },
-        {
-          lable: '风神瞳',
-          num: stats.anemoculus_number,
-          extra: this.lable.anemoculus
-        },
-        {
-          lable: '岩神瞳',
-          num: stats.geoculus_number,
-          extra: this.lable.geoculus
-        }
+        { lable: '珍贵宝箱', num: stats.precious_chest_number, extra: this.lable.precious_chest },
+        { lable: '华丽宝箱', num: stats.luxurious_chest_number, extra: this.lable.luxurious_chest },
+        { lable: '奇馈宝箱', num: stats.magic_chest_number, extra: this.lable.magic_chest },
+        { lable: '风神瞳', num: stats.anemoculus_number, extra: this.lable.anemoculus },
+        { lable: '岩神瞳', num: stats.geoculus_number, extra: this.lable.geoculus }
       ],
       [
-        {
-          lable: '雷神瞳',
-          num: stats.electroculus_number,
-          extra: this.lable.electroculus
-        },
-        {
-          lable: '草神瞳',
-          num: stats.dendroculus_number,
-          extra: this.lable.dendroculus
-        },
-        {
-          lable: '水神瞳',
-          num: stats.hydroculus_number,
-          extra: this.lable.hydroculus
-        },
+        { lable: '雷神瞳', num: stats.electroculus_number, extra: this.lable.electroculus },
+        { lable: '草神瞳', num: stats.dendroculus_number, extra: this.lable.dendroculus },
+        { lable: '水神瞳', num: stats.hydroculus_number, extra: this.lable.hydroculus },
         { lable: '火神瞳', num: `${dsz}`, extra: 0 },
         { lable: '冰神瞳', num: `${dsz}`, extra: 0 }
-      ]
+      ],
     ]
     // 尘歌壶
     if (resIndex.homes && resIndex.homes.length > 0) {
@@ -642,19 +536,13 @@ export default class RoleIndex extends base {
       ])
     }
 
-    resIndex.world_explorations = lodash.orderBy(
-      resIndex.world_explorations,
-      ['id'],
-      ['desc']
-    )
+    resIndex.world_explorations = lodash.orderBy(resIndex.world_explorations, ['id'], ['desc'])
 
     let explor = []
     for (let val of resIndex.world_explorations) {
       if (val.id == 7) continue
 
-      val.name = this.areaName[val.id]
-        ? this.areaName[val.id]
-        : lodash.truncate(val.name, { length: 6 })
+      val.name = this.areaName[val.id] ? this.areaName[val.id] : lodash.truncate(val.name, { length: 6 })
 
       let tmp = {
         name: val.name,
@@ -670,12 +558,9 @@ export default class RoleIndex extends base {
         tmp.line.push({ name: '声望', text: `${val.level}级` })
 
       if (val.id == 6) {
-        let underground = lodash.find(
-          resIndex.world_explorations,
-          function (o) {
-            return o.id == 7
-          }
-        )
+        let underground = lodash.find(resIndex.world_explorations, function (o) {
+          return o.id == 7
+        })
         if (underground) {
           tmp.line.push({
             name: this.areaName[underground.id],
@@ -704,10 +589,12 @@ export default class RoleIndex extends base {
     }
 
     let avatar = ''
-    if (this.e.member?.getAvatarUrl) avatar = await this.e.member.getAvatarUrl()
+    if (this.e.member?.getAvatarUrl)
+      avatar = await this.e.member.getAvatarUrl()
     else if (this.e.friend?.getAvatarUrl)
       avatar = await this.e.friend.getAvatarUrl()
-    else avatar = resIndex.role.game_head_icon
+    else
+      avatar = resIndex.role.game_head_icon
 
     return {
       saveId: this.e.uid,
@@ -732,7 +619,7 @@ export default class RoleIndex extends base {
     let character = fs.readdirSync(path + 'character/')
     let weapon = fs.readdirSync(path + 'weapon/')
 
-    let nameSet = v => {
+    let nameSet = (v) => {
       let name = v.split('.')
       imgFile[name[0]] = v
     }

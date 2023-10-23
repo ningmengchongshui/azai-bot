@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'HYWenHei-55W';
-  src: url('../../../font/HYWenHei-55W.ttf');
+  font-family: "HYWenHei-55W";
+  src: url("../../../font/HYWenHei-55W.ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -17,10 +17,7 @@
 body {
   font-size: 18px;
   color: #1e1f20;
-  font-family:
-    PingFangSC-Medium,
-    PingFang SC,
-    sans-serif;
+  font-family: PingFangSC-Medium, PingFang SC, sans-serif;
   transform: scale(1.5);
   transform-origin: 0 0;
   width: 1200px;
@@ -30,7 +27,7 @@ body {
   width: 1200px;
   height: 1835px;
   background-color: #f5f6fb;
-  background-image: url('../../img/note/bg.png');
+  background-image: url("../../img/note/bg.png");
 }
 
 .uid {
@@ -64,11 +61,11 @@ body {
   font-size: 48px;
   display: flex;
 }
-.uid_name {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 5em;
+.uid_name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    max-width: 5em;
 }
 
 .uid_item:nth-child(2) {

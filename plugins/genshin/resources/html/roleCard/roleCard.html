@@ -1,24 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <link rel="shortcut icon" href="#" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{pluResPath}}html/roleCard/roleCard.css"
-    />
-    <link rel="preload" href="{{resPath}}/font/tttgbnumber.ttf" as="font" />
-    <link
-      rel="preload"
-      href="{{pluResPath}}img/roleCard/bg{{bg}}.jpg"
-      as="image"
-    />
-    <link
-      rel="preload"
-      href="https://q1.qlogo.cn/g?b=qq&s=0&nk={{user_id}}"
-      as="image"
-    />
+    <link rel="stylesheet" type="text/css" href="{{pluResPath}}html/roleCard/roleCard.css" />
+    <link rel="preload" href="{{resPath}}/font/tttgbnumber.ttf" as="font">
+    <link rel="preload" href="{{pluResPath}}img/roleCard/bg{{bg}}.jpg" as="image">
+    <link rel="preload" href="https://q1.qlogo.cn/g?b=qq&s=0&nk={{user_id}}" as="image">
   </head>
   <body>
     <style>
@@ -33,10 +21,7 @@
         <div class="head-box">
           <!-- <div class="name-card"><img src="{{_res_path}}/genshin/logo/bg/{{avatars[0].name}}1.png" /></div> -->
           <div class="avatar">
-            <img
-              src="https://q1.qlogo.cn/g?b=qq&s=0&nk={{user_id}}"
-              onerror="whenError(this)"
-            />
+            <img src="https://q1.qlogo.cn/g?b=qq&s=0&nk={{user_id}}" onerror="whenError(this)" />
           </div>
           <div class="name"><div>{{name}}</div></div>
           <div class="uid"><div>UID：{{uid}}</div></div>
@@ -64,15 +49,10 @@
           <div class="item">
             <div class="item-bg">
               <div class="role-box {{val.element}}">
-                <img
-                  class="role"
-                  src="{{pluResPath}}img/gacha/character/{{val.img}}"
-                />
+                <img class="role" src="{{pluResPath}}img/gacha/character/{{val.img}}" />
               </div>
               {{ if val.actived_constellation_num>0}}
-              <div class="role-life life{{val.actived_constellation_num}}">
-                {{val.actived_constellation_num}}命
-              </div>
+              <div class="role-life life{{val.actived_constellation_num}}">{{val.actived_constellation_num}}命</div>
               {{/if}}
               <div class="role-lv">
                 <div class="text">Lv {{val.level}}</div>

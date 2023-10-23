@@ -1,15 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html;charset=utf-8" />
     <link rel="shortcut icon" href="#" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{pluResPath}}html/logCount/logCount.css"
-    />
-    <link rel="preload" href="{{resPath}}/font/HYWenHei-55W.ttf" as="font" />
-    <link rel="preload" href="{{resPath}}/font/tttgbnumber.ttf" as="font" />
+    <link rel="stylesheet" type="text/css" href="{{pluResPath}}html/logCount/logCount.css"/>
+    <link rel="preload" href="{{resPath}}/font/HYWenHei-55W.ttf" as="font">
+    <link rel="preload" href="{{resPath}}/font/tttgbnumber.ttf" as="font"> 
     {{@headStyle}}
   </head>
   <body id="container" class="body_box">
@@ -17,9 +13,10 @@
       <div class="head_box">
         <div class="id_text">ID: {{uid}}</div>
         <h2 class="day_text">抽卡统计-{{typeName}}</h2>
-        <img class="starrail_logo" src="{{pluResPath}}img/other/logo.png" />
+        <img class="starrail_logo" src="{{pluResPath}}img/other/logo.png"/>
       </div>
-      {{each pool val}} {{if val.roleNum > 0}}
+      {{each pool val}}
+      {{if val.roleNum > 0}}
       <div class="pool_box">
         <div class="title_box">
           <div class="name_box">
@@ -34,28 +31,21 @@
           {{each val.role v}}
           <div class="item">
             <div class="bg{{v.rank_type}}"></div>
-            <span class="num {{if v.count>=5 && v.rank_type ==5}}life5{{/if}}"
-              >{{v.count}}</span
-            >
+            <span class="num {{if v.count>=5 && v.rank_type ==5}}life5{{/if}}">{{v.count}}</span>
             {{if v.item_type=='角色'}}
-            <img
-              class="role_img"
-              src="{{pluResPath}}img/role/{{v.name}}.webp"
-              onerror="whenError(this,'role')"
-            />
-            {{/if}} {{if v.item_type=='光锥'}}
-            <img
-              class="role_img"
-              src="{{pluResPath}}img/weapon/{{v.name}}.webp"
-              onerror="whenError(this)"
-            />
+            <img class="role_img" src="{{pluResPath}}img/role/{{v.name}}.webp" onerror="whenError(this,'role')"/>
+            {{/if}} 
+            {{if v.item_type=='光锥'}}
+            <img class="role_img" src="{{pluResPath}}img/weapon/{{v.name}}.webp" onerror="whenError(this)"/>
             {{/if}}
           </div>
           {{/each}}
         </div>
       </div>
-      {{/if}} {{/each}} {{if isGroup }}
-      <div class="hasMore">*完整数据请私聊查看</div>
+      {{/if}}
+      {{/each}}
+      {{if isGroup }}
+        <div class="hasMore">*完整数据请私聊查看</div>
       {{/if}}
       <div class="logo">Created By Miao-Yunzai</div>
     </div>
@@ -68,6 +58,6 @@
       // } else {
       //   a.src = "{{_res_path}}/genshin/logo/weapon/旅行剑.png";
       // }
-    }
-  </script>
+  }
+</script>
 </html>

@@ -29,7 +29,7 @@ const COLUMNS = {
   ltuids: Types.STRING,
   games: {
     type: Types.STRING,
-    get() {
+    get () {
       let data = this.getDataValue('games')
       let ret = {}
       try {
@@ -37,7 +37,7 @@ const COLUMNS = {
       } catch (e) {
         data = {}
       }
-      MysUtil.eachGame(game => {
+      MysUtil.eachGame((game) => {
         let ds = data[game] || {}
         ret[game] = {
           uid: ds.uid || '',
@@ -46,7 +46,7 @@ const COLUMNS = {
       })
       return ret
     },
-    set(data) {
+    set (data) {
       this.setDataValue('games', JSON.stringify(data))
     }
   },
@@ -54,7 +54,7 @@ const COLUMNS = {
 }
 
 class UserDB extends BaseModel {
-  static async find(id, type = 'qq') {
+  static async find (id, type = 'qq') {
     // user_id
     id = type === 'qq' ? '' + id : type + id
     // DB查询
@@ -68,10 +68,10 @@ class UserDB extends BaseModel {
     return user
   }
 
-  async saveDB(user) {
+  async saveDB (user) {
     let db = this
     let ltuids = []
-    lodash.forEach(user.mysUsers, mys => {
+    lodash.forEach(user.mysUsers, (mys) => {
       if (mys.ck && mys.ltuid) {
         ltuids.push(mys.ltuid)
       }

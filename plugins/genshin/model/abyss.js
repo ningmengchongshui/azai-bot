@@ -5,12 +5,12 @@ import MysInfo from './mys/mysInfo.js'
 import gsCfg from './gsCfg.js'
 
 export default class Abyss extends base {
-  constructor(e) {
+  constructor (e) {
     super(e)
     this.model = 'abyss'
   }
 
-  async getAbyss() {
+  async getAbyss () {
     let scheduleType = 1
     if (this.e.msg.includes('上期') || this.e.msg.includes('往期')) {
       scheduleType = 2
@@ -50,7 +50,7 @@ export default class Abyss extends base {
     return data
   }
 
-  abyssData(data) {
+  abyssData (data) {
     let startTime = moment.unix(data.start_time)
     let time = Number(startTime.month()) + 1
     if (startTime.date() >= 15) {
@@ -70,20 +70,11 @@ export default class Abyss extends base {
     }
     totalStar = totalStar + '（' + star.join('-') + '）'
 
-    let dataName = [
-      'damage',
-      'take_damage',
-      'defeat',
-      'normal_skill',
-      'energy_skill'
-    ]
+    let dataName = ['damage', 'take_damage', 'defeat', 'normal_skill', 'energy_skill']
     let rankData = []
 
     for (let val of dataName) {
-      if (
-        lodash.isEmpty(data[`${val}_rank`]) ||
-        data[`${val}_rank`].length <= 0
-      ) {
+      if (lodash.isEmpty(data[`${val}_rank`]) || data[`${val}_rank`].length <= 0) {
         data[`${val}_rank`] = [
           {
             value: 0,
@@ -103,9 +94,7 @@ export default class Abyss extends base {
     }
 
     for (let i in data.reveal_rank) {
-      data.reveal_rank[i].name = gsCfg.roleIdToName(
-        data.reveal_rank[i].avatar_id
-      )
+      data.reveal_rank[i].name = gsCfg.roleIdToName(data.reveal_rank[i].avatar_id)
     }
 
     return {
@@ -121,7 +110,7 @@ export default class Abyss extends base {
   }
 
   /** 深渊十二层 */
-  async getAbyssFloor() {
+  async getAbyssFloor () {
     this.model = 'abyssFloor'
     let scheduleType = 1
     if (this.e.msg.includes('上期') || this.e.msg.includes('往期')) {
@@ -170,9 +159,8 @@ export default class Abyss extends base {
     }
   }
 
-  getFloor() {
-    let reg =
-      /^#*[上期]*(深渊|深境|深境螺旋)[上期]*[第]*(9|10|11|12|九|十|十一|十二)层[ |0-9]*$/
+  getFloor () {
+    let reg = /^#*[上期]*(深渊|深境|深境螺旋)[上期]*[第]*(9|10|11|12|九|十|十一|十二)层[ |0-9]*$/
     let floorIndex = this.e.msg.match(reg)
 
     if (!floorIndex) {
@@ -205,28 +193,22 @@ export default class Abyss extends base {
     return floorIndex
   }
 
-  abyssFloorData(floor, index) {
+  abyssFloorData (floor, index) {
     let roleArr = lodash.keyBy(index.avatars, 'id')
     let list = []
     for (let val of floor.levels) {
       if (!val.battles || val.battles.length < 2) {
         continue
       }
-      val.time = moment
-        .unix(val.battles[0].timestamp)
-        .format('YYYY-MM-DD HH:mm:ss')
+      val.time = moment.unix(val.battles[0].timestamp).format('YYYY-MM-DD HH:mm:ss')
 
       for (let i in val.battles) {
         for (let j in val.battles[i].avatars) {
-          val.battles[i].avatars[j].name =
-            roleArr[val.battles[i].avatars[j].id].name
+          val.battles[i].avatars[j].name = roleArr[val.battles[i].avatars[j].id].name
 
-          val.battles[i].avatars[j].name = gsCfg.roleIdToName(
-            val.battles[i].avatars[j].id
-          )
+          val.battles[i].avatars[j].name = gsCfg.roleIdToName(val.battles[i].avatars[j].id)
 
-          val.battles[i].avatars[j].life =
-            roleArr[val.battles[i].avatars[j].id].actived_constellation_num
+          val.battles[i].avatars[j].life = roleArr[val.battles[i].avatars[j].id].actived_constellation_num
         }
       }
       list.push(val)

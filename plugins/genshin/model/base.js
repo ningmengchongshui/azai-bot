@@ -21,13 +21,7 @@ export default class base {
    */
   get screenData() {
     if (this.e?.isSr) {
-      let headImg = _.sample(
-        fs
-          .readdirSync(
-            `${this._path}/plugins/genshin/resources/StarRail/img/worldcard`
-          )
-          .filter(file => file.endsWith('.png'))
-      )
+      let headImg = _.sample(fs.readdirSync(`${this._path}/plugins/genshin/resources/StarRail/img/worldcard`).filter(file => file.endsWith('.png')))
       return {
         saveId: this.userId,
         cwd: this._path,
@@ -39,11 +33,7 @@ export default class base {
       }
     }
 
-    let headImg = _.sample(
-      fs
-        .readdirSync(`${this._path}/plugins/genshin/resources/img/namecard`)
-        .filter(file => file.endsWith('.png'))
-    )
+    let headImg = _.sample(fs.readdirSync(`${this._path}/plugins/genshin/resources/img/namecard`).filter(file => file.endsWith('.png')))
     return {
       saveId: this.userId,
       cwd: this._path,

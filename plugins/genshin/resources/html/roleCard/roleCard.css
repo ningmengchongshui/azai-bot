@@ -1,6 +1,6 @@
 @font-face {
-  font-family: 'tttgbnumber';
-  src: url('../../font/tttgbnumber.ttf');
+  font-family: "tttgbnumber";
+  src: url("../../font/tttgbnumber.ttf");
   font-weight: normal;
   font-style: normal;
 }
@@ -13,7 +13,7 @@
 body {
   font-size: 16px;
   color: #1e1f20;
-  font-family: 'tttgbnumber';
+  font-family: "tttgbnumber";
   transform: scale(1.3);
   transform-origin: 0 0;
 }
@@ -107,7 +107,7 @@ body {
 }
 .item .item-bg .role-life::after {
   display: block;
-  content: ' ';
+  content: " ";
   width: 28px;
   height: 20px;
   top: 0px;
@@ -249,7 +249,7 @@ body {
   padding-top: 20px;
   border-radius: 10px;
   border: 1px solid #ffffff;
-}
+} 
 .data-line {
   display: flex;
   justify-content: space-around;
@@ -280,7 +280,7 @@ body {
   border-radius: 15px 0px 15px 15px;
   z-index: 20;
 }
-.logo {
+.logo{
   position: absolute;
   z-index: 1;
   font-size: 12px;

@@ -10,7 +10,7 @@ if (!fs.existsSync('./data/payLog/')) {
 }
 
 export class PayData {
-  constructor(authKey = '') {
+  constructor (authKey = '') {
     this.#authkey = encodeURIComponent(authKey)
   }
 
@@ -19,7 +19,7 @@ export class PayData {
   #authkey = ''
 
   /** 获取原始支付数据 */
-  async getOringinalData(id = '') {
+  async getOringinalData (id = '') {
     let res = await fetch(this.getUrl() + id, this.headers)
     let ret = await res.json()
     let check = this.checkResult(ret)
@@ -40,7 +40,7 @@ export class PayData {
   }
 
   /** 获取大月卡数据 */
-  async getPrimogemLog(id = '') {
+  async getPrimogemLog (id = '') {
     let res = await fetch(this.getUrl('getPrimogemLog') + id, this.headers)
     let ret = await res.json()
     let check = this.checkResult(ret)
@@ -73,25 +73,21 @@ export class PayData {
     if (data?.uid) {
       return data
     }
-    return { errorMsg: '获取失败，可能是链接已过期或不正确' }
+    return {errorMsg: '获取失败，可能是链接已过期或不正确'}
   }
 
   checkResult(ret) {
     if (ret?.retcode === -101 || ret?.retcode === -100) {
-      return ret.retcode === -101
-        ? { errorMsg: '您的链接过期，请重新获取' }
-        : { errorMsg: '链接不正确，请重新获取' }
+      return ret.retcode === -101 ? {errorMsg: '您的链接过期，请重新获取'} : {errorMsg: '链接不正确，请重新获取'}
     }
     if (/unknown auth appid/.test(ret?.message)) {
-      return {
-        errorMsg: '抽卡或其他链接现已无法获取充值记录，请发送客服页面的链接！'
-      }
+      return {errorMsg: '抽卡或其他链接现已无法获取充值记录，请发送客服页面的链接！'}
     }
-    return { errorMsg: '' }
+    return {errorMsg: ''}
   }
 
   /** 对原始数据进行筛选，组合 */
-  async filtrateData() {
+  async filtrateData () {
     // 由于新接口不返回uid了，所以先查询出用户信息
     const userInfo = await this.getUserInfo()
     if (userInfo?.errorMsg) return userInfo
@@ -103,7 +99,7 @@ export class PayData {
     await this.getPrimogemLog()
     // 判断零氪党的情况
     if (this.#oringinData.length === 0) {
-      return { errorMsg: '未获取到您的任何充值数据' }
+      return {errorMsg: '未获取到您的任何充值数据'}
     }
     // 将原始数据按id排序
     this.#oringinData = this.#oringinData.sort((a, b) => {
@@ -161,7 +157,7 @@ export class PayData {
 
   headers = {
     headers: {
-      'accept': 'application/json, text/plain, */*',
+      accept: 'application/json, text/plain, */*',
       'accept-language': 'zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6',
       'sec-fetch-dest': 'empty',
       'sec-fetch-mode': 'cors',
@@ -180,15 +176,9 @@ export class PayData {
    * @returns {string}
    */
   getUrl(api = 'getCrystalLog') {
-    const baseUrl =
-      'https://hk4e-api.mihoyo.com/common/hk4e_self_help_query/User'
-    const isUserInfo = api === 'getUserInfo',
-      isCrystalLog = api === 'getCrystalLog'
-    const url = isUserInfo
-      ? '/GetUserInfo'
-      : isCrystalLog
-      ? '/GetCrystalLog'
-      : '/GetPrimogemLog'
+    const baseUrl = 'https://hk4e-api.mihoyo.com/common/hk4e_self_help_query/User'
+    const isUserInfo = api === 'getUserInfo', isCrystalLog = api === 'getCrystalLog'
+    const url = isUserInfo ? '/GetUserInfo' : isCrystalLog ? '/GetCrystalLog' : '/GetPrimogemLog'
     let params = ''
     params += '?selfquery_type=1'
     params += '&sign_type=2'
@@ -219,11 +209,11 @@ export class PayData {
 
 export class HtmlData extends base {
   /**
-   * @param data 数据
-   * @param data.monthData 月份数据
-   * @param data.crystal 总结晶数
-   */
-  constructor(data = {}) {
+     * @param data 数据
+     * @param data.monthData 月份数据
+     * @param data.crystal 总结晶数
+     */
+  constructor (data = {}) {
     super()
     this.monthData = data.monthData
     this.crystal = data.crystal
@@ -239,20 +229,17 @@ export class HtmlData extends base {
   price = [68, 30, 648, 328, 198, 98, 30, 6]
 
   /** 柱形图数据 */
-  getBarData() {
+  getBarData () {
     return this.monthData.map(v => {
       return {
         type: v.month,
-        sales: v.payNum.reduce(
-          (sum, val, index) => sum + val * this.price[index],
-          0
-        )
+        sales: v.payNum.reduce((sum, val, index) => sum + val * this.price[index], 0)
       }
     })
   }
 
   /** 顶部数据 */
-  getTopData(crystal = 0) {
+  getTopData (crystal = 0) {
     const maxMonth = this.maxcConsumption()
     const sum = this.sumConsumption()
     return [
@@ -277,7 +264,7 @@ export class HtmlData extends base {
   }
 
   /** 饼图数据 */
-  getPieData() {
+  getPieData () {
     const data = this.sumConsumption()
     let pieData = []
     data.forEach((val, index) => {
@@ -293,7 +280,7 @@ export class HtmlData extends base {
   }
 
   /** 消费最多月 */
-  maxcConsumption() {
+  maxcConsumption () {
     return this.getBarData().sort((a, b) => {
       if (a.sales < b.sales) {
         return 1
@@ -304,7 +291,7 @@ export class HtmlData extends base {
   }
 
   /** 每种消费的总数 */
-  sumConsumption() {
+  sumConsumption () {
     let sum = {
       小月卡: 0,
       大月卡: 0,
@@ -333,7 +320,7 @@ export class HtmlData extends base {
   }
 }
 
-export async function renderImg(data) {
+export async function renderImg (data) {
   const htmlData = new HtmlData(data)
   const imgDatas = {
     ...htmlData.screenData,
