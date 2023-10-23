@@ -54,23 +54,23 @@ const segment = {
    * @returns
    */
   at: uid => {
-    if (ars.indexOf('villa')) {
+    if (ars.includes('villa')) {
       if (uid == 'all') return `<@!everyone>`
       return `<@!${uid}>`
     }
-    if (ars.indexOf('qq')) {
+    if (ars.includes('qq')) {
       if (uid == 'all') return `<@everyone>`
       return `<@${uid}>`
     }
-    if (ars.indexOf('ntqq')) {
+    if (ars.includes('ntqq')) {
       if (uid == 'all') return `@everyone`
       return `<@${uid}>`
     }
-    if (ars.indexOf('kook')) {
+    if (ars.includes('kook')) {
       if (uid == 'all') return `(met)all(met)`
       return `(met)${uid}(met)`
     }
-    if (ars.indexOf('discord')) {
+    if (ars.includes('discord')) {
       if (uid == 'all') return `@everyone`
       return `<@${uid}>`
     }
