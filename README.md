@@ -1,6 +1,8 @@
 # A-Yunzai-Bot
 
-> AlemonJS框架下直接运行Yunzai-Bot&&miao-plugn
+> AlemonJS框架下直接运行Yunzai-Bot&&miao-plugin
+
+> 支持js/ts && v2/v3
 
 拉取A-Yunzai项目
 
