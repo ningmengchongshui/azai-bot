@@ -29,6 +29,7 @@ const ars = process.argv.slice(2)
  * 必要目录
  */
 mkdirSync('./temp/html')
+mkdirSync('./resources')
 /**
  * icqq
  */

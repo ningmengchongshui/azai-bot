@@ -7,6 +7,10 @@ components.d.ts
 # alemon dev/config
 /data/
 stats.html
+/public/defset
+/temp
+/config
+/resources
 
 # config
 alemon.toml

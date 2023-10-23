@@ -10,6 +10,7 @@ stats.html
 /public/defset
 /temp
 /config
+/resources
 
 # config
 alemon.toml
