@@ -18,13 +18,17 @@ logger.green = val => val
 global.logger = logger
 import { Redis as redis } from './db/redis/main.js'
 global.redis = redis
-import { existsSync } from 'fs'
+import { existsSync, mkdirSync } from 'fs'
 import { join } from 'path'
 import { getPathBuffer } from 'alemonjs'
 /**
  * ars
  */
 const ars = process.argv.slice(2)
+/**
+ * 必要目录
+ */
+mkdirSync('./temp/html')
 /**
  * icqq
  */

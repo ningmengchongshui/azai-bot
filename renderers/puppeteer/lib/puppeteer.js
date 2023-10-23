@@ -305,6 +305,7 @@ export default class PuppeteerRenderer {
     let { tplFile, saveId = name } = data
     let savePath = `./temp/html/${name}/${saveId}.html`
 
+    mkdirSync(`./temp/html/${name}/`, { recursive: true })
     /** 读取html模板 */
     if (!this.html[tplFile]) {
       this.createDir(`./temp/html/${name}`)
