@@ -16,7 +16,7 @@ logger.yellow = val => val
 logger.mark = val => val
 logger.green = val => val
 global.logger = logger
-import { Redis as redis } from './db/redis/index.js'
+import { Redis as redis } from './db/redis/main.js'
 global.redis = redis
 import { existsSync } from 'fs'
 import { join } from 'path'
