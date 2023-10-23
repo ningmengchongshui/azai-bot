@@ -108,11 +108,10 @@ global.Bot = {
 }
 import plugin from './lib/plugins/plugin.js'
 import runtime from './lib/plugins/runtime.js'
+import Renderer from './lib/renderer/Renderer.js'
 global.runtime = runtime
-/**
- * yunzai
- */
 global.plugin = plugin
+global.Renderer = Renderer
 const assignPropertiesAndMethods = (rule: any[], sourceObject: any) => {
   class APP extends plugin {
     constructor() {

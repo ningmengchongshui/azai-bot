@@ -9,8 +9,6 @@ fi
 
 set -e
 
-npx prettier --write .
-
 git init
 git add .
 git commit -m "$variable"
