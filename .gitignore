@@ -5,9 +5,11 @@ node_modules
 components.d.ts
 
 # alemon dev/config
-/data/
+/data
 stats.html
 /public/defset
+/temp
+/config
 
 # config
 alemon.toml
