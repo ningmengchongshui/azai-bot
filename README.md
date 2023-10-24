@@ -1,6 +1,6 @@
 # A-Yunzai-Bot
 
-> AlemonJS框架下直接运行Yunzai-Bot&&miao-plugin
+> AlemonJS框架下运行Yunzai-Bot&&miao-plugin
 
 > 支持js/ts && v2/v3
 
@@ -13,7 +13,7 @@ git clone --depth=1 -b main https://gitee.com/ningmengchongshui/a-yunzai.git
 拉取miao-plugin项目
 
 ```sh
-git clone --depth=1 https://github.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin
+git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin
 ```
 
 插件中放置识别文件`main.js`
