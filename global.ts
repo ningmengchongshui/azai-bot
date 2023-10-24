@@ -124,11 +124,15 @@ global.plugin = plugin
 global.Renderer = Renderer
 /**
  * V2转义成V3
- * @param rule 指令数组
- * @param sourceObject 方法集合
+ * @param rule V2指令对象
+ * @param sourceObject v2插件文件对象
  * @returns calss
  */
-const assignPropertiesAndMethods = (rule: any[], sourceObject: any) => {
+const assignPropertiesAndMethods = (rules: any, sourceObject: any) => {
+  const rule = Object.keys(rules).map(item => ({
+    ...rules[item],
+    fnc: item
+  }))
   class APP extends plugin {
     constructor() {
       super({
