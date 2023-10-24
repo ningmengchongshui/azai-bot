@@ -80,7 +80,7 @@ import { createApps } from 'alemonjs'
 // 所有变量集成
 import * as apps from './index.js'
 // 定制pup渲染
-import { render } from '../../lib/render.js'
+import { render } from './adapter/render.js'
 // V2构建V3
 const xiaoyao = YUNZAIV2(apps['rule'], apps)
 const app = createApps(import.meta.url)
