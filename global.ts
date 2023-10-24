@@ -1,5 +1,26 @@
 /**
  * *************
+ * 自定义时间提示
+ * *************
+ */
+const log = console.log
+global.console.log = (...argv: any[]) => {
+  log(new Date(), ...argv)
+}
+const info = console.info
+global.console.info = (...argv: any[]) => {
+  info(new Date(), ...argv)
+}
+const error = console.error
+global.console.error = (...argv: any[]) => {
+  error(new Date(), ...argv)
+}
+const debug = console.debug
+global.console.debug = (...argv: any[]) => {
+  debug(new Date(), ...argv)
+}
+/**
+ * *************
  * Yunzai global
  * *************
  */
@@ -10,18 +31,18 @@ interface Logtype extends Console {
   green: (val: string) => string
 }
 const logger: Logtype = console as Logtype
+// 颜色
 logger.red = val => val
 logger.debug = val => val
 logger.yellow = val => val
-logger.mark = val => val
 logger.green = val => val
+logger.mark = val => val
 global.logger = logger
 import { Redis as redis } from './db/redis/main.js'
 global.redis = redis
 import { existsSync, mkdirSync } from 'fs'
 import { join } from 'path'
 import { getPathBuffer } from 'alemonjs'
-
 /**
  * ars
  */
