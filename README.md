@@ -16,7 +16,7 @@ git clone --depth=1 -b main https://gitee.com/ningmengchongshui/a-yunzai.git
 git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin
 ```
 
-# 开放平台
+# Open Platform
 
 [QQ 开放平台](https://q.qq.com/#/)
 
@@ -28,7 +28,7 @@ git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/m
 
 > 更多指令请看[package.json](./package.json)
 
-# 插件解析
+# Plugin parsing
 
 插件中放置识别文件`main.js`
 
@@ -101,7 +101,7 @@ app.component({ xiaoyao })
 app.mount()
 ```
 
-# 单例解析
+# Single instance analysis
 
 更改`alemon.config.ts`的app配置
 
@@ -126,9 +126,9 @@ export default defineAlemonConfig({
 
 - 可以配置`app`和`plugins`是否启动
 
-# 注意事项
+# note
 
-> 版本 Node >16.14 && <=18.18.2
+> Node Vsersion >16.14 && <=18.18.2
 
 `该模式不可使用AlemonJS多平台同时登录一个实例`
 
@@ -142,6 +142,6 @@ export default defineAlemonConfig({
 
 - [plugins warehouse](https://gitee.com/yhArcadia/Yunzai-Bot-plugins-index)
 
-# 原生开发
+# Native development
 
-> 最新模板查看[create-alemonjs](https://gitee.com/ningmengchongshui/alemon/tree/cli/bin)
+> View the latest template [create-alemonjs](https://gitee.com/ningmengchongshui/alemon/tree/cli/bin)
