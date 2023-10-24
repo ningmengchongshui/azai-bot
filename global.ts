@@ -20,7 +20,20 @@ import { Redis as redis } from './db/redis/main.js'
 global.redis = redis
 import { existsSync, mkdirSync } from 'fs'
 import { join } from 'path'
-import { getPathBuffer } from 'alemonjs'
+import { getPathBuffer, getUrlbuffer } from 'alemonjs'
+import axios from 'axios'
+async function checkAndFetch(url: string) {
+  try {
+    const response = await axios.head(url)
+    if (response.status >= 200 && response.status < 300) {
+      return true
+    } else {
+      return false
+    }
+  } catch {
+    return false
+  }
+}
 /**
  * ars
  */
@@ -49,6 +62,7 @@ global.segment = {
     const add = join(process.cwd(), val)
     if (existsSync(add)) return getPathBuffer(val)
     if (existsSync(val)) return Buffer.from(val)
+    if (checkAndFetch(val)) return getUrlbuffer(val)
     return val
   },
   /**
@@ -95,6 +109,7 @@ global.segment = {
     const add = join(process.cwd(), val)
     if (existsSync(add)) return getPathBuffer(val)
     if (existsSync(val)) return Buffer.from(val)
+    if (checkAndFetch(val)) return getUrlbuffer(val)
     return val
   }
 }
