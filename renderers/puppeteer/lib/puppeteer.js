@@ -4,8 +4,7 @@ import lodash from 'lodash'
 import template from 'art-template'
 import chokidar from 'chokidar'
 import puppeteer from 'puppeteer'
-
-const _path = process.cwd()
+import pupConfig from '../../../puppeteerrc.js'
 
 // mac地址
 let mac = ''
@@ -15,23 +14,8 @@ export default class PuppeteerRenderer {
     this.browser = false
     this.lock = false
     this.shoting = []
-    /** 截图数达到时重启浏览器 避免生成速度越来越慢 */
     this.restartNum = 100
-    /** 截图次数 */
     this.renderNum = 0
-    this.config = {
-      headless: 'new',
-      args: [
-        '--disable-gpu',
-        '--disable-dev-shm-usage',
-        '--disable-setuid-sandbox',
-        '--no-first-run',
-        '--no-sandbox',
-        '--no-zygote',
-        '--single-process'
-      ]
-    }
-
     this.html = {}
     this.watcher = {}
     this.createDir('./temp/html')
@@ -59,8 +43,7 @@ export default class PuppeteerRenderer {
         this.browserMacKey = `Yz:chromium:browserWSEndpoint:${mac}`
       }
       // 是否有browser实例
-      const browserUrl =
-        (await redis.get(this.browserMacKey)) || this.config.wsEndpoint
+      const browserUrl = await redis.get(this.browserMacKey)
       if (browserUrl) {
         console.info(`puppeteer Chromium from ${browserUrl}`)
         const browserWSEndpoint = await puppeteer
@@ -83,7 +66,7 @@ export default class PuppeteerRenderer {
 
     if (!this.browser || !connectFlag) {
       // 如果没有实例，初始化puppeteer
-      this.browser = await puppeteer.launch(this.config).catch((err, trace) => {
+      this.browser = await puppeteer.launch(pupConfig).catch((err, trace) => {
         let errMsg = err.toString() + (trace ? trace.toString() : '')
         if (typeof err == 'object') {
           console.error(JSON.stringify(err))
@@ -201,7 +184,7 @@ export default class PuppeteerRenderer {
         data.pageGotoParams || {}
       )
       await page.goto(
-        `file://${_path}${lodash.trim(savePath, '.')}`,
+        `file://${process.cwd()}${lodash.trim(savePath, '.')}`,
         pageGotoParams
       )
       let body = (await page.$('#container')) || (await page.$('body'))
@@ -320,7 +303,7 @@ export default class PuppeteerRenderer {
       this.watch(tplFile)
     }
 
-    data.resPath = `${_path}/resources/`
+    data.resPath = `${process.cwd()}/resources/`
 
     /** 替换模板 */
     let tmpHtml = template.render(this.html[tplFile], data)
