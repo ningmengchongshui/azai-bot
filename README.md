@@ -28,7 +28,7 @@ git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/m
 
 > 更多指令请看[package.json](./package.json)
 
-# Plugin parsing
+# Plugin Parsing
 
 插件中放置识别文件`main.js`
 
@@ -101,7 +101,7 @@ app.component({ xiaoyao })
 app.mount()
 ```
 
-# Single instance analysis
+# Example Analysis
 
 更改`alemon.config.ts`的app配置
 
@@ -126,7 +126,7 @@ export default defineAlemonConfig({
 
 - 可以配置`app`和`plugins`是否启动
 
-# note
+# Note
 
 > Node Vsersion >16.14 && <=18.18.2
 
@@ -142,6 +142,6 @@ export default defineAlemonConfig({
 
 - [plugins warehouse](https://gitee.com/yhArcadia/Yunzai-Bot-plugins-index)
 
-# Native development
+# Native Development
 
 > View the latest template [create-alemonjs](https://gitee.com/ningmengchongshui/alemon/tree/cli/bin)
