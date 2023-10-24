@@ -5,6 +5,7 @@ import { LoginMap } from 'alemonjs'
  */
 export const login: LoginMap = {
   test: {
+    // 测试机懒得改,自己改成自己的
     qq: {
       appID: '102040992',
       token: 'u0uLJaDSA1knHQx6Y1iY7M5LafDjwmik'
