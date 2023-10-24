@@ -46,11 +46,15 @@ global.segment = {
    * @returns
    */
   image: (val: string | Buffer) => {
+    // buffer
     if (Buffer.isBuffer(val)) return val
     const add = join(process.cwd(), val)
+    // 绝对路径
     if (existsSync(add)) return getPathBuffer(val)
+    // 相对路径
     if (existsSync(val)) return Buffer.from(val)
-    return val
+    // url
+    return `<http>${val}</http>`
   },
   /**
    * 视频
@@ -92,11 +96,15 @@ global.segment = {
    * @returns
    */
   record: (val: Buffer | string) => {
+    // buffer
     if (Buffer.isBuffer(val)) return val
     const add = join(process.cwd(), val)
+    // 绝对路径
     if (existsSync(add)) return getPathBuffer(val)
+    // 相对路径
     if (existsSync(val)) return Buffer.from(val)
-    return val
+    // url
+    return `<http>${val}</http>`
   }
 }
 /**
