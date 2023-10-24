@@ -111,8 +111,8 @@ app.mount()
 
 ```ts
 import * as app1 from './example/app1.js'
-import * as app2 from './example/app1.js'
-import * as app3 from './example/app1.js'
+import * as app2 from './example/app2.js'
+import * as app3 from './example/app3.js'
 export default defineAlemonConfig({
   app: {
     component: [app1, app2, app3]
