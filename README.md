@@ -101,23 +101,6 @@ app.component({ xiaoyao })
 app.mount()
 ```
 
-# Example Analysis
-
-更改`alemon.config.ts`的app配置
-
-新建目录`example`并放单例后
-
-如下书写
-
-```ts
-import { apps } from './example.js'
-export default defineAlemonConfig({
-  app: {
-    component: [apps]
-  }
-})
-```
-
 # Note
 
 > Node Vsersion >16.14 && <=18.18.2
