@@ -103,13 +103,32 @@ app.mount()
 
 # Note
 
-> Node Vsersion >16.14 && <=18.18.2
+- 版本约定
 
-`该模式不可使用AlemonJS多平台同时登录一个实例`
+Node Vsersion >16.14 && <=18.18.2
+
+- 模式细节
+
+不可使用`AlemonJS多平台同时登录`一个实例
 
 `npm run start @bot1 pro qq @bot2 pro kook `
 
-`可使用单平台创建多实例`
+可使用单平台创建多实例
+
+- 合理的正则
+
+```js
+// #和/前缀且可有可无
+reg: /^(#|\/)?帮助$/
+```
+
+- lib文件少引用
+
+> 会逐渐废弃
+
+- 越精确的正则执行越快
+
+- 自身少定义全局`global`
 
 # Related Links
 
