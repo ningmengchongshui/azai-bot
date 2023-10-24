@@ -136,6 +136,12 @@ export default defineAlemonConfig({
 
 `可使用单平台创建多实例`
 
+# Related Links
+
+- [Miao-yunzai](https://gitee.com/yoimiya-kokomi/Miao-Yunzai)
+
+- [plugins warehouse](https://gitee.com/yhArcadia/Yunzai-Bot-plugins-index)
+
 # 原生开发
 
 > 最新模板查看[create-alemonjs](https://gitee.com/ningmengchongshui/alemon/tree/cli/bin)
