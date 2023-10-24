@@ -101,6 +101,31 @@ app.component({ xiaoyao })
 app.mount()
 ```
 
+# 单例解析
+
+更改`alemon.config.ts`的app配置
+
+新建目录`example`并放单例后
+
+如下书写
+
+```ts
+import * as app1 from './example/app1.js'
+import * as app2 from './example/app1.js'
+import * as app3 from './example/app1.js'
+export default defineAlemonConfig({
+  app: {
+    component: [app1, app2, app3]
+  }
+})
+```
+
+- 可以如上书写来手动控制插件
+
+- 可以增加遍历式代码来视为插件包
+
+- 可以配置`app`和`plugins`是否启动
+
 # 注意事项
 
 > 版本 Node >16.14 && <=18.18.2
