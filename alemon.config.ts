@@ -11,11 +11,11 @@ console.log('-------------------------')
 console.log(AlemonJS, '热开发模式')
 console.log(AlemonJS, 'npm run dev')
 console.log('-------------------------')
-import { example } from './example.js'
 export default defineAlemonConfig({
   login: analysis(login),
   app: {
-    component: [example]
+    // close app dev
+    init: false
   },
   // close yunzai poke
   shieldEvent: ['poke', 'notice.*.poke'],
