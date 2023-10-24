@@ -110,21 +110,13 @@ app.mount()
 如下书写
 
 ```ts
-import * as app1 from './example/app1.js'
-import * as app2 from './example/app2.js'
-import * as app3 from './example/app3.js'
+import { apps } from './example.js'
 export default defineAlemonConfig({
   app: {
-    component: [app1, app2, app3]
+    component: [apps]
   }
 })
 ```
-
-- 可以如上书写来手动控制插件
-
-- 可以增加遍历式代码来视为插件包
-
-- 可以配置`app`和`plugins`是否启动
 
 # Note
 

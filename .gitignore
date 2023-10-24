@@ -20,7 +20,6 @@ alemon.toml
 dev.ts
 
 # app
-example.js
 apps.js
 plugins
 
