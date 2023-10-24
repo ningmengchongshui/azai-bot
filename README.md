@@ -88,6 +88,7 @@ app.setMessage(async e => {
   await runtime.init(e)
   e.sender = {}
   e.sender.card = e.user_name
+  e.checkAuth = val => val
   return e
 })
 // 扩展方法参数,默认(e,...[])
