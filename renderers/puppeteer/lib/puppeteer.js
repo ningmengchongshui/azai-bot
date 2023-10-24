@@ -49,7 +49,7 @@ export default class PuppeteerRenderer {
     if (this.lock) return false
     this.lock = true
 
-    logger.mark('puppeteer Chromium 启动中...')
+    console.info('puppeteer Chromium 启动中...')
 
     let connectFlag = false
     try {
@@ -62,11 +62,11 @@ export default class PuppeteerRenderer {
       const browserUrl =
         (await redis.get(this.browserMacKey)) || this.config.wsEndpoint
       if (browserUrl) {
-        logger.mark(`puppeteer Chromium from ${browserUrl}`)
+        console.info(`puppeteer Chromium from ${browserUrl}`)
         const browserWSEndpoint = await puppeteer
           .connect({ browserWSEndpoint: browserUrl })
           .catch(err => {
-            logger.error('puppeteer Chromium 缓存的实例已关闭')
+            console.error('puppeteer Chromium 缓存的实例已关闭')
             redis.del(this.browserMacKey)
           })
         // 如果有实例，直接使用
@@ -78,7 +78,7 @@ export default class PuppeteerRenderer {
         }
       }
     } catch (e) {
-      logger.mark('puppeteer Chromium 不存在已有实例')
+      console.info('puppeteer Chromium 不存在已有实例')
     }
 
     if (!this.browser || !connectFlag) {
@@ -86,15 +86,15 @@ export default class PuppeteerRenderer {
       this.browser = await puppeteer.launch(this.config).catch((err, trace) => {
         let errMsg = err.toString() + (trace ? trace.toString() : '')
         if (typeof err == 'object') {
-          logger.error(JSON.stringify(err))
+          console.error(JSON.stringify(err))
         } else {
-          logger.error(err.toString())
+          console.error(err.toString())
           if (errMsg.includes('Could not find Chromium')) {
-            logger.error(
+            console.error(
               '没有正确安装Chromium，可以尝试执行安装命令：node ./node_modules/puppeteer/install.js'
             )
           } else if (errMsg.includes('libatk-bridge')) {
-            logger.error(
+            console.error(
               '没有正确安装Chromium，可尝试执行 sudo yum install -y chromium'
             )
           }
@@ -106,11 +106,11 @@ export default class PuppeteerRenderer {
     this.lock = false
 
     if (!this.browser) {
-      logger.error('puppeteer Chromium 启动失败')
+      console.error('puppeteer Chromium 启动失败')
       return false
     }
     if (connectFlag) {
-      logger.mark('puppeteer Chromium 已连接启动的实例')
+      console.info('puppeteer Chromium 已连接启动的实例')
     } else {
       console.log('chromium', this.browser.wsEndpoint())
       if (process.env.pm_id && this.browserMacKey) {
@@ -120,12 +120,12 @@ export default class PuppeteerRenderer {
           EX: expireTime
         })
       }
-      logger.mark('puppeteer Chromium 启动成功')
+      console.info('puppeteer Chromium 启动成功')
     }
 
     /** 监听Chromium实例是否断开 */
     this.browser.on('disconnected', e => {
-      logger.error('Chromium实例关闭或崩溃！')
+      console.error('Chromium实例关闭或崩溃！')
       this.browser = false
     })
 
@@ -231,10 +231,10 @@ export default class PuppeteerRenderer {
         buff = await body.screenshot(randData)
         /** 计算图片大小 */
         const kb = (buff.length / 1024).toFixed(2) + 'kb'
-        logger.mark(
-          `[图片生成][${name}][${this.renderNum}次] ${kb} ${logger.green(
-            `${Date.now() - start}ms`
-          )}`
+        console.info(
+          `[图片生成][${name}][${this.renderNum}次] ${kb} ${
+            Date.now() - start
+          }ms`
         )
         this.renderNum++
         ret.push(buff)
@@ -269,19 +269,19 @@ export default class PuppeteerRenderer {
 
           /** 计算图片大小 */
           const kb = (buff.length / 1024).toFixed(2) + 'kb'
-          logger.mark(`[图片生成][${name}][${i}/${num}] ${kb}`)
+          console.info(`[图片生成][${name}][${i}/${num}] ${kb}`)
           ret.push(buff)
         }
         if (num > 1) {
-          logger.mark(`[图片生成][${name}] 处理完成`)
+          console.info(`[图片生成][${name}] 处理完成`)
         }
       }
-      page.close().catch(err => logger.error(err))
+      page.close().catch(err => console.error(err))
     } catch (error) {
-      logger.error(`图片生成失败:${name}:${error}`)
+      console.error(`图片生成失败:${name}:${error}`)
       /** 关闭浏览器 */
       if (this.browser) {
-        await this.browser.close().catch(err => logger.error(err))
+        await this.browser.close().catch(err => console.error(err))
       }
       this.browser = false
       ret = []
@@ -291,7 +291,7 @@ export default class PuppeteerRenderer {
     this.shoting.pop()
 
     if (ret.length === 0 || !ret[0]) {
-      logger.error(`图片生成为空:${name}`)
+      console.error(`图片生成为空:${name}`)
       return false
     }
 
@@ -313,7 +313,7 @@ export default class PuppeteerRenderer {
       try {
         this.html[tplFile] = fs.readFileSync(tplFile, 'utf8')
       } catch (error) {
-        logger.error(`加载html错误：${tplFile}`)
+        console.error(`加载html错误：${tplFile}`)
         return false
       }
 
@@ -328,7 +328,7 @@ export default class PuppeteerRenderer {
     /** 保存模板 */
     fs.writeFileSync(savePath, tmpHtml)
 
-    logger.debug(`[图片生成][使用模板] ${savePath}`)
+    console.debug(`[图片生成][使用模板] ${savePath}`)
 
     return savePath
   }
@@ -340,7 +340,7 @@ export default class PuppeteerRenderer {
     const watcher = chokidar.watch(tplFile)
     watcher.on('change', path => {
       delete this.html[tplFile]
-      logger.mark(`[修改html模板] ${tplFile}`)
+      console.info(`[修改html模板] ${tplFile}`)
     })
 
     this.watcher[tplFile] = watcher
@@ -353,10 +353,10 @@ export default class PuppeteerRenderer {
       if (this.shoting.length <= 0) {
         setTimeout(async () => {
           if (this.browser) {
-            await this.browser.close().catch(err => logger.error(err))
+            await this.browser.close().catch(err => console.error(err))
           }
           this.browser = false
-          logger.mark('puppeteer 关闭重启...')
+          console.info('puppeteer 关闭重启...')
         }, 100)
       }
     }

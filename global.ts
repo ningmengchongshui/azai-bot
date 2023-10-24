@@ -31,6 +31,11 @@ const ars = process.argv.slice(2)
 mkdirSync('./temp/html/', { recursive: true })
 mkdirSync('./resources', { recursive: true })
 /**
+ * 必要存储
+ */
+global.NoteCookie = {}
+global.BotConfig = {}
+/**
  * icqq
  */
 global.segment = {
