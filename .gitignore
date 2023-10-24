@@ -9,7 +9,7 @@ components.d.ts
 stats.html
 /public/defset
 /temp
-/config
+/config/config
 /resources
 
 # config
