@@ -19,15 +19,15 @@ global.console.log = (...argv: any[]) => {
 }
 const info = console.info
 global.console.info = (...argv: any[]) => {
-  log(getTime(), ...argv)
+  info(getTime(), ...argv)
 }
 const error = console.error
 global.console.error = (...argv: any[]) => {
-  log(getTime(), ...argv)
+  error(getTime(), ...argv)
 }
 const debug = console.debug
 global.console.debug = (...argv: any[]) => {
-  log(getTime(), ...argv)
+  debug(getTime(), ...argv)
 }
 /**
  * *************
