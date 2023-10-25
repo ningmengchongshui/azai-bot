@@ -4,20 +4,30 @@
  * *************
  */
 const log = console.log
+const getTime = () => {
+  return new Date().toLocaleDateString(undefined, {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+    hour: 'numeric',
+    minute: 'numeric',
+    second: 'numeric'
+  })
+}
 global.console.log = (...argv: any[]) => {
-  log(new Date(), ...argv)
+  log(getTime(), ...argv)
 }
 const info = console.info
 global.console.info = (...argv: any[]) => {
-  info(new Date(), ...argv)
+  log(getTime(), ...argv)
 }
 const error = console.error
 global.console.error = (...argv: any[]) => {
-  error(new Date(), ...argv)
+  log(getTime(), ...argv)
 }
 const debug = console.debug
 global.console.debug = (...argv: any[]) => {
-  debug(new Date(), ...argv)
+  log(getTime(), ...argv)
 }
 /**
  * *************
