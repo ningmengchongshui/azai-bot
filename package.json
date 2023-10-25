@@ -28,7 +28,7 @@
   "dependencies": {
     "alemon-ffmpeg": "^1.0.1",
     "alemon-rollup": "^1.0.4",
-    "alemonjs": "^1.0.37",
+    "alemonjs": "^1.0.39",
     "art-template": "^4.13.2",
     "dotenv": "^16.3.1",
     "icqq": "^0.6.1",
