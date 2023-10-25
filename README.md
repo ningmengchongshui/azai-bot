@@ -81,13 +81,14 @@ app.mount()
 
 > xiaoyao-cvs-plugin 为例
 
+```sh
+vi ./plugins/xiaoyao-cvs-plugin/main.js
+```
+
 ```js
 import { createApps } from 'alemonjs'
-// 所有变量集成
 import * as apps from './index.js'
-// 定制pup渲染
 import { render } from './adapter/render.js'
-// V2构建V3
 const xiaoyao = YUNZAIV2(apps['rule'], apps)
 const app = createApps(import.meta.url)
 app.setMessage(async e => {
@@ -97,13 +98,7 @@ app.setMessage(async e => {
   e.checkAuth = val => val
   return e
 })
-// 扩展方法参数,默认(e,...[])
-// 即(e,{render},...) => any
-app.setArg(() => [
-  {
-    render
-  }
-])
+app.setArg(() => [{ render }])
 app.component({ xiaoyao })
 app.mount()
 ```
