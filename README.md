@@ -1,8 +1,6 @@
 # A-Yunzai-Bot
 
-> AlemonJS框架下运行Yunzai-Bot&&miao-plugin
-
-> 支持js/ts && v2/v3
+> 基于AlemonJS制作的Yunzai环境,安装即用
 
 拉取A-Yunzai项目
 
@@ -24,15 +22,13 @@ git clone https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git ./plugins/xiaoyao-cvs
 
 # Open Platform
 
-[QQ 开放平台](https://q.qq.com/#/)
+> 配置登录了解[https://alemonjs.com](https://alemonjs.com/alemon/v2.x/examples/introduction/config.html)
 
-[Miyoushe 开放平台](https://open.miyoushe.com/#/login)
+[QQ 平台 https://q.qq.com/](https://q.qq.com/#/)
 
-[KOOK 平台](https://developer.kookapp.cn/doc/)
+[米游社 平台 https://open.miyoushe.com/](https://open.miyoushe.com/#/login)
 
-> 配置了解[https://alemonjs.com](https://alemonjs.com/alemon/v2.x/examples/introduction/config.html)
-
-> 更多指令请看[package.json](./package.json)
+[KOOK 平台 https://developer.kookapp.cn/](https://developer.kookapp.cn/doc/)
 
 # Plugin Parsing
 
@@ -109,34 +105,35 @@ app.mount()
 
 Node Vsersion >16.14 && <=18.18.2
 
-- 模式细节
+- 启动细节
 
-不可使用`AlemonJS多平台同时登录`一个实例
-
-`npm run start @bot1 pro qq @bot2 pro kook `
-
-可使用单平台创建多实例
+不可使用`AlemonJS同时登录多平台`
 
 - 合理的正则
 
 ```js
-// #和/前缀且可有可无
+// 推荐使用正则类型而非字符串
+// 正则改成匹配#和/前缀且可有可无
 reg: /^(#|\/)?帮助$/
 ```
+
+- 越精确的正则执行越快性能越高
 
 - lib文件少引用
 
 > 会逐渐废弃
 
-- 越精确的正则执行越快
+- 不推荐定义全局`global`
 
-- 自身少定义全局`global`
+> 开发请务必不定义全局变量以减少变量污染
 
 # Related Links
 
 - [Miao-yunzai](https://gitee.com/yoimiya-kokomi/Miao-Yunzai)
 
 - [plugins warehouse](https://gitee.com/yhArcadia/Yunzai-Bot-plugins-index)
+
+- [https://alemonjs.com/](https://alemonjs.com/)
 
 # Native Development
 

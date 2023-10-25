@@ -1,5 +1,5 @@
-import fs, { mkdirSync } from 'node:fs'
-import os from 'node:os'
+import { mkdirSync, writeFileSync, readFileSync } from 'node:fs'
+import { platform, networkInterfaces } from 'node:os'
 import lodash from 'lodash'
 import template from 'art-template'
 import chokidar from 'chokidar'
@@ -18,11 +18,7 @@ export default class PuppeteerRenderer {
     this.renderNum = 0
     this.html = {}
     this.watcher = {}
-    this.createDir('./temp/html')
-  }
-
-  createDir(dir) {
-    mkdirSync(dir, { recursive: true })
+    mkdirSync('./temp/html', { recursive: true })
   }
 
   /**
@@ -67,7 +63,7 @@ export default class PuppeteerRenderer {
     if (!this.browser || !connectFlag) {
       // 如果没有实例，初始化puppeteer
       this.browser = await puppeteer.launch(pupConfig).catch((err, trace) => {
-        let errMsg = err.toString() + (trace ? trace.toString() : '')
+        const errMsg = err.toString() + (trace ? trace.toString() : '')
         if (typeof err == 'object') {
           console.error(JSON.stringify(err))
         } else {
@@ -118,29 +114,30 @@ export default class PuppeteerRenderer {
   // 获取Mac地址
   async getMac() {
     // 获取Mac地址
-    let mac = '00:00:00:00:00:00'
+    mac = '00:00:00:00:00:00'
     try {
-      const network = os.networkInterfaces()
+      const network = networkInterfaces()
       let osMac
       // 判断系统
-      if (os.platform() === 'win32') {
+      if (platform() === 'win32') {
         // windows下获取mac地址
         let osMacList = Object.keys(network)
           .map(key => network[key])
           .flat()
+        //
         osMacList = osMacList.filter(
           item => item.family === 'IPv4' && item.mac !== mac
         )
+        //
         osMac = osMacList[0].mac
-      } else if (os.platform() === 'linux') {
+      } else if (platform() === 'linux') {
         // linux下获取mac地址
         osMac = network.eth0.filter(
           item => item.family === 'IPv4' && item.mac !== mac
         )[0].mac
       }
-      if (osMac) {
-        mac = String(osMac)
-      }
+      //
+      if (osMac) mac = String(osMac)
     } catch (e) {
       console.log('获取Mac地址失败', e.toString())
     }
@@ -168,18 +165,18 @@ export default class PuppeteerRenderer {
     }
     const pageHeight = data.multiPageHeight || 4000
 
-    let savePath = this.dealTpl(name, data)
+    const savePath = this.dealTpl(name, data)
     if (!savePath) return false
 
     let buff = ''
-    let start = Date.now()
+    const start = Date.now()
 
     let ret = []
     this.shoting.push(name)
 
     try {
       const page = await this.browser.newPage()
-      let pageGotoParams = lodash.extend(
+      const pageGotoParams = lodash.extend(
         { timeout: 120000 },
         data.pageGotoParams || {}
       )
@@ -187,14 +184,15 @@ export default class PuppeteerRenderer {
         `file://${process.cwd()}${lodash.trim(savePath, '.')}`,
         pageGotoParams
       )
-      let body = (await page.$('#container')) || (await page.$('body'))
+      const body = (await page.$('#container')) || (await page.$('body'))
 
       // 计算页面高度
       const boundingBox = await body.boundingBox()
+
       // 分页数
       let num = 1
 
-      let randData = {
+      const randData = {
         type: data.imgType || 'jpeg',
         omitBackground: data.omitBackground || false,
         quality: data.quality || 90,
@@ -238,6 +236,7 @@ export default class PuppeteerRenderer {
           }
           if (i !== 1 && i <= num) {
             await page.evaluate(
+              // windows?
               pageHeight => window.scrollBy(0, pageHeight),
               pageHeight
             )
@@ -285,16 +284,15 @@ export default class PuppeteerRenderer {
 
   /** 模板 */
   dealTpl(name, data) {
-    let { tplFile, saveId = name } = data
-    let savePath = `./temp/html/${name}/${saveId}.html`
+    const { tplFile, saveId = name } = data
+    const savePath = `./temp/html/${name}/${saveId}.html`
 
     mkdirSync(`./temp/html/${name}/`, { recursive: true })
     /** 读取html模板 */
     if (!this.html[tplFile]) {
-      this.createDir(`./temp/html/${name}`)
-
+      mkdirSync(`./temp/html/${name}`, { recursive: true })
       try {
-        this.html[tplFile] = fs.readFileSync(tplFile, 'utf8')
+        this.html[tplFile] = readFileSync(tplFile, 'utf8')
       } catch (error) {
         console.error(`加载html错误：${tplFile}`)
         return false
@@ -306,10 +304,10 @@ export default class PuppeteerRenderer {
     data.resPath = `${process.cwd()}/resources/`
 
     /** 替换模板 */
-    let tmpHtml = template.render(this.html[tplFile], data)
+    const tmpHtml = template.render(this.html[tplFile], data)
 
     /** 保存模板 */
-    fs.writeFileSync(savePath, tmpHtml)
+    writeFileSync(savePath, tmpHtml)
 
     console.debug(`[图片生成][使用模板] ${savePath}`)
 

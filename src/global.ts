@@ -25,8 +25,11 @@ import { getPathBuffer } from 'alemonjs'
 /**
  * 必要目录
  */
-mkdirSync('./temp/html/', { recursive: true })
+mkdirSync('./temp/html', { recursive: true })
 mkdirSync('./resources', { recursive: true })
+mkdirSync('./data', { recursive: true })
+mkdirSync('./config/config/', { recursive: true })
+mkdirSync('./config/default_config/', { recursive: true })
 /**
  * 必要存储
  */
