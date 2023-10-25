@@ -1,12 +1,8 @@
 # Node dependencies
 node_modules
 
-# build
-components.d.ts
-
 # alemon dev/config
 /data
-stats.html
 /public/defset
 /temp
 /config/config
@@ -16,36 +12,13 @@ stats.html
 alemon.toml
 
 # dev
-
 dev.ts
 
 # app
-apps.js
 plugins
-
-# Nuxt dev/build outputs
-.output
-.data
-.nuxt
-.nitro
-.cache
-.apps
-dist
-/assets/.*
-/pages/.*
-/public/.*
-/plugins/.*
-/server/.*
 
 # Logs
 logs
+log
 *.log
-
-# Misc
-.DS_Store
-.fleet
-.idea
-
-# Local env files
-.env.*
-!.env.example
+*.logs
