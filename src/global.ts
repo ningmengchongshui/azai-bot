@@ -1,39 +1,3 @@
-/**
- * *************
- * 自定义时间提示
- * *************
- */
-const log = console.log
-const getTime = () => {
-  return new Date().toLocaleDateString(undefined, {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric'
-  })
-}
-global.console.log = (...argv: any[]) => {
-  log(getTime(), ...argv)
-}
-const info = console.info
-global.console.info = (...argv: any[]) => {
-  info(getTime(), ...argv)
-}
-const error = console.error
-global.console.error = (...argv: any[]) => {
-  error(getTime(), ...argv)
-}
-const debug = console.debug
-global.console.debug = (...argv: any[]) => {
-  debug(getTime(), ...argv)
-}
-/**
- * *************
- * Yunzai global
- * *************
- */
 interface Logtype extends Console {
   red: (val: string) => string
   yellow: (val: string) => string
@@ -48,7 +12,7 @@ logger.yellow = val => val
 logger.green = val => val
 logger.mark = val => val
 global.logger = logger
-import { Redis as redis } from './db/redis/main.js'
+import { Redis as redis } from '../db/redis/main.js'
 global.redis = redis
 import { existsSync, mkdirSync } from 'fs'
 import { join } from 'path'
@@ -156,9 +120,9 @@ global.Bot = {
     get: val => val
   }
 }
-import plugin from './lib/plugins/plugin.js'
-import runtime from './lib/plugins/runtime.js'
-import Renderer from './lib/renderer/Renderer.js'
+import plugin from '../lib/plugins/plugin.js'
+import runtime from '../lib/plugins/runtime.js'
+import Renderer from '../lib/renderer/Renderer.js'
 global.runtime = runtime
 global.plugin = plugin
 global.Renderer = Renderer

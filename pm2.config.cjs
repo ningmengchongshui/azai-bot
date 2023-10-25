@@ -1,5 +1,5 @@
 const ars = process.argv.slice(4)
-const AlemonJS = '[AlemonJS@template2]'
+const AlemonJS = '[AlemonJS]'
 const findArs = ars.find(item => item.startsWith('@'))
 const apps = []
 if (!findArs) {
@@ -44,7 +44,7 @@ console.log('------------------------------------------')
 module.exports = {
   apps: apps.map(app => ({
     name: app.name,
-    script: 'alemon.run.js',
+    script: 'src/run.js',
     instances: 1,
     autorestart: true,
     exec_mode: 'cluster',
