@@ -1,3 +1,6 @@
+/**
+ * 复刻打印
+ */
 interface Logtype extends Console {
   red: (val: string) => string
   yellow: (val: string) => string
@@ -5,22 +8,20 @@ interface Logtype extends Console {
   green: (val: string) => string
 }
 const logger: Logtype = console as Logtype
-// 颜色
 logger.red = val => val
 logger.debug = val => val
 logger.yellow = val => val
 logger.green = val => val
 logger.mark = val => val
 global.logger = logger
+/**
+ * 数据库redis
+ */
 import { Redis as redis } from '../db/redis/main.js'
 global.redis = redis
 import { existsSync, mkdirSync } from 'fs'
 import { join } from 'path'
 import { getPathBuffer } from 'alemonjs'
-/**
- * ars
- */
-const ars = process.argv.slice(2)
 /**
  * 必要目录
  */
@@ -34,6 +35,7 @@ global.BotConfig = {}
 /**
  * icqq
  */
+const ars = process.argv.slice(2)
 global.segment = {
   /**
    * 图片
@@ -120,6 +122,9 @@ global.Bot = {
     get: val => val
   }
 }
+/**
+ * yunzai
+ */
 import plugin from '../lib/plugins/plugin.js'
 import runtime from '../lib/plugins/runtime.js'
 import Renderer from '../lib/renderer/Renderer.js'
