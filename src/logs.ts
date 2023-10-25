@@ -1,5 +1,4 @@
 if (!process.argv.includes('run')) {
-  const log = console.log
   const getTime = () => {
     return new Date().toLocaleDateString(undefined, {
       year: 'numeric',
@@ -10,6 +9,7 @@ if (!process.argv.includes('run')) {
       second: 'numeric'
     })
   }
+  const log = console.log
   global.console.log = (...argv: any[]) => {
     log(getTime(), ...argv)
   }
