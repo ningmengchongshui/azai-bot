@@ -19,6 +19,7 @@ export default class PuppeteerRenderer {
     this.html = {}
     this.watcher = {}
     mkdirSync('./temp/html', { recursive: true })
+    this.config = config
   }
 
   /**
@@ -62,24 +63,26 @@ export default class PuppeteerRenderer {
 
     if (!this.browser || !connectFlag) {
       // 如果没有实例，初始化puppeteer
-      this.browser = await puppeteer.launch(pupConfig).catch((err, trace) => {
-        const errMsg = err.toString() + (trace ? trace.toString() : '')
-        if (typeof err == 'object') {
-          console.error(JSON.stringify(err))
-        } else {
-          console.error(err.toString())
-          if (errMsg.includes('Could not find Chromium')) {
-            console.error(
-              '没有正确安装Chromium，可以尝试执行安装命令：node ./node_modules/puppeteer/install.js'
-            )
-          } else if (errMsg.includes('libatk-bridge')) {
-            console.error(
-              '没有正确安装Chromium，可尝试执行 sudo yum install -y chromium'
-            )
+      this.browser = await puppeteer
+        .launch(this.config ?? pupConfig)
+        .catch((err, trace) => {
+          const errMsg = err.toString() + (trace ? trace.toString() : '')
+          if (typeof err == 'object') {
+            console.error(JSON.stringify(err))
+          } else {
+            console.error(err.toString())
+            if (errMsg.includes('Could not find Chromium')) {
+              console.error(
+                '没有正确安装Chromium，可以尝试执行安装命令：node ./node_modules/puppeteer/install.js'
+              )
+            } else if (errMsg.includes('libatk-bridge')) {
+              console.error(
+                '没有正确安装Chromium，可尝试执行 sudo yum install -y chromium'
+              )
+            }
           }
-        }
-        console.log(err, trace)
-      })
+          console.log(err, trace)
+        })
     }
 
     this.lock = false
