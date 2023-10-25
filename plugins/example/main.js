@@ -3,7 +3,7 @@ import { readdirSync } from 'node:fs'
 const files = readdirSync('./plugins/example').filter(file => file.endsWith('.js')).filter(file => file != 'main.js')
 let ret = []
 files.forEach((file) => {
-    ret.push(import(`./apps/${file}`))
+    ret.push(import(`./plugins/example/${file}`))
 })
 ret = await Promise.allSettled(ret)
 let apps = {}
