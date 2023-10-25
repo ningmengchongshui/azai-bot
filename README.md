@@ -16,6 +16,12 @@ git clone --depth=1 -b main https://gitee.com/ningmengchongshui/a-yunzai.git
 git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin
 ```
 
+拉取xiao-cvs-plugin项目
+
+```sh
+git clone https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git ./plugins/xiaoyao-cvs-plugin
+```
+
 # Open Platform
 
 [QQ 开放平台](https://q.qq.com/#/)
