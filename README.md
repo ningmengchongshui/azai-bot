@@ -1,6 +1,6 @@
 # A-Yunzai-Bot
 
-> 基于AlemonJS制作的Yunzai环境,安装即用
+> 基于AlemonJS的Yunzai环境,安装即用
 
 > 806943302
 
