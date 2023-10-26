@@ -2,7 +2,7 @@
 
 > 基于AlemonJS的Yunzai环境,安装即用
 
-> 喜欢的同志点点star哦,要冲业绩的 [Gitee AlemonJS](https://gitee.com/ningmengchongshui) [Github AlemonJS](https://github.com/ningmengchongshui)
+> 喜欢的同志点点star哦,要冲业绩的 [Gitee AlemonJS](https://gitee.com/ningmengchongshui/alemon) [Github AlemonJS](https://github.com/ningmengchongshui/alemon)
 
 > 必要环境Windows/Linux + Node.js>16.14.0 + Chrome/Chromium/Edge + Redis>5.0.0
 
