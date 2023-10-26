@@ -1,6 +1,6 @@
 # A-Yunzai-Bot
 
-> 基于AlemonJS制作的Yunzai环境,安装即用
+> 基于AlemonJS的Yunzai环境,安装即用
 
 > 806943302
 
@@ -16,21 +16,27 @@ git clone --depth=1 -b main https://gitee.com/ningmengchongshui/a-yunzai.git
 git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin
 ```
 
-拉取xiao-cvs-plugin项目
+机器，启动
 
 ```sh
-git clone https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git ./plugins/xiaoyao-cvs-plugin
+npm run app qq #qq测试机
 ```
 
-# Open Platform
+# tools
 
-> 配置登录了解[https://alemonjs.com](https://alemonjs.com/alemon/v2.x/examples/introduction/config.html)
+环境部署铺助工具[Bot-Help](https://gitee.com/ningmengchongshui/bot-help)
+
+> 步骤： 1 环境部署 --  1. 安装node 
+
+# Open Platform
 
 [QQ 平台 https://q.qq.com/](https://q.qq.com/#/)
 
 [米游社 平台 https://open.miyoushe.com/](https://open.miyoushe.com/#/login)
 
 [KOOK 平台 https://developer.kookapp.cn/](https://developer.kookapp.cn/doc/)
+
+> 配置登录了解[https://alemonjs.com](https://alemonjs.com/alemon/v2.x/examples/introduction/config.html)
 
 # Plugin Parsing
 
@@ -79,7 +85,11 @@ app.mount()
 
 > xiaoyao-cvs-plugin 为例
 
-`./plugins/xiaoyao-cvs-plugin/main.js`
+```sh
+git clone https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git ./plugins/xiaoyao-cvs-plugin
+```
+
+新增文件 `./plugins/xiaoyao-cvs-plugin/main.js`
 
 ```js
 import { createApps } from 'alemonjs'
