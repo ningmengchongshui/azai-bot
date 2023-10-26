@@ -2,6 +2,8 @@
 
 > 基于AlemonJS制作的Yunzai环境,安装即用
 
+> 806943302
+
 拉取A-Yunzai项目
 
 ```sh
@@ -77,9 +79,7 @@ app.mount()
 
 > xiaoyao-cvs-plugin 为例
 
-```sh
-vi ./plugins/xiaoyao-cvs-plugin/main.js
-```
+`./plugins/xiaoyao-cvs-plugin/main.js`
 
 ```js
 import { createApps } from 'alemonjs'

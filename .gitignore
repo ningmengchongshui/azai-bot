@@ -2,6 +2,7 @@
 node_modules
 
 # alemon dev/config
+.data
 /data
 /public/defset
 /temp
