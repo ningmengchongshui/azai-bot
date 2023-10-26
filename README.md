@@ -4,7 +4,7 @@
 
 > 806943302
 
-> 必要环境Windows/Linux + Node.js + Chrome/Chromium/Edge + Redus
+> 必要环境Windows/Linux + Node.js>16.14.0 + Chrome/Chromium/Edge + Redis>5.0.0
 
 拉取A-Yunzai项目
 
