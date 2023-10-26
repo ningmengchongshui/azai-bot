@@ -2,8 +2,6 @@
 
 > 基于AlemonJS的Yunzai环境,安装即用
 
-> 806943302
-
 > 必要环境Windows/Linux + Node.js>16.14.0 + Chrome/Chromium/Edge + Redis>5.0.0
 
 拉取A-Yunzai项目
@@ -132,6 +130,10 @@ app.mount()
 
 # Note
 
+- 交流
+
+> 806943302
+
 - 版本约定
 
 Node Vsersion >16.14 && <=18.18.2
@@ -140,7 +142,7 @@ Node Vsersion >16.14 && <=18.18.2
 
 不可使用`AlemonJS同时登录多平台`
 
-- 合理的正则
+- 越精确的正则执行越快性能越高
 
 ```js
 // 推荐使用正则类型而非字符串
@@ -148,23 +150,17 @@ Node Vsersion >16.14 && <=18.18.2
 reg: /^(#|\/)?帮助$/
 ```
 
-- 越精确的正则执行越快性能越高
-
-- lib文件少引用
-
-> 会逐渐废弃
-
 - 不推荐定义全局`global`
 
 > 开发请务必不定义全局变量以减少变量污染
 
 # Related Links
 
+- [https://alemonjs.com/](https://alemonjs.com/)
+
 - [Miao-yunzai](https://gitee.com/yoimiya-kokomi/Miao-Yunzai)
 
 - [plugins warehouse](https://gitee.com/yhArcadia/Yunzai-Bot-plugins-index)
-
-- [https://alemonjs.com/](https://alemonjs.com/)
 
 # Native Development
 
