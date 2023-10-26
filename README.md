@@ -4,6 +4,8 @@
 
 > 806943302
 
+> 必要环境Windows/Linux + Node.js + Chrome/Chromium/Edge + Redus
+
 拉取A-Yunzai项目
 
 ```sh
@@ -26,7 +28,7 @@ npm run app qq #qq测试机
 
 环境部署铺助工具[Bot-Help](https://gitee.com/ningmengchongshui/bot-help)
 
-> 步骤： 1 环境部署 --  1. 安装node 
+> 步骤： 1 环境部署 -- 1. 安装node
 
 # Open Platform
 
