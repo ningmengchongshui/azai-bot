@@ -1,4 +1,5 @@
 if (!process.argv.includes('run')) {
+  const prefix = '[AlemonJS]'
   const getTime = () => {
     return new Date().toLocaleDateString(undefined, {
       year: 'numeric',
@@ -11,18 +12,18 @@ if (!process.argv.includes('run')) {
   }
   const log = console.log
   global.console.log = (...argv: any[]) => {
-    log(getTime(), ...argv)
+    log(prefix, `[${getTime()}]`, ...argv)
   }
   const info = console.info
   global.console.info = (...argv: any[]) => {
-    info(getTime(), ...argv)
+    info(prefix, `[${getTime()}]`, ...argv)
   }
   const error = console.error
   global.console.error = (...argv: any[]) => {
-    error(getTime(), ...argv)
+    error(prefix, `[${getTime()}]`, ...argv)
   }
   const debug = console.debug
   global.console.debug = (...argv: any[]) => {
-    debug(getTime(), ...argv)
+    debug(prefix, `[${getTime()}]`, ...argv)
   }
 }
