@@ -1,10 +1,12 @@
-# A-Yunzai-Bot
+# Azai-Bot
 
 > 基于AlemonJS的Yunzai环境,安装即用
 
+> 喜欢的同志点点star哦,要冲业绩的 [Gitee AlemonJS](https://gitee.com/ningmengchongshui) [Github AlemonJS](https://github.com/ningmengchongshui)
+
 > 必要环境Windows/Linux + Node.js>16.14.0 + Chrome/Chromium/Edge + Redis>5.0.0
 
-拉取A-Yunzai项目
+拉取Azai-Bot项目
 
 ```sh
 git clone --depth=1 -b main https://gitee.com/ningmengchongshui/a-yunzai.git
@@ -22,12 +24,6 @@ git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/m
 npm run app qq #qq测试机
 ```
 
-# Tools
-
-环境部署铺助工具[Bot-Help](https://gitee.com/ningmengchongshui/bot-help)
-
-> start： 1 环境部署 --> 1. 安装node && 3.安装redis
-
 # Open Platform
 
 [QQ 平台 https://q.qq.com/](https://q.qq.com/#/)
@@ -38,11 +34,17 @@ npm run app qq #qq测试机
 
 > 配置登录了解[https://alemonjs.com](https://alemonjs.com/alemon/v2.x/examples/introduction/config.html)
 
+# Tools
+
+环境部署铺助工具[Bot-Help](https://gitee.com/ningmengchongshui/bot-help)
+
+> start： 1 环境部署 --> 1. 安装node && 3.安装redis
+
 # Plugin Parsing
 
 插件中放置识别文件`main.js`
 
-- 模板1 引入式V3
+- 模板1 引入式
 
 ```js
 import { createApps } from 'alemonjs'
@@ -52,7 +54,35 @@ app.component(apps)
 app.mount()
 ```
 
-- 模板2 遍历式V3
+- 模板2 兼容式
+
+> xiaoyao-cvs-plugin 为例
+
+```sh
+git clone https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git ./plugins/xiaoyao-cvs-plugin
+```
+
+新增文件 `./plugins/xiaoyao-cvs-plugin/main.js`
+
+```js
+import { createApps } from 'alemonjs'
+import * as apps from './index.js'
+import { render } from './adapter/render.js'
+const xiaoyao = YUNZAIV2(apps['rule'], apps)
+const app = createApps(import.meta.url)
+app.setMessage(async e => {
+  await runtime.init(e)
+  e.sender = {}
+  e.sender.card = e.user_name
+  e.checkAuth = val => val
+  return e
+})
+app.setArg(() => [{ render }])
+app.component({ xiaoyao })
+app.mount()
+```
+
+- 模板3 遍历式
 
 ```js
 import { createApps, getAppName } from 'alemonjs'
@@ -78,34 +108,6 @@ for (const i in files) {
 }
 const app = createApps(import.meta.url)
 app.component(apps)
-app.mount()
-```
-
-- 模板3 兼容式
-
-> xiaoyao-cvs-plugin 为例
-
-```sh
-git clone https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git ./plugins/xiaoyao-cvs-plugin
-```
-
-新增文件 `./plugins/xiaoyao-cvs-plugin/main.js`
-
-```js
-import { createApps } from 'alemonjs'
-import * as apps from './index.js'
-import { render } from './adapter/render.js'
-const xiaoyao = YUNZAIV2(apps['rule'], apps)
-const app = createApps(import.meta.url)
-app.setMessage(async e => {
-  await runtime.init(e)
-  e.sender = {}
-  e.sender.card = e.user_name
-  e.checkAuth = val => val
-  return e
-})
-app.setArg(() => [{ render }])
-app.component({ xiaoyao })
 app.mount()
 ```
 

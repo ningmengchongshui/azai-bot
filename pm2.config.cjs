@@ -1,5 +1,4 @@
 const ars = process.argv.slice(4)
-const AlemonJS = '[AlemonJS]'
 const findArs = ars.find(item => item.startsWith('@'))
 const apps = []
 if (!findArs) {
@@ -32,14 +31,14 @@ if (!findArs) {
 }
 console.log('------------------------------------------')
 for (const item of apps) {
-  console.log(AlemonJS, 'npm run start', item.name, item.args.join(' '))
-  console.log(AlemonJS, 'npm run logs', item.name)
+  console.log('npm run start', item.name, item.args.join(' '))
+  console.log('npm run logs', item.name)
   console.log('------------------------------------------')
 }
-console.log(AlemonJS, 'npm run list')
-console.log(AlemonJS, 'npm run monit')
-console.log(AlemonJS, 'npm run delete')
-console.log(AlemonJS, 'npm run kill')
+console.log('npm run list')
+console.log('npm run monit')
+console.log('npm run delete')
+console.log('npm run kill')
 console.log('------------------------------------------')
 module.exports = {
   apps: apps.map(app => ({
