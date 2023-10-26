@@ -1,5 +1,5 @@
 if (!process.argv.includes('run')) {
-  const prefix = '[AlemonJS]'
+  const prefix = '[A-YUNZAI]'
   const getTime = () => {
     return new Date().toLocaleDateString(undefined, {
       year: 'numeric',
