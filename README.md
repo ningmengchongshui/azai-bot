@@ -99,6 +99,25 @@ app.component({ xiaoyao })
 app.mount()
 ```
 
+# menu
+
+```js
+|-- config    原Yunzai配置(部分插件需要才保留,实则无用)
+|-- db        数据库引入
+|-- lib       原Yunzai应用文件(部分插件需要才保留,不推荐插件再引入)
+|-- plugins   固定插件文件目录
+|-- public    公共资源
+|-- renderers 原Yunzai截图工具(部分插件需要才保留,不推荐插件再引入)
+|-- src       机器人工程目录
+|-- .env      数据库配置文件
+|-- .puppeteerrc.cjs  截图工具自动索引
+|-- a.login.config.ts 机器人登录配置
+|-- alemon.config.ts  框架配置
+|-- pm2.config.cjs    机器人后台运行配置
+|-- puppeteerrc.js    截图工具默认配置
+|-- tsconfig.json     TS编译配置
+```
+
 # Note
 
 - 版本约定
