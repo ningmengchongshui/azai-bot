@@ -16,12 +16,6 @@ git clone --depth=1 -b main https://gitee.com/ningmengchongshui/a-yunzai.git
 git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin
 ```
 
-拉取xiao-cvs-plugin项目
-
-```sh
-git clone https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git ./plugins/xiaoyao-cvs-plugin
-```
-
 机器，启动
 
 ```sh
@@ -91,7 +85,11 @@ app.mount()
 
 > xiaoyao-cvs-plugin 为例
 
-`./plugins/xiaoyao-cvs-plugin/main.js`
+```sh
+git clone https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git ./plugins/xiaoyao-cvs-plugin
+```
+
+新增文件 `./plugins/xiaoyao-cvs-plugin/main.js`
 
 ```js
 import { createApps } from 'alemonjs'
