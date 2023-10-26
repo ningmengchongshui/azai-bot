@@ -22,11 +22,11 @@ git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/m
 npm run app qq #qq测试机
 ```
 
-# tools
+# Tools
 
 环境部署铺助工具[Bot-Help](https://gitee.com/ningmengchongshui/bot-help)
 
-> 步骤： 1 环境部署 -- 1. 安装node
+> start： 1 环境部署 --> 1. 安装node && 3.安装redis
 
 # Open Platform
 
