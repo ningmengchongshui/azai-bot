@@ -175,6 +175,12 @@ export class test extends plugin {
 reg: /^(#|\/)?帮助$/
 ```
 
+> 如果只会写字符串正则这样
+
+```js
+reg: '^(#|/)?帮助$',
+```
+
 # Related Links
 
 - [https://alemonjs.com/](https://alemonjs.com/)
