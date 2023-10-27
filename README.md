@@ -154,7 +154,7 @@ Node Vsersion >16.14 && <=18.18.2
 
 > 1. `alemonjs`插件使用`a-yunzai`环境需要保持plugin引用
 
-> 2. `alemonjs`插件使用`a-yunzai`环境不引用不需要手动标注`/`
+> 2. `alemonjs`插件使用`a-yunzai`环境不引用需要手动标注`/`
 
 ```js
 export class test extends plugin {
