@@ -156,6 +156,12 @@ reg: /^(#|\/)?帮助$/
 
 > 开发请务必不定义全局变量以减少变量污染
 
+- `alemonjs`于`a-yunzai`的插件有差异
+
+> `a-yunzai`使用`#`而`alemonjs`使用`/`
+
+> `alemonjs`使用`a-yunzai`环境必须保持plugin引用
+
 # Related Links
 
 - [https://alemonjs.com/](https://alemonjs.com/)

@@ -20,5 +20,7 @@ export default defineAlemonConfig({
   plugin: {
     // yunzai
     directory: '/plugins'
-  }
+  },
+  // 默认规则
+  defaultCharacter: '#'
 })
