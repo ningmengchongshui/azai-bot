@@ -11,16 +11,7 @@ logger.yellow = val => val
 logger.green = val => val
 logger.mark = val => val
 global.logger = logger
-/**
- * ***********
- * 数据库redis
- * ***********
- */
-import { Redis as redis } from '../db/redis/main.js'
-global.redis = redis
-import { existsSync, mkdirSync } from 'fs'
-import { join } from 'path'
-import { getPathBuffer } from 'alemonjs'
+import { mkdirSync } from 'fs'
 /**
  * ********
  * 必要目录
@@ -30,12 +21,20 @@ mkdirSync('./temp/html', { recursive: true })
 mkdirSync('./resources', { recursive: true })
 mkdirSync('./data', { recursive: true })
 /**
+ * ***********
+ * 数据库redis
+ * ***********
+ */
+import { Redis as redis } from '../db/redis/main.js'
+global.redis = redis
+/**
  * *********
  * 必要存储
  * *********
  */
 global.NoteCookie = {}
 global.BotConfig = {}
+import { getPathBuffer } from 'alemonjs'
 /**
  * ********
  * icqq
@@ -51,11 +50,9 @@ global.segment = {
   image: (val: string | Buffer) => {
     // buffer
     if (Buffer.isBuffer(val)) return val
-    const add = join(process.cwd(), val)
-    // 绝对路径
-    if (existsSync(add)) return getPathBuffer(val)
-    // 相对路径
-    if (existsSync(val)) return Buffer.from(val)
+    // path
+    const img = getPathBuffer(val)
+    if (img) return img
     // url
     return `<http>${val}</http>`
   },
@@ -101,11 +98,9 @@ global.segment = {
   record: (val: Buffer | string) => {
     // buffer
     if (Buffer.isBuffer(val)) return val
-    const add = join(process.cwd(), val)
-    // 绝对路径
-    if (existsSync(add)) return getPathBuffer(val)
-    // 相对路径
-    if (existsSync(val)) return Buffer.from(val)
+    // path
+    const img = getPathBuffer(val)
+    if (img) return img
     // url
     return `<http>${val}</http>`
   }
