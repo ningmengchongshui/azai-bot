@@ -15,9 +15,6 @@ alemon.toml
 # dev
 dev.ts
 
-# app
-plugins
-
 # Logs
 logs
 log

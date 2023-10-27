@@ -1,4 +1,4 @@
-# *
+*
 !.gitignore
 
 !genshin
@@ -10,6 +10,7 @@ genshin/config/*
 
 !other
 other/**
+!other/main.js
 !other/restart.js
 !other/sendLog.js
 !other/update.js
