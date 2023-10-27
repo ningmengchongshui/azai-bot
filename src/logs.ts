@@ -1,4 +1,5 @@
-if (!process.argv.includes('run')) {
+import { setLog } from 'alemonjs/logs'
+if (!process.argv.includes('pm2')) {
   const prefix = '[A-YUNZAI]'
   const getTime = () => {
     return new Date().toLocaleDateString(undefined, {
@@ -10,20 +11,5 @@ if (!process.argv.includes('run')) {
       second: 'numeric'
     })
   }
-  const log = console.log
-  global.console.log = (...argv: any[]) => {
-    log(prefix, `[${getTime()}]`, ...argv)
-  }
-  const info = console.info
-  global.console.info = (...argv: any[]) => {
-    info(prefix, `[${getTime()}]`, ...argv)
-  }
-  const error = console.error
-  global.console.error = (...argv: any[]) => {
-    error(prefix, `[${getTime()}]`, ...argv)
-  }
-  const debug = console.debug
-  global.console.debug = (...argv: any[]) => {
-    debug(prefix, `[${getTime()}]`, ...argv)
-  }
+  setLog(getTime, prefix)
 }

@@ -18,9 +18,9 @@
       "      ]",
       "    })",
       "  }",
-      "  async ${4:方法名}(e: AMessage): Promise<boolean> {",
+      "  async ${4:方法名}(e: AMessage){",
       "    e.reply('${5:回复内容}')",
-      "    return ${6:false}",
+      "    return",
       "  }",
       "}\n"
     ],
@@ -47,7 +47,7 @@
       "  }",
       "  async ${4:方法名}(e){",
       "    e.reply('${5:回复内容}')",
-      "    return ${6:false}",
+      "    return",
       "  }",
       "}\n"
     ],

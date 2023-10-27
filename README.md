@@ -34,6 +34,13 @@ npm install
 npm run app qq #qq测试机
 ```
 
+更新所有插件
+
+```
+npm run pull:l # linux
+npm run pull:W # windows
+```
+
 # Open Platform
 
 [QQ 平台 https://q.qq.com/](https://q.qq.com/#/)
@@ -131,12 +138,12 @@ app.mount()
 |-- public    公共资源
 |-- renderers 原Yunzai截图工具(部分插件需要才保留,不推荐插件再引入)
 |-- src       机器人工程目录
+    |-- puppeteerrc.js    截图工具默认配置
 |-- .env      数据库配置文件
 |-- .puppeteerrc.cjs  截图工具自动索引
 |-- a.login.config.ts 机器人登录配置
 |-- alemon.config.ts  框架配置
 |-- pm2.config.cjs    机器人后台运行配置
-|-- puppeteerrc.js    截图工具默认配置
 |-- tsconfig.json     TS编译配置
 ```
 

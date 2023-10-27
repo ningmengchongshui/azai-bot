@@ -4,7 +4,7 @@ import lodash from 'lodash'
 import template from 'art-template'
 import chokidar from 'chokidar'
 import puppeteer from 'puppeteer'
-import pupConfig from '../../../puppeteerrc.js'
+import pupConfig from '../../../src/puppeteerrc.js'
 
 // mac地址
 let mac = ''
