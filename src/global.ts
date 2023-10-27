@@ -1,6 +1,3 @@
-/**
- * 复刻打印
- */
 interface Logtype extends Console {
   red: (val: string) => string
   yellow: (val: string) => string
@@ -15,7 +12,9 @@ logger.green = val => val
 logger.mark = val => val
 global.logger = logger
 /**
+ * ***********
  * 数据库redis
+ * ***********
  */
 import { Redis as redis } from '../db/redis/main.js'
 global.redis = redis
@@ -23,18 +22,24 @@ import { existsSync, mkdirSync } from 'fs'
 import { join } from 'path'
 import { getPathBuffer } from 'alemonjs'
 /**
+ * ********
  * 必要目录
+ * ********
  */
 mkdirSync('./temp/html', { recursive: true })
 mkdirSync('./resources', { recursive: true })
 mkdirSync('./data', { recursive: true })
 /**
+ * *********
  * 必要存储
+ * *********
  */
 global.NoteCookie = {}
 global.BotConfig = {}
 /**
+ * ********
  * icqq
+ * ********
  */
 const ars = process.argv.slice(2)
 global.segment = {
@@ -106,25 +111,34 @@ global.segment = {
   }
 }
 /**
+ * *******
  * icqq
+ * *******
  */
 global.Bot = {
   uin: '',
   logger,
-  makeForwardMsg: val => val,
+  makeForwardMsg: val => '',
   pickUser: uid => {
     return {
-      sendMsg: val => val
+      sendMsg: val => ''
     }
   },
-  nickname: val => val,
-  getGroupMemberInfo: val => val,
+  nickname: '',
+  getGroupMemberInfo: (val1, val2) => {
+    return {
+      card: '',
+      nickname: ''
+    }
+  },
   fl: {
-    get: val => val
+    get: val => ''
   }
 }
 /**
+ * *********
  * yunzai
+ * *********
  */
 import plugin from '../lib/plugins/plugin.js'
 import runtime from '../lib/plugins/runtime.js'

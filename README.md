@@ -18,6 +18,16 @@ git clone --depth=1 -b main https://gitee.com/ningmengchongshui/a-yunzai.git
 git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin
 ```
 
+拉取依赖
+
+```sh
+npm install
+# 无法连接可使用
+# npm install pnpm -g
+# pnpm install
+# 外服请先删除.cnpmrc
+```
+
 机器，启动
 
 ```sh
@@ -111,7 +121,7 @@ app.component(apps)
 app.mount()
 ```
 
-# menu
+# Menu
 
 ```js
 |-- config    原Yunzai配置(部分插件需要才保留,实则无用)
