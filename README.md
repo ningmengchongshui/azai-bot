@@ -146,9 +146,9 @@ Node Vsersion >16.14 && <=18.18.2
 
 - 不推荐定义全局`global`
 
-> 正则差异化影响
+- 正则差异化影响
 
-- `alemonjs`于`a-yunzai`的插件有差异
+> `alemonjs`于`a-yunzai`的插件有差异
 
 > `a-yunzai`使用`#`而`alemonjs`使用`/`
 
