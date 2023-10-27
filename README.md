@@ -144,23 +144,36 @@ Node Vsersion >16.14 && <=18.18.2
 
 不可使用`AlemonJS同时登录多平台`
 
-- 越精确的正则执行越快性能越高
-
-```js
-// 推荐使用正则类型而非字符串
-// 正则改成匹配#和/前缀且可有可无
-reg: /^(#|\/)?帮助$/
-```
-
 - 不推荐定义全局`global`
 
-> 开发请务必不定义全局变量以减少变量污染
+> 正则差异化影响
 
 - `alemonjs`于`a-yunzai`的插件有差异
 
 > `a-yunzai`使用`#`而`alemonjs`使用`/`
 
-> `alemonjs`使用`a-yunzai`环境必须保持plugin引用
+> 1. `alemonjs`插件使用`a-yunzai`环境需要保持plugin引用
+
+> 2. `alemonjs`插件使用`a-yunzai`环境不引用不需要手动标注`/`
+
+```js
+export class test extends plugin {
+  constructor(e) {
+    super({
+      startCharacter: '/'
+    })
+  }
+}
+```
+
+- 越精确的正则执行越快性能越高
+
+```js
+// 推荐使用正则类型而非字符串
+// 正则改成匹配#和/前缀且可有可无
+// 使用此规则正则不受差异化影响
+reg: /^(#|\/)?帮助$/
+```
 
 # Related Links
 
