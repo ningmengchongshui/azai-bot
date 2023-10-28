@@ -3,14 +3,32 @@ import { platform, networkInterfaces } from 'node:os'
 import lodash from 'lodash'
 import template from 'art-template'
 import chokidar from 'chokidar'
-import puppeteer from 'puppeteer'
-import pupConfig from '../../../src/puppeteerrc.js'
+import puppeteer, { PuppeteerLaunchOptions, Browser } from 'puppeteer'
+import { Options } from '../../../src/puppeteerrc.js'
+import { RedisClientType } from 'redis'
 
 // mac地址
 let mac = ''
 
+declare global {
+  var redis: RedisClientType
+}
+
+const EveryoneError = (err: any) => {
+  console.error(err)
+  return err
+}
 export default class PuppeteerRenderer {
-  constructor(config) {
+  browser: false | Browser
+  lock: boolean
+  shoting: any[]
+  restartNum: number
+  renderNum: number
+  html: any
+  watcher: any
+  config: PuppeteerLaunchOptions
+  browserMacKey: string
+  constructor(config: PuppeteerLaunchOptions) {
     this.browser = false
     this.lock = false
     this.shoting = []
@@ -64,25 +82,12 @@ export default class PuppeteerRenderer {
     if (!this.browser || !connectFlag) {
       // 如果没有实例，初始化puppeteer
       this.browser = await puppeteer
-        .launch(this.config ?? pupConfig)
-        .catch((err, trace) => {
-          const errMsg = err.toString() + (trace ? trace.toString() : '')
-          if (typeof err == 'object') {
-            console.error(JSON.stringify(err))
-          } else {
-            console.error(err.toString())
-            if (errMsg.includes('Could not find Chromium')) {
-              console.error(
-                '没有正确安装Chromium，可以尝试执行安装命令：node ./node_modules/puppeteer/install.js'
-              )
-            } else if (errMsg.includes('libatk-bridge')) {
-              console.error(
-                '没有正确安装Chromium，可尝试执行 sudo yum install -y chromium'
-              )
-            }
-          }
-          console.log(err, trace)
+        .launch(this.config ?? Options)
+        .catch(err => {
+          console.log(err)
+          return false
         })
+      if (!this.browser) return false
     }
 
     this.lock = false
@@ -105,7 +110,7 @@ export default class PuppeteerRenderer {
       console.info('puppeteer Chromium 启动成功')
     }
 
-    /** 监听Chromium实例是否断开 */
+    // 监听Chromium实例是否断开
     this.browser.on('disconnected', e => {
       console.error('Chromium实例关闭或崩溃！')
       this.browser = false
@@ -114,30 +119,35 @@ export default class PuppeteerRenderer {
     return this.browser
   }
 
-  // 获取Mac地址
+  /**
+   * 获取Mac地址
+   * @returns
+   */
   async getMac() {
-    // 获取Mac地址
+    /// 获取Mac地址
     mac = '00:00:00:00:00:00'
     try {
       const network = networkInterfaces()
-      let osMac
+      let osMac: any
       // 判断系统
       if (platform() === 'win32') {
         // windows下获取mac地址
         let osMacList = Object.keys(network)
           .map(key => network[key])
           .flat()
-        //
+        // 过滤
         osMacList = osMacList.filter(
-          item => item.family === 'IPv4' && item.mac !== mac
+          item => item && item.family === 'IPv4' && item.mac !== mac
         )
         //
-        osMac = osMacList[0].mac
+        if (osMacList[0]) osMac = osMacList[0].mac
       } else if (platform() === 'linux') {
         // linux下获取mac地址
-        osMac = network.eth0.filter(
-          item => item.family === 'IPv4' && item.mac !== mac
-        )[0].mac
+        if (network.eth0) {
+          osMac = network.eth0.filter(
+            item => item.family === 'IPv4' && item.mac !== mac
+          )[0].mac
+        }
       }
       //
       if (osMac) mac = String(osMac)
@@ -162,22 +172,22 @@ export default class PuppeteerRenderer {
    * @param data.pageGotoParams 页面goto时的参数
    * @return img/[]img 不做segment包裹
    */
-  async screenshot(name, data = {}) {
-    if (!(await this.browserInit())) {
-      return false
-    }
+  async screenshot(name, data: any = {}) {
+    if (!(await this.browserInit())) return false
+
     const pageHeight = data.multiPageHeight || 4000
 
     const savePath = this.dealTpl(name, data)
     if (!savePath) return false
 
-    let buff = ''
+    let buff: Buffer | string
     const start = Date.now()
 
-    let ret = []
+    let ret: any[] = []
     this.shoting.push(name)
 
     try {
+      if (!this.browser) return false
       const page = await this.browser.newPage()
       const pageGotoParams = lodash.extend(
         { timeout: 120000 },
@@ -189,8 +199,12 @@ export default class PuppeteerRenderer {
       )
       const body = (await page.$('#container')) || (await page.$('body'))
 
+      if (!body) return false
+
       // 计算页面高度
       const boundingBox = await body.boundingBox()
+
+      if (!boundingBox) return false
 
       // 分页数
       let num = 1
@@ -213,7 +227,7 @@ export default class PuppeteerRenderer {
 
       if (!data.multiPage) {
         buff = await body.screenshot(randData)
-        /** 计算图片大小 */
+        // 计算图片大小
         const kb = (buff.length / 1024).toFixed(2) + 'kb'
         console.info(
           `[图片生成][${name}][${this.renderNum}次] ${kb} ${
@@ -223,7 +237,6 @@ export default class PuppeteerRenderer {
         this.renderNum++
         ret.push(buff)
       } else {
-        // 分片截图
         if (num > 1) {
           await page.setViewport({
             width: boundingBox.width,
@@ -234,7 +247,7 @@ export default class PuppeteerRenderer {
           if (i !== 1 && i === num) {
             await page.setViewport({
               width: boundingBox.width,
-              height: parseInt(boundingBox.height) - pageHeight * (num - 1)
+              height: boundingBox.height - pageHeight * (num - 1)
             })
           }
           if (i !== 1 && i <= num) {
@@ -252,7 +265,7 @@ export default class PuppeteerRenderer {
           if (num > 2) new Promise(resolve => setTimeout(resolve, 200))
           this.renderNum++
 
-          /** 计算图片大小 */
+          // 计算图片大小
           const kb = (buff.length / 1024).toFixed(2) + 'kb'
           console.info(`[图片生成][${name}][${i}/${num}] ${kb}`)
           ret.push(buff)
@@ -264,7 +277,7 @@ export default class PuppeteerRenderer {
       page.close().catch(err => console.error(err))
     } catch (error) {
       console.error(`图片生成失败:${name}:${error}`)
-      /** 关闭浏览器 */
+      // 关闭浏览器
       if (this.browser) {
         await this.browser.close().catch(err => console.error(err))
       }
@@ -285,13 +298,18 @@ export default class PuppeteerRenderer {
     return data.multiPage ? ret : ret[0]
   }
 
-  /** 模板 */
-  dealTpl(name, data) {
+  /**
+   * 模板
+   * @param name
+   * @param data
+   * @returns
+   */
+  dealTpl(name: string, data: any) {
     const { tplFile, saveId = name } = data
     const savePath = `./temp/html/${name}/${saveId}.html`
 
     mkdirSync(`./temp/html/${name}/`, { recursive: true })
-    /** 读取html模板 */
+    // 读取html模板
     if (!this.html[tplFile]) {
       mkdirSync(`./temp/html/${name}`, { recursive: true })
       try {
@@ -300,16 +318,15 @@ export default class PuppeteerRenderer {
         console.error(`加载html错误：${tplFile}`)
         return false
       }
-
       this.watch(tplFile)
     }
 
     data.resPath = `${process.cwd()}/resources/`
 
-    /** 替换模板 */
+    // 替换模板
     const tmpHtml = template.render(this.html[tplFile], data)
 
-    /** 保存模板 */
+    // 保存模板
     writeFileSync(savePath, tmpHtml)
 
     console.debug(`[图片生成][使用模板] ${savePath}`)
@@ -317,8 +334,12 @@ export default class PuppeteerRenderer {
     return savePath
   }
 
-  /** 监听配置文件 */
-  watch(tplFile) {
+  /**
+   * 监听配置文件
+   * @param tplFile
+   * @returns
+   */
+  watch(tplFile: string) {
     if (this.watcher[tplFile]) return
 
     const watcher = chokidar.watch(tplFile)
@@ -330,15 +351,21 @@ export default class PuppeteerRenderer {
     this.watcher[tplFile] = watcher
   }
 
-  /** 重启 */
+  /**
+   * 重启
+   */
   restart() {
-    /** 截图超过重启数时，自动关闭重启浏览器，避免生成速度越来越慢 */
+    /**
+     * 截图超过重启数时
+     * 自动关闭重启浏览器
+     * 避免生成速度越来越慢
+     */
     if (this.renderNum % this.restartNum === 0) {
+      //
       if (this.shoting.length <= 0) {
+        //
         setTimeout(async () => {
-          if (this.browser) {
-            await this.browser.close().catch(err => console.error(err))
-          }
+          if (this.browser) await this.browser.close().catch(EveryoneError)
           this.browser = false
           console.info('puppeteer 关闭重启...')
         }, 100)

@@ -1,4 +1,4 @@
-import { createClient } from 'redis'
+import { createClient, RedisClientType } from 'redis'
 import {
   ALEMON_REDIS_host,
   ALEMON_REDIS_port,
@@ -6,25 +6,16 @@ import {
   ALEMON_REDIS_password
 } from './config.js'
 async function redisInit() {
-  const cfg = {
-    password: ALEMON_REDIS_password,
-    host: ALEMON_REDIS_host,
-    port: ALEMON_REDIS_port,
-    db: ALEMON_REDIS_db
-  }
-  let redisUrl = ''
-  if (cfg.password) {
-    redisUrl = `redis://:${cfg.password}@${cfg.host}:${cfg.port}`
-  } else {
-    redisUrl = `redis://${cfg.host}:${cfg.port}`
-  }
-  const client = createClient({ url: redisUrl })
+  const url = `${ALEMON_REDIS_host}:${ALEMON_REDIS_port}`
+  const client: RedisClientType = createClient({
+    url: `redis://:${ALEMON_REDIS_password}@${url}`
+  })
   await client.connect()
-  client.on('error', async err => {
+  await client.on('error', async err => {
     console.log('连接失败~', err)
     process.exit()
   })
-  client.select(cfg.db)
+  await client.select(ALEMON_REDIS_db)
   return client
 }
 export const Redis = await redisInit()

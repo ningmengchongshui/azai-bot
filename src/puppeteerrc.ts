@@ -1,4 +1,5 @@
-export default {
+import { PuppeteerLaunchOptions } from 'puppeteer'
+export const Options: PuppeteerLaunchOptions = {
   headless: 'new',
   args: [
     '--disable-gpu',

@@ -26,7 +26,14 @@ mkdirSync('./data', { recursive: true })
  * ***********
  */
 import { Redis as redis } from '../db/redis/main.js'
-global.redis = redis
+import { RedisClientType } from 'redis'
+
+declare global {
+  var redis: RedisClientType
+}
+
+// typeof
+global.redis = redis as RedisClientType
 /**
  * *********
  * 必要存储
