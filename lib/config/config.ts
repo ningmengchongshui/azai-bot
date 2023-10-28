@@ -53,7 +53,7 @@ class Cfg {
    * @param app  功能
    * @param name 配置文件名称
    */
-  getdefSet(name) {
+  getdefSet(name: string) {
     return this.getYaml('default_config', name)
   }
 
@@ -153,7 +153,7 @@ class Cfg {
    * @param type 默认跑配置-defSet，用户配置-config
    * @param name 名称
    */
-  getYaml(type, name) {
+  getYaml(type: string, name: string) {
     const file = `config/${type}/${name}.yaml`
     const key = `${type}.${name}`
     if (this.config[key]) return this.config[key]
@@ -163,7 +163,7 @@ class Cfg {
   }
 
   /** 监听配置文件 */
-  watch(file, name, type = 'default_config') {
+  watch(file: string, name: string, type = 'default_config') {
     const key = `${type}.${name}`
     if (this.watcher[key]) return
     const watcher = chokidar.watch(file)
