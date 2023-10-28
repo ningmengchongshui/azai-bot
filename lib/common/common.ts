@@ -43,17 +43,14 @@ async function downFile(fileUrl, savePath, param = {}) {
 
 /**
  *
- * @param {*} name
+ * @param name
  * @returns
  */
 function existsSmkdirs(name) {
-  if (existsSync(name)) {
+  if (existsSync(name)) return true
+  if (existsSmkdirs(dirname(name))) {
+    mkdirSync(name)
     return true
-  } else {
-    if (existsSmkdirs(dirname(name))) {
-      mkdirSync(name)
-      return true
-    }
   }
 }
 

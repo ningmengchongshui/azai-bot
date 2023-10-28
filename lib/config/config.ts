@@ -8,10 +8,17 @@ import {
 import chokidar from 'chokidar'
 import { parse as YAMLParse } from 'yaml'
 
+declare global {
+  var Bot: any
+}
+
 /**
  * 配置文件
  */
 class Cfg {
+  config: any
+  watcher: any
+  _package: any
   constructor() {
     this.config = {}
     this.watcher = { config: {}, defSet: {} }
@@ -22,14 +29,14 @@ class Cfg {
    * 初始化配置
    */
   initCfg() {
-    let path = 'config/config/'
-    let pathDef = 'config/default_config/'
+    const path = 'config/config/'
+    const pathDef = 'config/default_config/'
     mkdirSync('./config/config', { recursive: true })
     mkdirSync('./config/default_config', { recursive: true })
     const files = readdirSync(pathDef).filter(file => file.endsWith('.yaml'))
-    for (let file of files) {
+    for (const file of files) {
       const dir = `${path}${file}`
-      if (!existsSync()) copyFileSync(`${pathDef}${file}`, dir)
+      if (!existsSync(dir)) copyFileSync(`${pathDef}${file}`, dir)
     }
   }
 
@@ -179,8 +186,7 @@ class Cfg {
 
   /** 修改日志等级 */
   async change_bot() {
-    const log = await import('./log.js')
-    log.default()
+    //
   }
 }
 
