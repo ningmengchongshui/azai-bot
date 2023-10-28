@@ -43,6 +43,7 @@
     "node-fetch": "^3.3.2",
     "node-schedule": "^2.1.1",
     "oicq": "^2.3.1",
+    "puppeteer": "^21.4.1",
     "query-string": "^8.1.0",
     "redis": "^4.6.10",
     "sequelize": "^6.32.1",
