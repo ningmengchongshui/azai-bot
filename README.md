@@ -209,6 +209,10 @@ reg: '^(#|/)?帮助$',
 
 ## redis
 
+> A-Yunzai 配置了`global.redis`且使用`redis`包
+
+> 不推荐再使用`redis`,推荐使用`ioreids`
+
 ```js
 import { getBotConfigByKey } from "alemonjs";
 import redisClient, { Redis as RedisClient } from 'ioredis'
