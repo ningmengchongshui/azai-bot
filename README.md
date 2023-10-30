@@ -135,11 +135,12 @@ app.mount()
 
 ```js
 |-- config    原Yunzai配置(部分插件需要才保留,实则无用)
-|-- db        数据库引入
 |-- lib       原Yunzai应用文件(部分插件需要才保留,不推荐插件再引入)
-|-- plugins   固定插件文件目录
-|-- public    公共资源
 |-- renderers 原Yunzai截图工具(部分插件需要才保留,不推荐插件再引入)
+|-- plugins   集成插件目录
+    |-- example   单例插件目录
+|-- public    公共资源
+    |-- defset    指令打印集
 |-- src       机器人工程目录
     |-- puppeteerrc.js    截图工具默认配置
 |-- .env      数据库配置文件

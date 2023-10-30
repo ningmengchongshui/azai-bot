@@ -25,7 +25,7 @@ mkdirSync('./data', { recursive: true })
  * 数据库redis
  * ***********
  */
-import { Redis as redis } from '../db/redis/main.js'
+import { Redis as redis } from './redis.js'
 import { RedisClientType } from 'redis'
 
 declare global {
