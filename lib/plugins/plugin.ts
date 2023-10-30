@@ -3,13 +3,27 @@
  * 插件
  * ********
  */
-let stateArr = {}
+const stateCache = {}
+/**
+ * 定时器记录
+ */
+const timeoutCache = {}
+/**
+ * 插件基础类
+ */
 export default class plugin {
+  e:any
+  name:string
+  dsc:string
+  event:string
+  priority:number
+  task:any
+  rule:any[]
   constructor({
     name = 'app-name',
     dsc = '无',
-    event = 'MESSAGES',
-    priority = 9999,
+    event = 'message',
+    priority = 99999,
     task = { name: '', fnc: '', cron: '' },
     rule = []
   }) {
@@ -51,15 +65,15 @@ export default class plugin {
    * @param isGroup 是否群聊
    * @param time 操作时间，默认120秒
    */
-  setContext(type, isGroup = false, time = 120) {
+  setContext(type:string, isGroup = false, time = 120) {
     const key = this.conKey(isGroup)
-    if (!stateArr[key]) stateArr[key] = {}
-    stateArr[key][type] = this.e
-    if (!time) return
-    /** 操作时间 */
-    setTimeout(() => {
-      if (!stateArr[key][type]) return
-      delete stateArr[key][type]
+    if (!stateCache[key]) stateCache[key] = {}
+    stateCache[key][type] = this.e
+    // 定时
+    if (!(time && typeof time == 'number')) return
+    if (!timeoutCache[key]) timeoutCache[key] = {}
+    timeoutCache[key][type] = setTimeout(() => {
+      this.finish(type, isGroup)
       this.e.reply('操作超时已取消')
     }, time * 1000)
   }
@@ -69,7 +83,7 @@ export default class plugin {
    * @returns
    */
   getContext() {
-    return stateArr[this.conKey()]
+    return stateCache[this.conKey()]
   }
 
   /**
@@ -77,19 +91,34 @@ export default class plugin {
    * @returns
    */
   getContextGroup() {
-    return stateArr[this.conKey(true)]
+    return stateCache[this.conKey(true)]
   }
 
   /**
    * @param type 执行方法
    * @param isGroup 是否群聊
    */
-  finish(type, isGroup = false) {
+  finish(type:string, isGroup = false) {
+    if (!this.conKey(isGroup)) return
     if (
-      stateArr[this.conKey(isGroup)] &&
-      stateArr[this.conKey(isGroup)][type]
+      // 检擦key
+      stateCache[this.conKey(isGroup)] &&
+      // 检查方法
+      stateCache[this.conKey(isGroup)][type]
     ) {
-      delete stateArr[this.conKey(isGroup)][type]
+      // 删除方法
+      delete stateCache[this.conKey(isGroup)][type]
+    }
+    if (
+      // 检擦key
+      timeoutCache[this.conKey(isGroup)] &&
+      // 检查方法
+      timeoutCache[this.conKey(isGroup)][type]
+    ) {
+      /**
+       * 删除定时任务
+       */
+      clearTimeout(timeoutCache[this.conKey(isGroup)][type])
     }
   }
 }

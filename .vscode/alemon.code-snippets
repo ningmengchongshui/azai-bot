@@ -4,7 +4,7 @@
     "prefix": "plugin",
     "body": [
       "import { plugin , AMessage } from 'alemonjs'",
-      "\nexport class ${1:PluginName} extends plugin {",
+      "export class ${1:PluginName} extends plugin {",
       "  constructor() {",
       "    super({",
       "      dsc: '${2:插件描述}',",
@@ -22,7 +22,7 @@
       "    e.reply('${5:回复内容}')",
       "    return",
       "  }",
-      "}\n"
+      "}"
     ],
     "description": "plugin文件模板"
   },
@@ -31,7 +31,7 @@
     "prefix": "plugin",
     "body": [
       "import { plugin } from 'alemonjs'",
-      "\nexport class ${1:PluginName} extends plugin {",
+      "export class ${1:PluginName} extends plugin {",
       "  constructor() {",
       "    super({",
       "      dsc: '${2:插件描述}',",
@@ -49,7 +49,7 @@
       "    e.reply('${5:回复内容}')",
       "    return",
       "  }",
-      "}\n"
+      "}"
     ],
     "description": "plugin文件模板"
   }
