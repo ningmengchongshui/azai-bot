@@ -17,12 +17,6 @@ export default defineAlemonConfig({
   },
   // close yunzai poke
   shieldEvent: ['poke', 'notice.*.poke'],
-  plugin: {
-    // yunzai
-    directory: '/plugins'
-  },
-  // 默认规则
-  defaultCharacter: '#',
   mysql,
   redis
 })

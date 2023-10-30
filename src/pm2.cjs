@@ -7,15 +7,11 @@ if (!findArs) {
     args: ars
   })
 } else {
-  if (!ars[0].startsWith('@')) {
-    ars.unshift('alemonb')
-  }
+  if (!ars[0].startsWith('@')) ars.unshift('alemonb')
   const msg = ars.join(' ')
   const arr = msg.split('@')
   for (const arg of arr) {
-    if (arg == '') {
-      continue
-    }
+    if (arg == '') continue
     const ar = arg.split(' ')
     const existingApp = apps.find(app => app.name === ar[0])
     if (!existingApp) {
