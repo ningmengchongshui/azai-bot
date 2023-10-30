@@ -1,7 +1,7 @@
 import './src/index.js'
-// alemonjs
 import { defineAlemonConfig, analysis } from 'alemonjs'
 import { login } from './a.login.config.js'
+import { mysql, redis } from './a.db.config.js'
 console.log('---------------------')
 console.log('DOCS')
 console.log('https://alemonjs.com')
@@ -22,5 +22,7 @@ export default defineAlemonConfig({
     directory: '/plugins'
   },
   // 默认规则
-  defaultCharacter: '#'
+  defaultCharacter: '#',
+  mysql,
+  redis
 })

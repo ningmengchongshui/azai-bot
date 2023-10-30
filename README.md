@@ -49,7 +49,13 @@ npm run pull:W # windows
 
 [KOOK 平台 https://developer.kookapp.cn/](https://developer.kookapp.cn/doc/)
 
+`a.login.config.ts`
+
 > 配置登录了解[https://alemonjs.com](https://alemonjs.com/alemon/v2.x/examples/introduction/config.html)
+
+`a.db.config.ts`
+
+> 数据库配置
 
 # Tools
 
@@ -145,8 +151,8 @@ app.mount()
     |-- defset    指令打印集
 |-- src       机器人工程目录
     |-- puppeteerrc.js    截图工具默认配置
-|-- .env      数据库配置文件
 |-- .puppeteerrc.cjs  截图工具自动索引
+|-- a.db.config.ts    数据库配置
 |-- a.login.config.ts 机器人登录配置
 |-- alemon.config.ts  框架配置
 |-- pm2.config.cjs    机器人后台运行配置
