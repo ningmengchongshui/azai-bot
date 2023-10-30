@@ -67,6 +67,7 @@ npm run pull:W # windows
 import { createApps } from 'alemonjs'
 import { apps } from './index.js'
 const app = createApps(import.meta.url)
+app.setCharacter('#')
 app.component(apps)
 app.mount()
 ```
@@ -95,6 +96,7 @@ app.setMessage(async e => {
   return e
 })
 app.setArg(() => [{ render }])
+app.setCharacter('#')
 app.component({ xiaoyao })
 app.mount()
 ```
@@ -124,6 +126,7 @@ for (const i in files) {
   apps[name] = ret[i].value[Object.keys(ret[i].value)[0]]
 }
 const app = createApps(import.meta.url)
+app.setCharacter('#')
 app.component(apps)
 app.mount()
 ```
@@ -165,23 +168,22 @@ Node Vsersion >16.14 && <=18.18.2
 
 - 正则差异化影响
 
-> `alemonjs`于`a-yunzai`的插件有差异
+> `alemonjs`与`a-yunzai`的插件有差异
 
 > `a-yunzai`使用`#`而`alemonjs`使用`/`
 
-> 1. `alemonjs`插件使用`a-yunzai`环境需要保持plugin引用
-
-> 2. `alemonjs`插件使用`a-yunzai`环境不引用需要手动标注`/`
+> `a-yunzai`插件使用需要更改指令规则
 
 ```js
-export class test extends plugin {
-  constructor(e) {
-    super({
-      startCharacter: '/'
-    })
-  }
-}
+// alemonjs 默认'/'
+app.setCharacter('#')
 ```
+
+- 继承差异化
+
+> `a-yunzai`继承`plugin`可被Yunzai识别
+
+> `alemonjs`继承`APlugin`不被Yunzai识别
 
 - 越精确的正则执行越快性能越高
 
