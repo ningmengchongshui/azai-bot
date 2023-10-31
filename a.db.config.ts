@@ -10,5 +10,5 @@ export const redis: AlemonOptions['redis'] = {
   password: '',
   port: 6379,
   host: 'localhost',
-  db: 1
+  db: 0
 }

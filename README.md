@@ -1,12 +1,14 @@
-# Azai-Bot
+# A-Yunzai
 
 > 基于AlemonJS的Yunzai环境,安装即用
 
-> 喜欢的同志点点star哦,要冲业绩的 [Gitee AlemonJS](https://gitee.com/ningmengchongshui/alemon) [Github AlemonJS](https://github.com/ningmengchongshui/alemon)
+> 喜欢的同志点点star哦,要冲业绩的。
+
+> [Gitee AlemonJS](https://gitee.com/ningmengchongshui/alemon) | [Github AlemonJS](https://github.com/ningmengchongshui/alemon)
 
 > 必要环境Windows/Linux + Node.js>16.14.0 + Chrome/Chromium/Edge + Redis>5.0.0
 
-拉取Azai-Bot项目
+拉取A-Yunzai项目
 
 ```sh
 git clone --depth=1 -b main https://gitee.com/ningmengchongshui/a-yunzai.git
@@ -205,13 +207,17 @@ reg: /^(#|\/)?帮助$/
 reg: '^(#|/)?帮助$',
 ```
 
-# db
+# Database
 
 ## redis
 
 > A-Yunzai 配置了`global.redis`且使用`redis`包
 
 > 不推荐再使用`redis`,推荐使用`ioreids`
+
+> redis默认16个db 默认全局使用db0
+
+> 后续的连接非必要请使用其他db
 
 ```js
 import { getBotConfigByKey } from "alemonjs";
