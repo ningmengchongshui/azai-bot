@@ -1,15 +1,11 @@
-interface Logtype extends Console {
-  red: (val: string) => string
-  yellow: (val: string) => string
-  mark: (val: string) => string
-  green: (val: string) => string
-}
+import { Logtype } from './types.js'
 const logger: Logtype = console as Logtype
 logger.red = val => val
 logger.debug = val => val
 logger.yellow = val => val
 logger.green = val => val
 logger.mark = val => val
+logger.blue = val => val
 global.logger = logger
 import { mkdirSync } from 'fs'
 /**
@@ -61,7 +57,10 @@ global.segment = {
     const img = getPathBuffer(val)
     if (img) return img
     // url
-    return `<http>${val}</http>`
+    if (/^(http|https)/.test(val)) {
+      return `<http>${val}</http>`
+    }
+    return val
   },
   /**
    * 视频
@@ -108,8 +107,11 @@ global.segment = {
     // path
     const img = getPathBuffer(val)
     if (img) return img
+    if (/^(http|https)/.test(val)) {
+      return `<http>${val}</http>`
+    }
     // url
-    return `<http>${val}</http>`
+    return val
   }
 }
 /**

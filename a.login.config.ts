@@ -15,6 +15,11 @@ export const login: LoginMap = {
       isPrivate: false,
       // 主人账号(不会看的可机器人带上@自己就会显示用户账号)
       masterID: '13348342918169126729'
+    },
+    // oneBot 连接
+    one: {
+      url: '',
+      access_token: ''
     }
   }
 }

@@ -8,6 +8,8 @@
 
 > 必要环境Windows/Linux + Node.js>16.14.0 + Chrome/Chromium/Edge + Redis>5.0.0
 
+> 支持连接其他OneBot-WS标准实现的机器人:Yunzai/Trss等
+
 拉取A-Yunzai项目
 
 ```sh
