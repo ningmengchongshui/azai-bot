@@ -60,6 +60,10 @@ global.segment = {
     if (/^(http|https)/.test(val)) {
       return `<http>${val}</http>`
     }
+    // isBase64
+    if (/^base64:\/\//.test(val)) {
+      return Buffer.from(val.replace(/^base64:\/\//, ''), 'base64')
+    }
     return val
   },
   /**
@@ -107,8 +111,13 @@ global.segment = {
     // path
     const img = getPathBuffer(val)
     if (img) return img
+    // url
     if (/^(http|https)/.test(val)) {
       return `<http>${val}</http>`
+    }
+    // isBase64
+    if (/^base64:\/\//.test(val)) {
+      return Buffer.from(val.replace(/^base64:\/\//, ''), 'base64')
     }
     // url
     return val
