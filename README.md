@@ -1,3 +1,9 @@
+# Yunzai
+
+> 登录原Yunzai-icqq可执行 npm run app openICQQ
+
+> 登录原Yunzai-ntqq可执行 npm run app openNTQQ
+
 # A-Yunzai
 
 > 基于AlemonJS的Yunzai环境,安装即用
@@ -8,21 +14,21 @@
 
 > 必要环境Windows/Linux + Node.js>16.14.0 + Chrome/Chromium/Edge + Redis>5.0.0
 
-> 支持连接其他OneBot-WS-V12标准实现的机器人:Yunzai/Trss等
+> 支持连接其他OneBot-WS-V12标准实现的:Yunzai-ws、Trss等机器人
 
-拉取A-Yunzai项目
+- 拉取A-Yunzai项目
 
 ```sh
 git clone --depth=1 -b main https://gitee.com/ningmengchongshui/a-yunzai.git
 ```
 
-拉取miao-plugin项目
+- 拉取miao-plugin项目
 
 ```sh
 git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin
 ```
 
-拉取依赖
+- 拉取依赖
 
 ```sh
 npm install
@@ -32,13 +38,13 @@ npm install
 # 外服请先删除.cnpmrc
 ```
 
-机器，启动
+- 机器，启动
 
 ```sh
 npm run app qq #qq测试机
 ```
 
-更新所有插件
+- 更新所有插件
 
 ```
 npm run pull:l # linux
@@ -60,12 +66,6 @@ npm run pull:W # windows
 `a.db.config.ts`
 
 > 数据库配置
-
-> 以下指令非alemonjs相关
-
-> 登录Yunzai-icqq可执行 npm run app openICQQ
-
-> 登录Uunzai-ntqq可执行 npm run app openNTQQ
 
 # Tools
 
