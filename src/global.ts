@@ -111,7 +111,7 @@ if (ars.includes('red')) {
   await (await import('../lib/plugins/loader.js')).default.load()
   const pluginsLoader = (await import('../lib/plugins/loader.js')).default
 } else if (ars.includes('icqq')) {
-  const Yunzai = await import('../lib/bot.js')
+  const Yunzai = await (await import('../lib/bot.js')).default
   global.Bot = await Yunzai.run()
 } else {
   await import('./segment.js')
