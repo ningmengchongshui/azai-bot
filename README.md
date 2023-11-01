@@ -171,7 +171,7 @@ app.mount()
 
 - 版本约定
 
-Node Vsersion >16.14 && <=18.18.2
+Node Version >16.14 && <=18.18.2
 
 - 启动细节
 
