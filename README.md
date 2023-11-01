@@ -61,6 +61,12 @@ npm run pull:W # windows
 
 > 数据库配置
 
+> 以下指令非alemonjs相关
+
+> 登录Yunzai-icqq可执行 npm run app openICQQ
+
+> 登录Uunzai-ntqq可执行 npm run app openNTQQ
+
 # Tools
 
 环境部署铺助工具[Bot-Help](https://gitee.com/ningmengchongshui/bot-help)
@@ -142,10 +148,6 @@ app.mount()
 ```
 
 # Menu
-
-> 登录Yunzai可执行 npm run app openICQQ
-
-> 登录ntqq可执行 npm run app openNTQQ
 
 ```js
 |-- config    原Yunzai配置(部分插件需要才保留,不推荐插件再引入)
