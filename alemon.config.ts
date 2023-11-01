@@ -11,11 +11,15 @@ console.log('npm run dev')
 console.log('---------------------')
 export default defineAlemonConfig({
   login: analysis(login),
+  server: {
+    state:
+      !process.argv.includes('ntqq') && !process.argv.includes('villa')
+        ? false
+        : undefined
+  },
   app: {
-    // close app dev
     init: false
   },
-  // close yunzai poke
   shieldEvent: ['poke', 'notice.*.poke'],
   mysql,
   redis

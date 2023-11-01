@@ -143,8 +143,12 @@ app.mount()
 
 # Menu
 
+> 登录Yunzai可执行 npm run app openICQQ
+
+> 登录ntqq可执行 npm run app openNTQQ
+
 ```js
-|-- config    原Yunzai配置(部分插件需要才保留,实则无用)
+|-- config    原Yunzai配置(部分插件需要才保留,不推荐插件再引入)
 |-- lib       原Yunzai应用文件(部分插件需要才保留,不推荐插件再引入)
 |-- renderers 原Yunzai截图工具(部分插件需要才保留,不推荐插件再引入)
 |-- plugins   集成插件目录
