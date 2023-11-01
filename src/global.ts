@@ -108,8 +108,8 @@ global.YUNZAIV2 = assignPropertiesAndMethods
 const ars = process.argv.slice(2)
 if (ars.includes('red')) {
   await import('./ntqq.segment.js')
-  await (await import('../lib/plugins/loader.js')).default.load()
-  const pluginsLoader = (await import('../lib/plugins/loader.js')).default
+  const loader = (await import('../lib/plugins/loader.js')) as any
+  loader.default.load()
 } else if (ars.includes('icqq')) {
   const Yunzai = await (await import('../lib/bot.js')).default
   global.Bot = await Yunzai.run()
