@@ -145,7 +145,7 @@ class Puppeteer {
 
     this.restart()
 
-    return buff
+    return global.segment.image(buff)
   }
 
   /**
