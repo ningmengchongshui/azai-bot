@@ -1,8 +1,8 @@
-const apps = require('./src/pm2.cjs')
+const apps = require('./src/run/pm2.cjs')
 module.exports = {
   apps: apps.map(app => ({
     name: app.name,
-    script: 'src/run.js',
+    script: 'src/run/index.js',
     instances: 1,
     autorestart: true,
     exec_mode: 'cluster',
