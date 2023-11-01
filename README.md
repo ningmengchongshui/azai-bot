@@ -226,13 +226,13 @@ import { getBotConfigByKey } from "alemonjs";
 import redisClient, { Redis as RedisClient } from 'ioredis'
 const RDB = getBotConfigByKey('redis')
 function createRedis() {
-    const ALRedis = new redisClient({
-        host: RDB?.host ?? 'localhost',
-        port: RDB?.db ?? 6379,
-        password: RDB?.password '',
-        db: RDB?.db ?? 1,
-        maxRetriesPerRequest: null
-    })
+  const ALRedis = new redisClient({
+    host: RDB?.host ?? 'localhost',
+    port: RDB?.port ?? 6379,
+    password: RDB?.password ?? '',
+    db: RDB?.db ?? 1,
+    maxRetriesPerRequest: null
+  })
     ALRedis.on('error', (err: any) => {
         console.error('\n[REDIS]', err)
         console.error('\n[REDIS]', '请检查配置')
