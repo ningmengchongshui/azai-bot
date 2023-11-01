@@ -80,5 +80,3 @@ const segment = {
   }
 }
 global.segment = segment
-console.log(segment)
-// 出图没有?出图了。现在试试不调用ntqq，看看segment是不是你的

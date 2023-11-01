@@ -8,7 +8,6 @@ logger.mark = val => val
 logger.blue = val => val
 global.logger = logger
 import { mkdirSync } from 'fs'
-
 /**
  * ********
  * 必要目录
@@ -107,14 +106,13 @@ const assignPropertiesAndMethods = (rules: any, sourceObject: any) => {
 global.YUNZAIV2 = assignPropertiesAndMethods
 
 const ars = process.argv.slice(2)
-
-import Yunzai from '../lib/bot.js'
-
 if (ars.includes('red')) {
   await import('./ntqq.segment.js')
-  await (await import('../lib/plugins/loader.js')).default.load()
-  const pluginsLoader = (await import('../lib/plugins/loader.js')).default
+  const loader = await import('../lib/plugins/loader.js')
+  loader.load()
+  await import('../lib/plugins/loader.js')
 } else if (ars.includes('icqq')) {
+  const Yunzai = await import('../lib/bot.js')
   global.Bot = await Yunzai.run()
 } else {
   await import('./segment.js')
