@@ -3,7 +3,7 @@
  * 自定义时间提示
  * *************
  */
-import './logs.js'
+import './alemon/logs.js'
 /**
  * *************
  * Yunzai global
@@ -22,5 +22,5 @@ if (ars.includes('openNTQQ')) {
   const Yunzai = (await import('../lib/bot.js')).default
   global.Bot = await Yunzai.run()
 } else {
-  await import('./segment.js')
+  await import('./alemon/segment.js')
 }

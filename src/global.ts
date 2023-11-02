@@ -1,4 +1,4 @@
-import { Logtype } from './types.js'
+import { Logtype } from './alemon/types.js'
 const logger: Logtype = console as Logtype
 logger.red = val => val
 logger.debug = val => val
