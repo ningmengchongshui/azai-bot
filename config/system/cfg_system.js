@@ -7,7 +7,7 @@ export const cfgSchema = {
         key: '心跳',
         type: 'num',
         def: 5,
-        input: (n) => {
+        input: n => {
           if (n >= 0) {
             return n * 1
           } else {
@@ -22,7 +22,7 @@ export const cfgSchema = {
         key: '上报',
         type: 'num',
         def: 2,
-        input: (n) => Math.min(2, Math.max(n * 1 || 0, 1)),
+        input: n => Math.min(2, Math.max(n * 1 || 0, 1)),
         desc: '上报数据类型: 1:string 2:array',
         fileName: 'ws-config'
       }
@@ -56,7 +56,7 @@ export const cfgSchema = {
         title: '通知哪个主人',
         key: '主人',
         type: 'num',
-        input: (n) => {
+        input: n => {
           if (n >= 0) {
             return n * 1
           } else {
@@ -80,14 +80,14 @@ export const cfgSchema = {
         type: 'num',
         def: 1,
         desc: 'red 发送伪造转发消息方式 1:伪造转发 2:陆续发送 3:合并发送',
-        input: (n) => Math.min(3, Math.max(n * 1 || 0, 1)),
+        input: n => Math.min(3, Math.max(n * 1 || 0, 1)),
         fileName: 'msg-config'
       },
       msgStoreTime: {
         title: '消息存储时间',
         key: '存储',
         type: 'num',
-        input: (n) => {
+        input: n => {
           if (n >= 0) {
             return n * 1
           } else {
@@ -158,7 +158,7 @@ export const cfgSchema = {
         def: false,
         desc: '群内戳一戳是否上报',
         fileName: 'notice-config'
-      },
+      }
     }
   },
   request: {
@@ -184,7 +184,7 @@ export const cfgSchema = {
         def: false,
         desc: '群聊申请是否上报 (申请加入群聊)',
         fileName: 'request-config'
-      },
+      }
     }
   },
   setAll: {

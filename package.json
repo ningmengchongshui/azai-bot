@@ -4,6 +4,7 @@
   "description": "阿云崽机器人",
   "author": "ningmengchongshui",
   "license": "GPL-2.0",
+  "main": "alemon.config.js",
   "type": "module",
   "private": true,
   "scripts": {
@@ -68,7 +69,6 @@
     "prettier": "^3.0.3"
   },
   "workspaces": [
-    "application/*",
     "plugins/*"
   ],
   "engines": {

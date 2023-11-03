@@ -23,12 +23,7 @@
   "execMap": {
     "ts": "ts-node"
   },
-  "watch": [
-    "application",
-    "apps",
-    "src",
-    "db"
-  ],
+  "watch": ["application", "apps", "src", "db"],
   "env": {
     "NODE_ENV": "development"
   },

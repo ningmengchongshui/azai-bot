@@ -34,16 +34,7 @@
     "experimentalSpecifierResolution": "node"
   },
   // 要编译的路径列表（用于指定那些ts文件需要被编译），
-  "include": [
-    "plugins",
-    "application",
-    "lib",
-    "apps",
-    "src",
-    "db",
-    "alemon.config.ts",
-    "a.login.config.ts"
-  ],
+  "include": ["plugins", "lib", "src", "alemon.config.ts"],
   // 要排除的、不编译的文件，它也可以指定一个列表，
   "exclude": [
     "node_modules",
