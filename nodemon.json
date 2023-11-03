@@ -11,19 +11,14 @@
     "config",
     "data",
     "logs",
-    "help",
-    "application/*/*.json",
-    "application/*/*.js",
-    "plugins/*/*.json",
-    "plugins/*/*.js",
-    "apps.js"
+    "help"
   ],
   "delay": 1000,
   "verbose": true,
   "execMap": {
     "ts": "ts-node"
   },
-  "watch": ["application", "apps", "src", "db"],
+  "watch": [],
   "env": {
     "NODE_ENV": "development"
   },
