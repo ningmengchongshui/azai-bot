@@ -17,10 +17,7 @@ export default defineAlemonConfig({
   login: analysis(login),
   // 图片服务端口
   server: {
-    state:
-      !process.argv.includes('ntqq') && !process.argv.includes('villa')
-        ? false
-        : undefined
+    state: process.argv.includes('ntqq')
   },
   // 个人应用
   app: {
