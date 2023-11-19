@@ -6,9 +6,11 @@
 
 # A-Yunzai
 
-> 基于AlemonJS的Yunzai环境,安装即用
+> 基于AlemonJS的Yunzai环境
 
-> 喜欢的同志点点star哦,要冲业绩的。
+> 支持所有Yunzai插件安装即用
+
+> 喜欢的同志点点star
 
 > [Gitee AlemonJS](https://gitee.com/ningmengchongshui/alemon) | [Github AlemonJS](https://github.com/ningmengchongshui/alemon)
 
