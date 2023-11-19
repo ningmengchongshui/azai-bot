@@ -63,7 +63,7 @@ npm run pull:W # windows
 
 `a.login.config.ts`
 
-> 配置登录了解[https://alemonjs.com](https://alemonjs.com/alemon/v2.x/examples/introduction/config.html)
+> 配置登录了解[https://alemonjs.com](https://alemonjs.com/)
 
 `a.db.config.ts`
 
