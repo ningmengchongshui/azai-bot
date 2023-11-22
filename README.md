@@ -75,6 +75,23 @@ npm run pull:W # windows
 
 > start： 1 环境部署 --> 1. 安装node && 3.安装redis
 
+# 6379 err
+
+- 可能是 redis未启动
+
+- 可能是 地址错误
+
+```ts
+export const redis: AlemonOptions['redis'] = {
+  password: '',
+  port: 6379,
+  // 一般是 localhost 即可
+  // 但某些时候需要改成
+  host: '127.0.0.1',
+  db: 0
+}
+```
+
 # Plugin Parsing
 
 插件中放置识别文件`main.js`
