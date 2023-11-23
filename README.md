@@ -1,9 +1,3 @@
-# Yunzai
-
-> 登录原Yunzai-icqq可执行 npm run app openICQQ
-
-> 登录原Yunzai-ntqq可执行 npm run app openNTQQ
-
 # A-Yunzai
 
 > 基于AlemonJS的Yunzai环境
@@ -14,20 +8,28 @@
 
 > [Gitee AlemonJS](https://gitee.com/ningmengchongshui/alemon) | [Github AlemonJS](https://github.com/ningmengchongshui/alemon)
 
-> 必要环境Windows/Linux + Node.js>16.14.0 + Chrome/Chromium/Edge + Redis>5.0.0
+> 必要环境 Windows/Linux + Chrome/Chromium/Edge
+
+> 必要环境 18.18.2>Node.js>16.14.0 + Redis>5.0.0
 
 > 支持连接其他OneBot-WS-V12标准实现的:Yunzai-ws、Trss等机器人
 
-- 拉取A-Yunzai项目
+- 拉取A-Yunzai项目(必选)
 
 ```sh
 git clone --depth=1 -b main https://gitee.com/ningmengchongshui/a-yunzai.git
 ```
 
-- 拉取miao-plugin项目
+- 拉取miao-plugin项目(必选)
 
 ```sh
 git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin
+```
+
+- 拉取xiaoyao-cvs项目(可选)
+
+```sh
+git clone https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git ./plugins/xiaoyao-cvs-plugin
 ```
 
 - 拉取依赖
@@ -61,6 +63,8 @@ npm run pull:W # windows
 
 [KOOK 平台 https://developer.kookapp.cn/](https://developer.kookapp.cn/doc/)
 
+[KOOK 平台 https://developer.kookapp.cn/](https://developer.kookapp.cn/doc/)
+
 `a.login.config.ts`
 
 > 配置登录了解[https://alemonjs.com](https://alemonjs.com/)
@@ -75,9 +79,11 @@ npm run pull:W # windows
 
 > start： 1 环境部署 --> 1. 安装node && 3.安装redis
 
-# 6379 err
+# REDIS 6379 ERR
 
-- 可能是 redis未启动
+> src/redis.ts
+
+- 可能是 未启动
 
 - 可能是 地址错误
 
@@ -94,99 +100,11 @@ export const redis: AlemonOptions['redis'] = {
 
 # Plugin Parsing
 
-插件中放置识别文件`main.js`
+[如何有效加载Yunzai插件?](./md/PPLUIN.md)
 
-- 模板1 引入式
+# Database
 
-```js
-import { createApps } from 'alemonjs'
-import { apps } from './index.js'
-const app = createApps(import.meta.url)
-app.setCharacter('#')
-app.component(apps)
-app.mount()
-```
-
-- 模板2 兼容式
-
-> xiaoyao-cvs-plugin 为例
-
-```sh
-git clone https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git ./plugins/xiaoyao-cvs-plugin
-```
-
-新增文件 `./plugins/xiaoyao-cvs-plugin/main.js`
-
-```js
-import { createApps } from 'alemonjs'
-import * as apps from './index.js'
-import { render } from './adapter/render.js'
-const xiaoyao = YUNZAIV2(apps['rule'], apps)
-const app = createApps(import.meta.url)
-app.setMessage(async e => {
-  await runtime.init(e)
-  e.sender = {}
-  e.sender.card = e.user_name
-  e.checkAuth = val => val
-  return e
-})
-app.setArg(() => [{ render }])
-app.setCharacter('#')
-app.component({ xiaoyao })
-app.mount()
-```
-
-- 模板3 遍历式
-
-```js
-import { createApps, getAppName } from 'alemonjs'
-const AppName = getAppName(import.meta.url)
-import fs from 'node:fs'
-const files = fs
-  .readdirSync(`./plugins/${AppName}/apps`)
-  .filter(file => file.endsWith('.js'))
-let ret = []
-files.forEach(file => {
-  ret.push(import(`./apps/${file}`))
-})
-ret = await Promise.allSettled(ret)
-const apps = {}
-for (const i in files) {
-  const name = files[i].replace('.js', '')
-  if (ret[i].status != 'fulfilled') {
-    console.error(`载入插件错误：${name}`)
-    console.error(ret[i].reason)
-    continue
-  }
-  apps[name] = ret[i].value[Object.keys(ret[i].value)[0]]
-}
-const app = createApps(import.meta.url)
-app.setCharacter('#')
-app.component(apps)
-app.mount()
-```
-
-# Menu
-
-```js
-|-- config    原Yunzai配置(部分插件需要才保留,不推荐插件再引入)
-|-- lib       原Yunzai应用文件(部分插件需要才保留,不推荐插件再引入)
-|-- renderers 原Yunzai截图工具(部分插件需要才保留,不推荐插件再引入)
-|-- plugins   集成插件目录
-    |-- other     其他插件目录(部分插件需要才保留,不推荐插件再引入)
-    |-- genshin   原神插件目录(喵喵插件需要才保留,不推荐插件再引入)
-    |-- example   单例插件目录
-|-- public    公共资源
-    |-- defset    指令打印集
-|-- src       机器人工程目录
-    |-- puppeteerrc.js    截图工具默认配置
-|-- .puppeteerrc.cjs  截图工具自动索引
-|-- a.db.config.ts    数据库配置
-|-- a.login.config.ts 机器人登录配置
-|-- alemon.config.ts  框架配置
-|-- pm2.config.cjs    机器人后台运行配置
-|-- tsconfig.json     TS编译配置
-```
+[如何正确使用数据库?](./md/DATABASE.md)
 
 # Note
 
@@ -234,62 +152,32 @@ reg: /^(#|\/)?帮助$/
 reg: '^(#|/)?帮助$',
 ```
 
-# Database
+# Yunzai
 
-## redis
+> 登录原Yunzai-icqq可执行 npm run app openICQQ
 
-> A-Yunzai 配置了`global.redis`且使用`redis`包
+> 登录原Yunzai-ntqq可执行 npm run app openNTQQ
 
-> 不推荐再使用`redis`,推荐使用`ioreids`
-
-> redis默认16个db 默认全局使用db0
-
-> 后续的连接非必要请使用其他db
+# Menu
 
 ```js
-import { getBotConfigByKey } from "alemonjs";
-import redisClient, { Redis as RedisClient } from 'ioredis'
-const RDB = getBotConfigByKey('redis')
-function createRedis() {
-  const ALRedis = new redisClient({
-    host: RDB?.host ?? 'localhost',
-    port: RDB?.port ?? 6379,
-    password: RDB?.password ?? '',
-    db: RDB?.db ?? 1,
-    maxRetriesPerRequest: null
-  })
-    ALRedis.on('error', (err: any) => {
-        console.error('\n[REDIS]', err)
-        console.error('\n[REDIS]', '请检查配置')
-    })
-    return ALRedis
-}
-export const Redis: RedisClient = createRedis()
-```
-
-## mysql
-
-```js
-import { getBotConfigByKey } from 'alemonjs'
-import { Sequelize } from 'sequelize'
-const MDB = getBotConfigByKey('mysql')
-export const sequelize = new Sequelize(
-  MDB?.database ?? 'alemonjs',
-  MDB?.user ?? 'root',
-  MDB?.password ?? 'Qq002580!',
-  {
-    host: MDB?.host ?? 'localhost',
-    port: MDB?.port ?? 3306,
-    dialect: 'mysql',
-    logging: false // 禁用日志记录
-  }
-)
-export const TableConfig = {
-  freezeTableName: true, //不增加复数表名
-  createdAt: false, //去掉
-  updatedAt: false //去掉
-}
-export { Op, literal } from 'sequelize'
+|-- config    原Yunzai配置(部分插件需要才保留,不推荐插件再引入)
+|-- lib       原Yunzai应用文件(部分插件需要才保留,不推荐插件再引入)
+|-- renderers 原Yunzai截图工具(部分插件需要才保留,不推荐插件再引入)
+|-- plugins   集成插件目录
+    |-- other     其他插件目录(部分插件需要才保留,不推荐插件再引入)
+    |-- genshin   原神插件目录(喵喵插件需要才保留,不推荐插件再引入)
+    |-- example   单例插件目录
+|-- public    公共资源
+    |-- defset    指令打印集
+|-- src       机器人工程目录
+    |-- puppeteerrc.js    截图工具默认配置
+|-- .puppeteerrc.cjs  截图工具自动索引
+|-- a.db.config.ts    数据库配置
+|-- a.login.config.ts 机器人登录配置
+|-- alemon.config.ts  框架配置
+|-- pm2.config.cjs    机器人后台运行配置
+|-- tsconfig.json     TS编译配置
 ```
 
 # Related Links
