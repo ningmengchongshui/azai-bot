@@ -14,19 +14,19 @@
 
 > 支持连接其他OneBot-WS-V12标准实现的:Yunzai-ws、Trss等机器人
 
-- 拉取A-Yunzai项目(必选)
+- [拉取A-Yunzai项目(必选)](https://alemonjs.com/)
 
 ```sh
 git clone --depth=1 https://gitee.com/ningmengchongshui/a-yunzai.git
 ```
 
-- 拉取miao-plugin项目(必选)
+- [拉取miao-plugin项目(必选)](https://gitee.com/yoimiya-kokomi/miao-plugin)
 
 ```sh
 git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin
 ```
 
-- 拉取xiaoyao-cvs项目(可选)
+- [拉取xiaoyao-cvs项目(可选)](https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin)
 
 ```sh
 git clone  --depth=1 https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git ./plugins/xiaoyao-cvs-plugin
