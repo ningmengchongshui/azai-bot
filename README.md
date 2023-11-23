@@ -17,7 +17,7 @@
 - 拉取A-Yunzai项目(必选)
 
 ```sh
-git clone --depth=1 -b main https://gitee.com/ningmengchongshui/a-yunzai.git
+git clone --depth=1 https://gitee.com/ningmengchongshui/a-yunzai.git
 ```
 
 - 拉取miao-plugin项目(必选)
@@ -29,7 +29,7 @@ git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/m
 - 拉取xiaoyao-cvs项目(可选)
 
 ```sh
-git clone https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git ./plugins/xiaoyao-cvs-plugin
+git clone  --depth=1 https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git ./plugins/xiaoyao-cvs-plugin
 ```
 
 - 拉取依赖
