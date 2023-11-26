@@ -20,7 +20,6 @@ app.setMessage(async e => {
   }
   e.sender = {}
   e.sender.card = e.user_name
-  console.log(e.msg)
   return e
 })
 app.setCharacter('#')
