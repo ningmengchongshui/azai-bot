@@ -18,6 +18,7 @@
 
 ```sh
 git clone --depth=1 https://gitee.com/ningmengchongshui/a-yunzai.git
+cd a-yunzai
 ```
 
 - [拉取miao-plugin项目(必选)](https://gitee.com/yoimiya-kokomi/miao-plugin)
@@ -134,6 +135,10 @@ Node Version >16.14 && <=18.18.2
 // alemonjs 默认'/'
 app.setCharacter('#')
 ```
+
+> 同时A-Yunzai没有`*`转`#星铁`
+
+> 使用Miao-Plugin原生指令`#星铁绑定123456`
 
 - 继承差异化
 

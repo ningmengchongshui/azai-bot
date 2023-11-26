@@ -9,6 +9,6 @@ export const mysql: AlemonOptions['mysql'] = {
 export const redis: AlemonOptions['redis'] = {
   password: '',
   port: 6379,
-  host: 'localhost',
+  host: '127.0.0.1',
   db: 0
 }
