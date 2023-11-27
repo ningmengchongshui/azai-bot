@@ -1,11 +1,5 @@
 # 了解整体结构与原云崽启动
 
-## Yunzai
-
-> 登录原Yunzai-icqq可执行 npm run app openICQQ
-
-> 登录原Yunzai-ntqq可执行 npm run app openNTQQ
-
 ## Menu
 
 ```js

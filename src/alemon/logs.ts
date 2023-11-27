@@ -1,4 +1,4 @@
-import { setLog } from 'alemonjs/logs'
+import { setLog } from 'afloat/logs'
 const info = console.info
 /**
  * 屏蔽错误反馈

@@ -24,6 +24,12 @@
       "name": "AlemonJS ntqq Debug",
       "request": "launch",
       "type": "node-terminal"
+    },
+    {
+      "command": "npm run app disord",
+      "name": "AlemonJS disord Debug",
+      "request": "launch",
+      "type": "node-terminal"
     }
   ]
 }

@@ -80,33 +80,6 @@ npm run pull:W # windows
 
 > start： 1 环境部署 --> 1. 安装node && 3.安装redis
 
-# REDIS 6379 ERR
-
-> src/redis.ts
-
-- 可能是 未启动
-
-- 可能是 地址错误
-
-```ts
-export const redis: AlemonOptions['redis'] = {
-  password: '',
-  port: 6379,
-  // 一般是 localhost 即可
-  // 但某些时候需要改成
-  host: '127.0.0.1',
-  db: 0
-}
-```
-
-# Plugin Parsing
-
-[如何有效加载Yunzai插件?](./md/PPLUIN.md)
-
-# Database
-
-[如何正确使用数据库?](./md/DATABASE.md)
-
 # Note
 
 - 交流
@@ -156,6 +129,33 @@ reg: /^(#|\/)?帮助$/
 //  如果只会写字符串正则应该这样
 reg: '^(#|/)?帮助$',
 ```
+
+# REDIS 6379 ERR
+
+> src/redis.ts
+
+- 可能是 未启动
+
+- 可能是 地址错误
+
+```ts
+export const redis: AlemonOptions['redis'] = {
+  password: '',
+  port: 6379,
+  // 一般是 localhost 即可
+  // 但某些时候需要改成
+  host: '127.0.0.1',
+  db: 0
+}
+```
+
+# Plugin Parsing
+
+[如何有效加载Yunzai插件?](./md/PPLUIN.md)
+
+# Database
+
+[如何正确使用数据库?](./md/DATABASE.md)
 
 # Yunzai
 

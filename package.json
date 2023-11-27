@@ -27,7 +27,6 @@
   },
   "dependencies": {
     "alemon-ffmpeg": "^1.0.1",
-    "alemonjs": "^1.1.10",
     "art-template": "^4.13.2",
     "chalk": "^5.3.0",
     "chokidar": "^3.5.3",
@@ -62,7 +61,8 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.0.1",
     "prettier": "^3.0.3",
-    "afloat": "^1.0.6"
+    "afloat": "^1.0.8",
+    "alemonjs": "^1.1.11"
   },
   "workspaces": [
     "plugins/*"

@@ -9,16 +9,16 @@
 > 后续的连接非必要请使用其他db
 
 ```js
-// APPNAME 是插件自定义值
+// APP 是插件自定义值
 import { getBotConfigByKey } from 'alemonjs'
 import redisClient, { Redis as RedisClient } from 'ioredis'
 const RDB = getBotConfigByKey('redis')
 function createRedis() {
   const ALRedis = new redisClient({
-    host: process.env?.APPNAME_REDIS_HOST ?? RDB?.host,
-    port: Number(process.env?.APPNAME_REDIS_PORT ?? RDB?.port),
-    password: process.env?.APPNAME_REDIS_PASSWORD ?? RDB?.password,
-    db: Number(process.env?.APPNAME_REDIS_DB ?? RDB?.db ?? 3),
+    host: process.env?.APP_REDIS_HOST ?? RDB?.host,
+    port: Number(process.env?.APP_REDIS_PORT ?? RDB?.port),
+    password: process.env?.APP_REDIS_PASSWORD ?? RDB?.password,
+    db: Number(process.env?.APP_REDIS_DB ?? RDB?.db ?? 3),
     maxRetriesPerRequest: null
   })
   ALRedis.on('error', (err: any) => {
@@ -33,17 +33,17 @@ export const Redis: RedisClient = createRedis()
 ## mysql
 
 ```js
-// APPNAME 是插件自定义值
+// APP 是插件自定义值
 import { getBotConfigByKey } from 'alemonjs'
 import { Sequelize } from 'sequelize'
 const MDB = getBotConfigByKey('mysql')
 export const sequelize = new Sequelize(
-  process.env?.APPNAME_MYSQL_DATABASE ?? MDB?.database,
-  process.env?.APPNAME_MYSQL_USER ?? MDB?.user,
-  process.env?.APPNAME_MYSQL_PASSWORD ?? MDB?.password,
+  process.env?.APP_MYSQL_DATABASE ?? MDB?.database,
+  process.env?.APP_MYSQL_USER ?? MDB?.user,
+  process.env?.APP_MYSQL_PASSWORD ?? MDB?.password,
   {
-    host: process.env?.APPNAME_MYSQL_HOST ?? MDB?.host,
-    port: Number(process.env?.APPNAME_MYSQL_PROT ?? MDB?.port),
+    host: process.env?.APP_MYSQL_HOST ?? MDB?.host,
+    port: Number(process.env?.APP_MYSQL_PROT ?? MDB?.port),
     dialect: 'mysql',
     logging: false // 禁用日志记录
   }

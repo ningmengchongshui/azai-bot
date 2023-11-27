@@ -8,9 +8,14 @@ import NoteUser from './mys/NoteUser.js'
 import MysUser from './mys/MysUser.js'
 import { promisify } from 'node:util'
 import YAML from 'yaml'
+import { UserGameDB, sequelize } from './db/index.js'
+/**
+ * ********
+ * miao
+ * ********
+ */
 import { Data } from '#miao'
 import { Player } from '#miao.models'
-import { UserGameDB, sequelize } from './db/index.js'
 
 export default class User extends base {
   constructor (e) {

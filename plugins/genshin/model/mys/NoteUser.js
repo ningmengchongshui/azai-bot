@@ -10,6 +10,11 @@ import lodash from 'lodash'
 import MysUser from './MysUser.js'
 import MysUtil from './MysUtil.js'
 import { UserDB } from '../db/index.js'
+/**
+ * ********
+ * miao
+ * ********
+ */
 import { Data } from '#miao'
 
 export default class NoteUser extends BaseModel {
