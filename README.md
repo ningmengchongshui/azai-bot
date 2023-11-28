@@ -22,10 +22,6 @@ cd a-yunzai
 git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin
 ```
 
-- 可选插件
-
-[经过测试的插件功能](./md/PLUINGS.md)
-
 - 拉取依赖
 
 ```sh
@@ -117,13 +113,17 @@ reg: /^(#|\/)?帮助$/
 reg: '^(#|/)?帮助$',
 ```
 
+# Plugin Parsing
+
+[已知经过测试的插件功能](./md/PLUINGS.md)
+
+> 插件中存在`main.js`表示该插件已主动支持
+
+[如何有效加载Yunzai插件?](./md/PPLUIN.md)
+
 # REDIS 6379 ERR
 
 [为何出现6379提示?](./md/REDIS.md)
-
-# Plugin Parsing
-
-[如何有效加载Yunzai插件?](./md/PPLUIN.md)
 
 # Database
 
