@@ -1,4 +1,4 @@
-import { setLog } from 'afloat/logs'
+import { reSetLogs } from 'afloat'
 const info = console.info
 /**
  * 屏蔽错误反馈
@@ -13,8 +13,8 @@ console.info = (...args: any[]) => {
     info(...args)
   }
 }
-if (!process.argv.includes('pm2')) {
-  setLog(() => {
+if (process.argv.includes('dev') || process.argv.includes('app')) {
+  reSetLogs(() => {
     return `[A-YUNZAI] [${new Date().toLocaleDateString(undefined, {
       year: 'numeric',
       month: 'long',

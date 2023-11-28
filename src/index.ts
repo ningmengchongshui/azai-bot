@@ -24,4 +24,4 @@ if (ars.includes('openNTQQ')) {
 } else {
   await import('./alemon/segment.js')
 }
-import './alemon/pkg.js'
+import 'afloat/utils/pkg'

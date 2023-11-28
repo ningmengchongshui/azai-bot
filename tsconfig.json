@@ -40,7 +40,8 @@
     "plugins",
     "lib",
     "src",
-    "alemon.config.ts"
+    "renderers",
+    "alemon.config.ts",
   ],
   // 要排除的、不编译的文件，它也可以指定一个列表，
   "exclude": [

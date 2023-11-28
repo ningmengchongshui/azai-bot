@@ -1,13 +1,14 @@
-const ars = process.argv.slice(4)
+const ars = [...process.argv.slice(4)]
+const BotName = 'a-yunzai'
 const findArs = ars.find(item => item.startsWith('@'))
 const apps = []
 if (!findArs) {
   apps.push({
-    name: 'a-yunzai',
+    name: BotName,
     args: ars
   })
 } else {
-  if (!ars[0].startsWith('@')) ars.unshift('a-yunzai')
+  if (!ars[0].startsWith('@')) ars.unshift(BotName)
   const msg = ars.join(' ')
   const arr = msg.split('@')
   for (const arg of arr) {
