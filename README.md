@@ -1,18 +1,12 @@
 # A-Yunzai
 
-> 基于AlemonJS的Yunzai环境
+> 基于AlemonJS的Miao-Yunzai
 
-> 支持所有Yunzai插件安装即用
-
-> 喜欢的同志点点star
-
-> [Gitee AlemonJS](https://gitee.com/ningmengchongshui/alemon) | [Github AlemonJS](https://github.com/ningmengchongshui/alemon)
+> 支持所有Yunzai插件且安装即用
 
 > 必要环境 Windows/Linux + Chrome/Chromium/Edge
 
 > 必要环境 18.18.2>Node.js>16.14.0 + Redis>5.0.0
-
-> 支持连接其他OneBot-WS-V12标准实现的:Yunzai-ws、Trss等机器人
 
 - [拉取A-Yunzai项目(必选)](https://alemonjs.com/)
 
@@ -58,17 +52,11 @@ npm run pull:W # windows
 
 # Open Platform
 
-[QQ 平台 https://q.qq.com/](https://q.qq.com/#/)
-
-[米游社 平台 https://open.miyoushe.com/](https://open.miyoushe.com/#/login)
-
-[KOOK 平台 https://developer.kookapp.cn/](https://developer.kookapp.cn/doc/)
-
-[DISCORD 平台 https://discord.com/developers/applications/](https://discord.com/developers/applications/)
+[https://alemonjs.com](https://alemonjs.com/)
 
 `a.login.config.ts`
 
-> 配置登录了解[https://alemonjs.com](https://alemonjs.com/)
+> 账户配置
 
 `a.db.config.ts`
 
@@ -132,22 +120,7 @@ reg: '^(#|/)?帮助$',
 
 # REDIS 6379 ERR
 
-> src/redis.ts
-
-- 可能是 未启动
-
-- 可能是 地址错误
-
-```ts
-export const redis: AlemonOptions['redis'] = {
-  password: '',
-  port: 6379,
-  // 一般是 localhost 即可
-  // 但某些时候需要改成
-  host: '127.0.0.1',
-  db: 0
-}
-```
+[为何出现6379提示?](./md/REDIS.md)
 
 # Plugin Parsing
 
