@@ -64,7 +64,7 @@ npm run pull:W # windows
 
 # Document
 
-[了解更多细节与内容](./md/README.md)
+[了解更多细节与内容](https://gitee.com/ningmengchongshui/a-yunzai/tree/md/)
 
 # Related Links
 
