@@ -8,7 +8,7 @@
 
 > 必要环境 18.18.2>Node.js>16.14.0 + Redis>5.0.0
 
-- [拉取A-Yunzai项目(必选)](https://alemonjs.com/)
+- [拉取A-Yunzai项目](https://alemonjs.com/)
 
 ```sh
 git clone --depth=1 https://gitee.com/ningmengchongshui/a-yunzai.git
@@ -16,17 +16,15 @@ cd a-yunzai
 
 ```
 
-- [拉取miao-plugin项目(必选)](https://gitee.com/yoimiya-kokomi/miao-plugin)
+- [拉取miao-plugin项目](https://gitee.com/yoimiya-kokomi/miao-plugin)
 
 ```sh
 git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin
 ```
 
-- [拉取xiaoyao-cvs项目(可选)](https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin)
+- 可选插件
 
-```sh
-git clone  --depth=1 https://gitee.com/Ctrlcvs/xiaoyao-cvs-plugin.git ./plugins/xiaoyao-cvs-plugin
-```
+[已知经过测试的插件功能](./md/PLUINGS.md)
 
 - 拉取依赖
 
