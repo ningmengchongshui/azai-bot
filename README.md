@@ -24,7 +24,7 @@ git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/m
 
 - 可选插件
 
-[已知经过测试的插件功能](./md/PLUINGS.md)
+[经过测试的插件功能](./md/PLUINGS.md)
 
 - 拉取依赖
 
