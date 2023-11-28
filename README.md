@@ -123,6 +123,8 @@ reg: '^(#|/)?帮助$',
 
 # Plugin Parsing
 
+> 插件中存在`main.js`表示该插件已主动支持
+
 [如何有效加载Yunzai插件?](./md/PPLUIN.md)
 
 # Database
