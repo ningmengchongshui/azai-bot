@@ -3,11 +3,11 @@ const findArs = ars.find(item => item.startsWith('@'))
 const apps = []
 if (!findArs) {
   apps.push({
-    name: 'alemonb',
+    name: 'a-yunzai',
     args: ars
   })
 } else {
-  if (!ars[0].startsWith('@')) ars.unshift('alemonb')
+  if (!ars[0].startsWith('@')) ars.unshift('a-yunzai')
   const msg = ars.join(' ')
   const arr = msg.split('@')
   for (const arg of arr) {
