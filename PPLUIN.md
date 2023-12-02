@@ -14,6 +14,12 @@ const app = createApps(import.meta.url)
 // # 是yunzai插件约定的起始符
 app.setCharacter('#')
 app.component(apps)
+app.setMessage(async e => {
+  if (e.attribute == 'group') {
+      e.isgroup = true
+  }
+  return e
+})
 app.mount()
 ```
 
@@ -29,6 +35,9 @@ import { render } from './adapter/render.js'
 const xiaoyao = YUNZAIV2(apps['rule'], apps)
 const app = createApps(import.meta.url)
 app.setMessage(async e => {
+  if (e.attribute == 'group') {
+       e.isgroup = true
+  }
   await runtime.init(e)
   // 补充e缺失内容
   e.sender = {}
@@ -70,5 +79,11 @@ for (const i in files) {
 const app = createApps(import.meta.url)
 app.setCharacter('#')
 app.component(apps)
+app.setMessage(async e => {
+  if (e.attribute == 'group') {
+      e.isgroup = true
+  }
+  return e
+})
 app.mount()
 ```
