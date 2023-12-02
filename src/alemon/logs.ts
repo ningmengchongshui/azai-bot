@@ -13,7 +13,7 @@ console.info = (...args: any[]) => {
     info(...args)
   }
 }
-if (process.argv.includes('dev') || process.argv.includes('app')) {
+if (!process.argv.includes('run')) {
   reSetLogs(() => {
     return `[A-YUNZAI] [${new Date().toLocaleDateString(undefined, {
       year: 'numeric',
