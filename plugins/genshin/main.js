@@ -3,6 +3,9 @@ import { apps } from './index.js'
 const app = createApps(import.meta.url)
 const arg = /^#?(\*|星铁|星轨|穹轨|星穹|崩铁|星穹铁道|崩坏星穹铁道|铁道)+/
 app.setMessage(async e => {
+  if (e.attribute == 'group') {
+    e.isgroup = true
+  }
   e.isSr = true
   e.isGs = true
   await runtime.init(e)
