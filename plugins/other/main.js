@@ -3,7 +3,7 @@ import * as apps from './restart.js'
 const app = createApps(import.meta.url)
 app.setMessage(async e => {
   if (e.attribute == 'group') {
-    e.isgroup = true
+    e.isGroup = true
  }
   await runtime.init(e)
   e.sender = {}
