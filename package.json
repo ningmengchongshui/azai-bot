@@ -8,6 +8,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "dev": "afloat dev",
     "app": "ts-node alemon.config.ts",
     "start": "pm2 startOrRestart pm2.config.cjs",
     "stop": "pm2 stop pm2.config.cjs",
