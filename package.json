@@ -61,8 +61,8 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^5.0.1",
     "prettier": "^3.0.3",
-    "afloat": "^1.0.12",
-    "alemonjs": "^1.1.11"
+    "afloat": "^1.0.14",
+    "alemonjs": "1.1.12"
   },
   "workspaces": [
     "plugins/*"
