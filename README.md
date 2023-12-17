@@ -37,11 +37,25 @@ npm install
 npm run app qq #qq测试机
 ```
 
-- 更新所有插件
+# Update
 
-```
+- pluings
+
+```sh
 npm run pull:l # linux
 npm run pull:W # windows
+```
+
+- alemonjs
+
+```sh
+npm install alemonjs@latest
+```
+
+- afloat
+
+```sh
+npm install afloat@latest
 ```
 
 # Open Platform
