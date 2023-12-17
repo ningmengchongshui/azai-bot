@@ -1,7 +1,7 @@
-import { createApps } from 'alemonjs'
+import { createApp } from 'alemonjs'
 import * as apps from './restart.js'
-const app = createApps(import.meta.url)
-app.setMessage(async e => {
+const app = createApp(import.meta.url)
+app.reSetEvent(async e => {
   if (e.attribute == 'group') {
     e.isGroup = true
  }

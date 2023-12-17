@@ -1,4 +1,4 @@
-import { createApps } from 'alemonjs'
+import { createApp } from 'alemonjs'
 import { readdirSync } from 'node:fs'
 const files = readdirSync('./plugins/example').filter(file => file.endsWith('.js')).filter(file => file != 'main.js')
 let ret = []
@@ -16,8 +16,8 @@ for (const i in files) {
     }
     apps[name] = ret[i].value[Object.keys(ret[i].value)[0]]
 }
-const app = createApps(import.meta.url)
-app.setMessage(async e => {  
+const app = createApp(import.meta.url)
+app.reSetEvent(async e => {  
     if (e.attribute == 'group') {
        e.isGroup = true
     }

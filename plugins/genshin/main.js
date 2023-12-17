@@ -1,8 +1,8 @@
-import { createApps } from 'alemonjs'
+import { createApp } from 'alemonjs'
 import { apps } from './index.js'
-const app = createApps(import.meta.url)
+const app = createApp(import.meta.url)
 const arg = /^#?(\*|星铁|星轨|穹轨|星穹|崩铁|星穹铁道|崩坏星穹铁道|铁道)+/
-app.setMessage(async e => {
+app.reSetEvent(async e => {
   if (e.attribute == 'group') {
     e.isGroup = true
   }
@@ -26,5 +26,5 @@ app.setMessage(async e => {
   return e
 })
 app.setCharacter('#')
-app.component(apps)
+app.use(apps)
 app.mount()
