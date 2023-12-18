@@ -13,9 +13,7 @@
 ```js
 import { createApp } from 'alemonjs'
 import * as apps from './restart.js'
-// 创建应用
 createApp(import.meta.url)
-// 重定义 e
 .reSetEvent(global.YUNZAI_EVENT)
 .replace(/^(\/|#)/,'#')
 .use(apps)
@@ -72,9 +70,7 @@ for (const i in files) {
 }
 import { createApp } from 'alemonjs'
 import * as apps from './restart.js'
-// 创建应用
 createApp(import.meta.url)
-// 重定义 e
 .reSetEvent(global.YUNZAI_EVENT)
 .replace(/^(\/|#)/,'#')
 .use(apps)
