@@ -4,23 +4,22 @@
 
 插件中放置识别文件`main.js`
 
+`YUNZAI_EVENT` 普通e重定义
+
+`YUNZAI_GENSHIN` 星铁原神的e重定义
+
 - 模板1 引入式
 
 ```js
-import { createApps } from 'alemonjs'
-import { apps } from './index.js'
-const app = createApps(import.meta.url)
-// 把#或/的前缀指令更改为 #
-// # 是yunzai插件约定的起始符
-app.setCharacter('#')
-app.component(apps)
-app.setMessage(async e => {
-  if (e.attribute == 'group') {
-      e.isgroup = true
-  }
-  return e
-})
-app.mount()
+import { createApp } from 'alemonjs'
+import * as apps from './restart.js'
+// 创建应用
+createApp(import.meta.url)
+// 重定义 e
+.reSetEvent(global.YUNZAI_EVENT)
+.replace(/^(\/|#)/,'#')
+.use(apps)
+.mount()
 ```
 
 - 模板2 兼容式
@@ -28,35 +27,30 @@ app.mount()
 > xiaoyao-cvs-plugin 为例
 
 ```js
-import { createApps } from 'alemonjs'
+import { createApp } from 'alemonjs'
 import * as apps from './index.js'
 import { render } from './adapter/render.js'
 // A-Yunzai内置的 全局生效的 V2写法兼容函数
-const xiaoyao = YUNZAIV2(apps['rule'], apps)
-const app = createApps(import.meta.url)
-app.setMessage(async e => {
-  if (e.attribute == 'group') {
-       e.isgroup = true
-  }
-  await runtime.init(e)
-  // 补充e缺失内容
-  e.sender = {}
-  e.sender.card = e.user_name
-  e.checkAuth = val => val
-  return e
-})
-// 指令方法扩展
-app.setArg(() => [{ render }])
-app.setCharacter('#')
-app.component({ xiaoyao })
-app.mount()
+const xiaoyao = global.YUNZAIV2(apps['rule'], apps)
+// 创建应用
+createApp(import.meta.url)
+// 重定义 e
+.reSetEvent(global.YUNZAI_GENSHIN)
+// 扩展参数
+.setArg(() => [{ render }])
+// 正则替换
+.replace(/^(\/|#)/,'#')
+// 应用
+.use({ xiaoyao })
+// 挂载
+.mount()
 ```
 
 - 模板3 遍历式
 
 ```js
 import { readdirSync } from 'node:fs'
-import { createApps, getAppName } from 'alemonjs'
+import { createApp , getAppName } from 'alemonjs'
 const AppName = getAppName(import.meta.url)
 const files = readdirSync(`./plugins/${AppName}/apps`).filter(file =>
   file.endsWith('.js')
@@ -76,14 +70,13 @@ for (const i in files) {
   }
   apps[name] = ret[i].value[Object.keys(ret[i].value)[0]]
 }
-const app = createApps(import.meta.url)
-app.setCharacter('#')
-app.component(apps)
-app.setMessage(async e => {
-  if (e.attribute == 'group') {
-      e.isgroup = true
-  }
-  return e
-})
-app.mount()
+import { createApp } from 'alemonjs'
+import * as apps from './restart.js'
+// 创建应用
+createApp(import.meta.url)
+// 重定义 e
+.reSetEvent(global.YUNZAI_EVENT)
+.replace(/^(\/|#)/,'#')
+.use(apps)
+.mount()
 ```
