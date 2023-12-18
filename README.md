@@ -63,6 +63,16 @@ reg: /^(#|\/)?帮助$/
 reg: '^(#|/)?帮助$',
 ```
 
+- 删除原神*星铁系列功能
+
+删除文件``
+
+```sh
+rm -rf ./lib/runtime.js
+rm -rf ./src/yunzai/runtime.ts
+rm -rf ./plugins
+```
+
 # Plugin Parsing
 
 > 插件中存在`main.js`表示该插件已主动支持
