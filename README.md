@@ -65,8 +65,6 @@ reg: '^(#|/)?帮助$',
 
 - 删除原神*星铁系列功能
 
-删除文件``
-
 ```sh
 rm -rf ./lib/runtime.js
 rm -rf ./src/yunzai/runtime.ts
