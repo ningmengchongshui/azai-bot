@@ -49,7 +49,7 @@ global.Redis = Redis as ioRedisClientType
  */
 global.NoteCookie = {}
 global.BotConfig = {}
-const Bot = {
+const bot = {
   uin: '',
   logger,
   makeForwardMsg: val => '',
@@ -70,25 +70,34 @@ const Bot = {
   }
 }
 declare global {
-  var Bot: any
+  var Bot: typeof bot
 }
 /**
  * *******
  * icqq
  * *******
  */
-global.Bot = Bot
+global.Bot = bot
 /**
  * *********
  * yunzai
  * *********
  */
-import plugin from '../lib/plugins/plugin.js'
-import runtime from '../lib/plugins/runtime.js'
-import Renderer from '../lib/renderer/Renderer.js'
-global.runtime = runtime
-global.plugin = plugin
-global.Renderer = Renderer
+import Plugins from '../lib/plugins/plugin.js'
+import Runtime from '../lib/plugins/runtime.js'
+import renderer from '../lib/renderer/Renderer.js'
+declare global {
+  var runtime: typeof Runtime
+}
+global.runtime = Runtime
+declare global {
+  var plugin: typeof Plugins
+}
+global.plugin = Plugins
+declare global {
+  var Renderer: typeof renderer
+}
+global.Renderer = renderer
 /**
  * V2转义成V3
  * @param rule V2指令对象

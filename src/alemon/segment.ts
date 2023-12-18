@@ -1,6 +1,6 @@
 import { getPathBuffer } from 'alemonjs'
-const ars = process.argv.slice(2)
-const segment = {
+const ars = [...process.argv.slice(2)]
+const Segment = {
   /**
    * 图片
    * @param val
@@ -77,4 +77,7 @@ const segment = {
     return val
   }
 }
-global.segment = segment
+declare global {
+  var segment: typeof Segment
+}
+global.segment = Segment
