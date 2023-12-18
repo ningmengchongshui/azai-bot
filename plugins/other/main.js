@@ -33,9 +33,8 @@ async function loadPlugins(dir) {
     //动态扫描
     const input = getAppProCoinfg('main')
     for (const appname of APPS) {
-        const mian = `${dir}/${appname}${input}.js`
         const index = `${dir}/${appname}/index.js`
-        if (!existsSync(mian) && existsSync(index)) {
+        if (!existsSync(`${dir}/${appname}${input}.js`) && !existsSync(`${dir}/${appname}${input}.ts`) && existsSync(index)) {
             const { apps } = await import(`file://${index}`)
             try {
                 // 读取  index 并 归为 other插件
