@@ -123,3 +123,40 @@ declare global {
   var YUNZAIV2: typeof assignPropertiesAndMethods
 }
 global.YUNZAIV2 = assignPropertiesAndMethods
+
+const EventReg =
+  /^(#|\/)?(\*|星铁|星轨|穹轨|星穹|崩铁|星穹铁道|崩坏星穹铁道|铁道)/
+declare global {
+  var YUNZAI_REG: typeof EventReg
+}
+/**
+ *
+ * @param e
+ * @returns
+ */
+async function reSetEvent(e: any) {
+  e.isSr = true
+  e.isGs = true
+  if (e.attribute == 'group') e.isGroup = true
+  await runtime.init(e)
+  Object.defineProperty(e, 'isSr', {
+    get: () => e.game === 'sr',
+    set: v => {
+      e.game = v ? 'sr' : 'gs'
+    }
+  })
+  Object.defineProperty(e, 'isGs', {
+    get: () => e.game === 'gs',
+    set: v => {
+      e.game = v ? 'gs' : 'sr'
+    }
+  })
+  e.sender = {}
+  e.sender.card = e.user_name
+  if (EventReg.test(e.msg)) e.game = 'sr'
+  return e
+}
+declare global {
+  var YUNZAI_EVENT: typeof reSetEvent
+}
+global.YUNZAI_EVENT = reSetEvent
