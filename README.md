@@ -43,13 +43,10 @@ Node Version >16.14 && <=18.18.2
 > `a-yunzai`插件使用需要更改指令规则
 
 ```js
-// alemonjs 默认'/'
-app.setCharacter('#')
+import { createApp } from 'alemonjs'
+createApp(import.meta.url)
+.replace(/^(\/|#)/,'#')
 ```
-
-> 同时A-Yunzai没有`*`转`#星铁`
-
-> 使用Miao-Plugin原生指令`#星铁绑定123456`
 
 - 继承差异化
 
