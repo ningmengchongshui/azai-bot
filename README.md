@@ -1,8 +1,6 @@
 # A-Yunzai
 
-> 基于AlemonJS的Miao-Yunzai
-
-> 支持所有Yunzai插件且安装即用
+基于AlemonJS的Miao-Yunzai,拥有占用小,性能高,响应快等特点
 
 > 必要环境 Windows/Linux + Chrome/Chromium/Edge
 
