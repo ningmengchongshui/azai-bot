@@ -31,9 +31,9 @@ async function loadPlugins(dir) {
             return !close.test(item)
         })
     //动态扫描
-    const main = getAppProCoinfg('main')
+    const input = getAppProCoinfg('main')
     for (const appname of APPS) {
-        const mian = `${dir}/${appname}${main}.js`
+        const mian = `${dir}/${appname}${input}.js`
         const index = `${dir}/${appname}/index.js`
         if (!existsSync(mian) && existsSync(index)) {
             const { apps } = await import(`file://${index}`)
