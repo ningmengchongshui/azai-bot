@@ -1,4 +1,5 @@
 import { exec } from 'child_process'
+import plugin from '../../lib/plugins/plugin.js'
 export class Restart extends plugin {
   constructor(e = '') {
     super({
