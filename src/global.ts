@@ -129,6 +129,7 @@ const EventReg =
 declare global {
   var YUNZAI_REG: typeof EventReg
 }
+global.YUNZAI_REG = EventReg
 /**
  *
  * @param e
@@ -153,7 +154,11 @@ async function reSetEvent(e: any) {
   })
   e.sender = {}
   e.sender.card = e.user_name
-  if (EventReg.test(e.msg)) e.game = 'sr'
+  console.log('e.msg', e.msg)
+  if (EventReg.test(e.msg)) {
+    console.log('是星铁')
+    e.game = 'sr'
+  }
   return e
 }
 declare global {
