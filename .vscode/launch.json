@@ -26,8 +26,8 @@
       "type": "node-terminal"
     },
     {
-      "command": "npm run app disord",
-      "name": "AlemonJS disord Debug",
+      "command": "npm run app discord",
+      "name": "AlemonJS discord Debug",
       "request": "launch",
       "type": "node-terminal"
     }

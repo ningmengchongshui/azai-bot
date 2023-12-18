@@ -4,7 +4,8 @@
  * miao
  * ********
  */
-import { Data } from '#miao'
+// import { Data } from '#miao'
+import { Data } from '../../../miao-plugin/components/index.js'
 
 const games = [{ key: 'gs', name: '原神' }, { key: 'sr', name: '星穹铁道' }]
 

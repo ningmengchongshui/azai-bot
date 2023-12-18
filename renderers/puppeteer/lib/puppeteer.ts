@@ -5,14 +5,9 @@ import template from 'art-template'
 import chokidar from 'chokidar'
 import puppeteer, { PuppeteerLaunchOptions, Browser } from 'puppeteer'
 import { Options } from '../../../src/puppeteerrc.js'
-import { RedisClientType } from 'redis'
 
 // mac地址
 let mac = ''
-
-declare global {
-  var redis: RedisClientType
-}
 
 const EveryoneError = (err: any) => {
   console.error(err)

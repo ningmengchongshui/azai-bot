@@ -15,7 +15,8 @@ import { UserDB } from '../db/index.js'
  * miao
  * ********
  */
-import { Data } from '#miao'
+// import { Data } from '#miao'
+import { Data } from '../../../miao-plugin/components/index.js'
 
 export default class NoteUser extends BaseModel {
   constructor (qq) {

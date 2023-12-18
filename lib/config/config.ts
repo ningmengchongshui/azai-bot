@@ -8,10 +8,6 @@ import {
 import chokidar from 'chokidar'
 import { parse as YAMLParse } from 'yaml'
 
-declare global {
-  var Bot: any
-}
-
 /**
  * 配置文件
  */

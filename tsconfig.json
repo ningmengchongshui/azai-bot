@@ -9,10 +9,10 @@
     "declaration": true,
     "outDir": "dist",
     "removeComments": true,
-    "preserveConstEnums": true, 
+    "preserveConstEnums": true,
     "ignoreDeprecations": "5.0",
     "allowJs": false,
-    "suppressImplicitAnyIndexErrors": true, 
+    "suppressImplicitAnyIndexErrors": true,
     "typeRoots": [
       "node_modules/@types"
     ]

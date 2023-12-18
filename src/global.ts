@@ -1,4 +1,7 @@
 import { Logtype } from './alemon/types.js'
+declare global {
+  var logger: Logtype
+}
 const logger: Logtype = console as Logtype
 logger.red = val => val
 logger.debug = val => val
@@ -21,15 +24,24 @@ mkdirSync('./data', { recursive: true })
  * 数据库redis
  * ***********
  */
-import { Redis as redis } from './redis.js'
+import { redis, Redis } from './redis.js'
 import { RedisClientType } from 'redis'
-
+import { Redis as ioRedisClientType } from 'ioredis'
+/**
+ * ***********
+ * yunzai  redis - redis@4.6
+ * ***********
+ * alemonjs Redis - ioredis@5.3
+ * ************
+ */
 declare global {
   var redis: RedisClientType
 }
-
-// typeof 在这里
+declare global {
+  var Redis: ioRedisClientType
+}
 global.redis = redis as RedisClientType
+global.Redis = Redis as ioRedisClientType
 /**
  * *********
  * 必要存储
@@ -37,12 +49,7 @@ global.redis = redis as RedisClientType
  */
 global.NoteCookie = {}
 global.BotConfig = {}
-/**
- * *******
- * icqq
- * *******
- */
-global.Bot = {
+const Bot = {
   uin: '',
   logger,
   makeForwardMsg: val => '',
@@ -62,6 +69,15 @@ global.Bot = {
     get: val => ''
   }
 }
+declare global {
+  var Bot: any
+}
+/**
+ * *******
+ * icqq
+ * *******
+ */
+global.Bot = Bot
 /**
  * *********
  * yunzai
@@ -102,5 +118,8 @@ const assignPropertiesAndMethods = (rules: any, sourceObject: any) => {
     }
   })
   return APP
+}
+declare global {
+  var YUNZAIV2: typeof assignPropertiesAndMethods
 }
 global.YUNZAIV2 = assignPropertiesAndMethods

@@ -14,8 +14,10 @@ import { UserGameDB, sequelize } from './db/index.js'
  * miao
  * ********
  */
-import { Data } from '#miao'
-import { Player } from '#miao.models'
+// import { Data } from '#miao'
+// import { Player } from '#miao.models'
+import { Data } from '../../miao-plugin/components/index.js'
+import { Player } from '../../miao-plugin/models/index.js'
 
 export default class User extends base {
   constructor (e) {
