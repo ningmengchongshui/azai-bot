@@ -12,7 +12,7 @@
 
 ```js
 import { createApp } from 'alemonjs'
-import * as apps from './restart.js'
+import * as apps from './index.js'
 createApp(import.meta.url)
 .reSetEvent(global.YUNZAI_EVENT)
 .replace(/^(\/|#)/,'#')
@@ -69,7 +69,6 @@ for (const i in files) {
   apps[name] = ret[i].value[Object.keys(ret[i].value)[0]]
 }
 import { createApp } from 'alemonjs'
-import * as apps from './restart.js'
 createApp(import.meta.url)
 .reSetEvent(global.YUNZAI_EVENT)
 .replace(/^(\/|#)/,'#')
