@@ -10,7 +10,12 @@ import MysInfo from '../../plugins/genshin/model/mys/mysInfo.js'
 import NoteUser from '../../plugins/genshin/model/mys/NoteUser.js'
 import MysUser from '../../plugins/genshin/model/mys/MysUser.js'
 export default class Runtime {
-  constructor(e) {
+  /**
+   * todu
+   */
+  e:any
+  _mysInfo:any
+  constructor(e:any) {
     this.e = e
     this._mysInfo = {}
   }
@@ -87,7 +92,7 @@ export default class Runtime {
           'getUidMapList',
           'getGameDs'
         ]
-        if (arr1.includes(key)) return (_game, arg2) => self[key](_game || game, arg2)
+        if (arr1.includes(String(key))) return (_game, arg2) => self[key](_game || game, arg2)
         const arr2 = [
           'getUidData',
           'hasUid',
@@ -95,7 +100,7 @@ export default class Runtime {
           'delRegUid',
           'setMainUid'
         ]
-        if (arr2.includes(key)) return (uid, _game = '') => self[key](uid, _game || game)
+        if (arr2.includes(String(key))) return (uid, _game = '') => self[key](uid, _game || game)
         return self[key]
       }
     })
@@ -130,7 +135,7 @@ export default class Runtime {
    * @returns {Promise<boolean|MysApi>}
    */
   async getMysApi(targetType = 'all', option = {}) {
-    let mys = await this.getMysInfo(targetType)
+    const mys = await this.getMysInfo(targetType)
     if (mys.uid && mys?.ckInfo?.ck) return new MysApi(mys.uid, mys.ckInfo.ck, option)
     return false
   }
@@ -159,7 +164,7 @@ export default class Runtime {
    * @param cfg.beforeRender({data}) 可改写渲染的data数据
    * @returns {Promise<boolean>}
    */
-  async render(plugin, path, data = {}, cfg = {}) {
+  async render(plugin:string, path:string, data:any = {}, cfg:any = {}) {
     // 处理传入的path
     path = path.replace(/.html$/, '')
     const paths = lodash.filter(path.split('/'), p => !!p)
@@ -168,7 +173,7 @@ export default class Runtime {
     // 创建目录
     const mkdir = check => {
       let currDir = `${process.cwd()}/temp`
-      for (let p of check.split('/')) {
+      for (const p of check.split('/')) {
         currDir = `${currDir}/${p}`
         if (!existsSync(currDir)) {
           mkdirSync(currDir)
@@ -180,8 +185,8 @@ export default class Runtime {
     mkdir(`html/${plugin}/${path}`)
 
     // 自动计算pluResPath
-    let pluResPath = `../../../${lodash.repeat('../', paths.length)}plugins/${plugin}/resources/`
-    let miaoResPath = `../../../${lodash.repeat('../', paths.length)}plugins/miao-plugin/resources/`
+    const pluResPath = `../../../${lodash.repeat('../', paths.length)}plugins/${plugin}/resources/`
+    const miaoResPath = `../../../${lodash.repeat('../', paths.length)}plugins/miao-plugin/resources/`
     const layoutPath = process.cwd() + '/plugins/miao-plugin/resources/common/layout/'
 
     // 渲染data

@@ -3,12 +3,12 @@ declare global {
   var logger: Logtype
 }
 const logger: Logtype = console as Logtype
-logger.red = val => val
-logger.debug = val => val
-logger.yellow = val => val
-logger.green = val => val
-logger.mark = val => val
-logger.blue = val => val
+logger.red = (val: string) => val
+logger.debug = (val: string) => val
+logger.yellow = (val: string) => val
+logger.green = (val: string) => val
+logger.mark = (val: string) => val
+logger.blue = (val: string) => val
 global.logger = logger
 import { mkdirSync } from 'fs'
 /**

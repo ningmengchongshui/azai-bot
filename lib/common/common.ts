@@ -18,8 +18,8 @@ async function relpyPrivate(userId, msg) {
  * 休眠函数
  * @param ms 毫秒
  */
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms))
+function sleep(ms: number | string) {
+  return new Promise(resolve => setTimeout(resolve, Number(ms)))
 }
 
 /**
@@ -60,7 +60,7 @@ function existsSmkdirs(name) {
  * @param msg 消息数组
  * @param dec 转发描述
  */
-async function makeForwardMsg(e, msg = [], dec = '') {
+async function makeForwardMsg(e: any, msg = [], dec = '') {
   return msg
 }
 

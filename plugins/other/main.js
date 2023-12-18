@@ -1,7 +1,6 @@
 import { createApp } from 'alemonjs'
 import * as apps from './restart.js'
-const app = createApp(import.meta.url)
-app.reSetEvent(async e => {
+createApp(import.meta.url).reSetEvent(async e => {
   if (e.attribute == 'group') {
     e.isGroup = true
  }
@@ -9,7 +8,4 @@ app.reSetEvent(async e => {
   e.sender = {}
   e.sender.card = e.user_name
   return e
-})
-app.setCharacter('#')
-app.component(apps)
-app.mount()
+}).replace(/^(\/|#)/,'#').use(apps).mount()

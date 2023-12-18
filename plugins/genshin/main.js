@@ -1,13 +1,19 @@
 import { createApp } from 'alemonjs'
 import { apps } from './index.js'
-const app = createApp(import.meta.url)
-const arg = /^#?(\*|星铁|星轨|穹轨|星穹|崩铁|星穹铁道|崩坏星穹铁道|铁道)+/
-app.reSetEvent(async e => {
-  if (e.attribute == 'group') {
-    e.isGroup = true
-  }
+const arg = /^(#|\/)?(\*|星铁|星轨|穹轨|星穹|崩铁|星穹铁道|崩坏星穹铁道|铁道)/
+/**
+ * *******
+ * 创建应用 createApp
+ * 重定义  reSetEvent
+ * 切割消息 replace
+ * 使用 use
+ * 挂载 mount
+ * *******
+ */
+createApp(import.meta.url).reSetEvent(async e => {
   e.isSr = true
   e.isGs = true
+  if (e.attribute == 'group') e.isGroup = true
   await runtime.init(e)
   Object.defineProperty(e, 'isSr', {
     get: () => e.game === 'sr',
@@ -17,14 +23,8 @@ app.reSetEvent(async e => {
     get: () => e.game === 'gs',
     set: (v) => { e.game = v ? 'gs' : 'sr' }
   })
-  if (arg.test(e.msg)) {
-    e.game = 'sr'
-    e.msg = e.msg.replace(arg, '#星铁')
-  }
+  if (arg.test(e.msg)) e.game = 'sr'
   e.sender = {}
   e.sender.card = e.user_name
   return e
-})
-app.setCharacter('#')
-app.use(apps)
-app.mount()
+}).replace(arg,'#星铁').replace(/^(\/|#)/,'#').use(apps).mount()
