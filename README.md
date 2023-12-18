@@ -32,15 +32,13 @@ Node Version >16.14 && <=18.18.2
 
 不可使用`AlemonJS同时登录多平台`
 
-- 不推荐定义全局`global`
+- 插件不推荐定义和使用`global`
 
 - 正则差异化影响
 
 > `alemonjs`与`a-yunzai`的插件有差异
 
-> `a-yunzai`使用`#`而`alemonjs`使用`/`
-
-> `a-yunzai`插件使用需要更改指令规则
+> `a-yunzai`中使用`yunzai`插件使用需要更改指令规则
 
 ```js
 import { createApp } from 'alemonjs'
