@@ -135,7 +135,7 @@ global.YUNZAI_REG = EventReg
  * @param e
  * @returns
  */
-async function reSetEvent(e: any) {
+async function reSetgenShin(e: any) {
   e.isSr = true
   e.isGs = true
   if (e.attribute == 'group') e.isGroup = true
@@ -154,11 +154,27 @@ async function reSetEvent(e: any) {
   })
   e.sender = {}
   e.sender.card = e.user_name
-  console.log('e.msg', e.msg)
-  if (EventReg.test(e.msg)) {
-    console.log('是星铁')
-    e.game = 'sr'
-  }
+  e.checkAuth = (val: any) => val
+  if (EventReg.test(e.msg)) e.game = 'sr'
+  return e
+}
+declare global {
+  var YUNZAI_GENSHIN: typeof reSetgenShin
+}
+global.YUNZAI_GENSHIN = reSetgenShin
+/**
+ *
+ * @param e
+ * @returns
+ */
+async function reSetEvent(e: any) {
+  if (e.attribute == 'group') e.isGroup = true
+  e.isSr = true
+  e.isGs = true
+  e.sender = {}
+  e.game === 'sr'
+  e.sender.card = e.user_name
+  e.checkAuth = (val: any) => val
   return e
 }
 declare global {

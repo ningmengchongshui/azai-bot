@@ -17,7 +17,7 @@ for (const i in files) {
     apps[name] = ret[i].value[Object.keys(ret[i].value)[0]]
 }
 createApp(import.meta.url)
-.reSetEvent(global.YUNZAI_EVENT)
+.reSetEvent(global.YUNZAI_GENSHIN)
 .replace(/^(\/|#)/,'#')
 .use(apps)
 .mount()
