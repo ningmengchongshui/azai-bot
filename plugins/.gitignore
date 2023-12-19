@@ -16,13 +16,13 @@ other/**
 !other/update.js
 !other/setPubCk.js
 !other/version.js
+!other/sub.js
 
 !example
 example/**
 !example/一言.js
 !example/主动复读.js
 !example/进群退群通知.js
-!example/mian.js
 !example/index.js
 
 *.psd
