@@ -1,7 +1,6 @@
 import { readdirSync } from 'node:fs'
 const files = readdirSync('./plugins/example')
 .filter(file => file.endsWith('.js'))
-.filter(file => file != 'main.js')
 .filter(file => file != 'index.js')
 let ret = []
 files.forEach((file) => {

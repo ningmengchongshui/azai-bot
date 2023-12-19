@@ -1,4 +1,4 @@
-import { createApp, getAppProCoinfg } from 'alemonjs'
+import { createApp, getAppProCoinfg, createSubApp } from 'alemonjs'
 import * as apps from './restart.js'
 import { readdirSync, existsSync } from 'fs'
 import { join } from 'path'
@@ -6,20 +6,15 @@ const app = createApp(import.meta.url)
 app.reSetEvent(global.YUNZAI_GENSHIN)
 app.replace(/^(\/|#)/, '#')
 app.use(apps)
+app.mount()
 /**
  * 加载应用插件
  * @param dir 插件路径
  */
 async function loadPlugins(dir) {
-    if (!existsSync(dir)) {
-        app.mount()
-        return
-    }
+    if (!existsSync(dir)) return
     const flies = readdirSync(dir)
-    if (flies.length == 0) {
-        app.mount()
-        return
-    }
+    if (flies.length == 0) return
     // 读取配置
     const open = getAppProCoinfg('openRegex')
     const close = getAppProCoinfg('closeRegex')
@@ -37,8 +32,12 @@ async function loadPlugins(dir) {
         if (!existsSync(`${dir}/${appname}${input}.js`) && !existsSync(`${dir}/${appname}${input}.ts`) && existsSync(index)) {
             const { apps } = await import(`file://${index}`)
             try {
-                // 读取  index 并 归为 other插件
+                const app = createSubApp(appname)
+                app.reSetEvent(global.YUNZAI_GENSHIN)
+                app.replace(/^(\/|#)/, '#')
                 app.use(apps)
+                app.mount()
+                console.log('创建插件')
             } catch (err) {
                 console.error(`file://${index}`)
                 // 属于依赖缺失
@@ -67,8 +66,6 @@ async function loadPlugins(dir) {
             }
         }
     }
-    // 搞完了 挂载
-    app.mount()
     return
 }
 const dir = join(process.cwd(), './plugins')
