@@ -73,8 +73,6 @@ rm -rf ./plugins
 
 # Plugin Parsing
 
-> 插件中存在`main.js`表示该插件已主动支持
-
 [如何有效加载Yunzai插件?](./PPLUIN.md)
 
 # REDIS 6379 ERR
