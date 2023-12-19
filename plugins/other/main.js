@@ -1,7 +1,7 @@
 import { createApp } from 'alemonjs'
 import * as apps from './restart.js'
 const app = createApp(import.meta.url)
-app.reSetEvent(global.YUNZAI_GENSHIN)
+app.reSetEvent(global?.YUNZAI_GENSHIN ?? global.YUNZAI_EVENT ?? (e => { }))
 app.replace(/^(\/|#)/, '#')
 app.use(apps)
 app.mount()
