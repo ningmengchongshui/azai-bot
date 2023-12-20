@@ -31,7 +31,7 @@ async function loadPlugins(dir) {
                 app.replace(/^(\/|#)/, '#')
                 app.use(apps)
                 app.mount()
-                console.log('创建插件')
+                console.log('[APP]', appname)
             } catch (err) {
                 console.error(`file://${index}`)
                 // 属于依赖缺失
