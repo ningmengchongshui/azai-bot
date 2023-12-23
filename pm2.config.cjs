@@ -1,8 +1,8 @@
-const apps = require('./pm2.cmd.cjs')
+const apps = require('afloat/pm2/cmd.cjs')
 module.exports = {
   apps: apps.map(app => ({
     name: app.name,
-    script: 'index.js',
+    script: 'node_modules/afloat/utils/run.js',
     instances: 1,
     autorestart: true,
     exec_mode: 'cluster',

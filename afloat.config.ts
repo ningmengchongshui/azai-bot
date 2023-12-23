@@ -1,3 +1,4 @@
+import 'afloat/utils/logs'
 import { defineAfloat } from 'afloat'
 export default defineAfloat({
   nodemon: {
