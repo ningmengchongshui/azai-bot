@@ -1,9 +1,4 @@
-import { reSetLogs } from 'afloat'
 const info = console.info
-/**
- * 屏蔽错误反馈
- * @param args
- */
 console.info = (...args: any[]) => {
   if (
     args[0] !== '[CLIENT] 心跳校验' &&
@@ -12,16 +7,4 @@ console.info = (...args: any[]) => {
   ) {
     info(...args)
   }
-}
-if (!process.argv.includes('run')) {
-  reSetLogs(() => {
-    return `[A-YUNZAI] [${new Date().toLocaleDateString(undefined, {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-      hour: 'numeric',
-      minute: 'numeric',
-      second: 'numeric'
-    })}]`
-  })
 }

@@ -34,9 +34,3 @@ if (existsSync(join(importPath(import.meta.url).cwd(), pathToFile))) {
  * *********
  */
 import './alemon/segment.js'
-/**
- * **********
- * pkg
- * **********
- */
-import 'afloat/utils/pkg'

@@ -1,3 +1,4 @@
+import 'afloat/utils/logs'
 import './src/index.js'
 import { login } from './a.login.config.js'
 import { mysql, redis } from './a.db.config.js'

@@ -8,10 +8,7 @@ module.exports = {
     exec_mode: 'cluster',
     max_memory_restart: '2G',
     cron_restart: '0 */1 * * *',
-    args: (() => {
-      app.args.push('run')
-      return app.args
-    })(),
+    args: app.args,
     watch: false,
     autodump: true,
     merge_logs: true,
