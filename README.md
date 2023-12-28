@@ -6,7 +6,7 @@
 
 > 必要环境 18.18.2>Node.js>16.14.0 + Redis>5.0.0
 
-- [拉取A-Yunzai项目](https://alemonjs.com/)
+- [拉取Azai-Bot项目](https://alemonjs.com/)
 
 ```sh
 ## github
@@ -83,7 +83,7 @@ npm install afloat@latest
 
 # Document
 
-[了解更多细节与内容](https://gitee.com/ningmengchongshui/a-yunzai/tree/md/)
+[了解更多细节与内容](https://gitee.com/ningmengchongshui/azai-bot/tree/md/)
 
 # Related Links
 
