@@ -1,6 +1,6 @@
-# A-Yunzai
+# Azai-Bot
 
-基于AlemonJS的Miao-Yunzai,拥有占用小,性能高,响应快等特点
+基于AlemonJS,占用小,性能高,响应快...
 
 > 必要环境 Windows/Linux + Chrome/Chromium/Edge
 
@@ -9,8 +9,15 @@
 - [拉取A-Yunzai项目](https://alemonjs.com/)
 
 ```sh
-git clone --depth=1 https://gitee.com/ningmengchongshui/a-yunzai.git
-cd a-yunzai
+## github
+git clone --depth=1 https://github.com/ningmengchongshui/azai-bot.git
+cd azai-bot
+```
+
+```sh
+## gitee
+git clone --depth=1 https://gitee.com/ningmengchongshui/azai-bot.git
+cd azai-bot
 ```
 
 - [拉取miao-plugin项目](https://gitee.com/yoimiya-kokomi/miao-plugin)
