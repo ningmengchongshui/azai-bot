@@ -26,7 +26,7 @@
     ],
     "description": "plugin文件模板"
   },
-  "Plugin Javascript": {
+  "Plugin JavaScript": {
     "scope": "javascript",
     "prefix": "plugin",
     "body": [
@@ -52,5 +52,23 @@
       "}"
     ],
     "description": "plugin文件模板"
+  },
+  "App JavaScript": {
+    "scope": "javascript",
+    "prefix": "createApp",
+    "body": [
+      "import { createApp } from 'alemonjs'",
+      "createApp(import.meta.url).use({}).mount()"
+    ],
+    "description": "APP 模板"
+  },
+  "App TypeScript": {
+    "scope": "typescript",
+    "prefix": "createApp",
+    "body": [
+      "import { createApp } from 'alemonjs'",
+      "createApp(import.meta.url).use({}).mount()"
+    ],
+    "description": "APP 模板"
   }
 }
