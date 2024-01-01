@@ -51,15 +51,10 @@ npm run pull:l # linux
 npm run pull:W # windows
 ```
 
-- alemonjs
+- core
 
 ```sh
 npm install alemonjs@latest
-```
-
-- afloat
-
-```sh
 npm install afloat@latest
 ```
 
@@ -95,4 +90,4 @@ npm install afloat@latest
 
 # Native Development
 
-> View the latest template [create-alemonjs](https://gitee.com/ningmengchongshui/alemon/tree/cli/bin)
+> View the latest template [create-alemonjs](https://github.com/ningmengchongshui/alemonjs/tree/create-alemonjs/bin)

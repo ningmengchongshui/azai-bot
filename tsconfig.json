@@ -23,21 +23,20 @@
   },
   "include": [
     "plugins",
-    "lib",
-    "src",
-    "renderers",
-    "alemon.config.ts",
+    "apps",
+    "apps.ts",
+    "main.ts",
+    "a.db.config.ts",
+    "a.login.config.ts",
+    "afloat.config.ts",
+    "alemon.config.ts"
   ],
   "exclude": [
     "node_modules",
-    ".nuxt",
-    ".cache",
-    ".output",
-    ".vscode",
-    ".apps",
-    "dist",
     "config",
+    ".vscode",
     "data",
+    "dist",
     "logs",
     "help"
   ]
