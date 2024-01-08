@@ -6,6 +6,7 @@
 
 > 必要环境 18.18.2>Node.js>16.14.0 + Redis>5.0.0
 
+
 - [拉取Azai-Bot项目](https://alemonjs.com/)
 
 ```sh
@@ -79,6 +80,20 @@ npm install afloat@latest
 # Document
 
 [了解更多细节与内容](https://gitee.com/ningmengchongshui/azai-bot/tree/md/)
+
+# Unknown file ".ts"  
+
+node >= 20.0.0
+
+```ts
+ts-node alemon.config.ts
+```
+
+更改为
+
+```ts
+node --no-warnings=ExperimentalWarning --loader ts-node/esm alemon.config.ts
+```
 
 # Related Links
 
