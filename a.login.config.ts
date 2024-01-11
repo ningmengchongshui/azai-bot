@@ -1,6 +1,5 @@
 import { LoginMap } from 'alemonjs'
-import { OneBotLoginMap } from 'alemon-onebot'
-export const login: LoginMap & OneBotLoginMap = {
+export const login: LoginMap = {
   // 测试机懒得改,自己改成自己的
   test: {
     //
@@ -21,11 +20,6 @@ export const login: LoginMap & OneBotLoginMap = {
       villa_id: 8488,
       pub_key:
         '-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCcw5zU/MD+HvVGKPYlI1VqtUK0\niaWfnSqdRCmsik2Q5zU6/bV5Cnp8Jog9XfZlkELR9cRfQDKlbM2YWEJKBXFlEoHg\n8/mOnJYxLhFhphx3H8bTbWOAXqPta5vs/mhx1DSZ8QWm6veql8RbLYalBsa0cZBM\nAXOJS+y0YTdkpztycQIDAQAB\n-----END PUBLIC KEY-----\n'
-    },
-    // one v12
-    onebot: {
-      url: '',
-      access_token: ''
     }
   }
 }

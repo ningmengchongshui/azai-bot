@@ -1,4 +1,4 @@
-import { getPathBuffer } from 'alemonjs'
+import { ABuffer } from 'alemonjs'
 const ars = [...process.argv.slice(2)]
 const Segment = {
   /**
@@ -10,7 +10,7 @@ const Segment = {
     // buffer
     if (Buffer.isBuffer(val)) return val
     // path
-    const img = getPathBuffer(val)
+    const img = ABuffer.getPath(val)
     if (img) return img
     // url
     if (/^(http|https)/.test(val)) {
@@ -63,7 +63,7 @@ const Segment = {
     // buffer
     if (Buffer.isBuffer(val)) return val
     // path
-    const img = getPathBuffer(val)
+    const img = ABuffer.getPath(val)
     if (img) return img
     // url
     if (/^(http|https)/.test(val)) {
