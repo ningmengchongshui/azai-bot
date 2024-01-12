@@ -1,11 +1,10 @@
 # Azai-Bot
 
-基于AlemonJS,占用小,性能高,响应快...
+基于AlemonJS环境,AlemonJS是事件驱动的开发框架,采用链式结构,拥有迅捷且强大的事件处理能力
 
 > 必要环境 Windows/Linux + Chrome/Chromium/Edge
 
 > 必要环境 18.18.2>Node.js>16.14.0 + Redis>5.0.0
-
 
 - [拉取Azai-Bot项目](https://alemonjs.com/)
 
@@ -81,7 +80,7 @@ npm install afloat@latest
 
 [了解更多细节与内容](https://gitee.com/ningmengchongshui/azai-bot/tree/md/)
 
-# Unknown file ".ts"  
+# Unknown file ".ts"
 
 node >= 20.0.0
 
