@@ -4,10 +4,11 @@ import fs from 'node:fs'
 import lodash from 'lodash'
 import gsCfg from '../model/gsCfg.js'
 import YAML from 'yaml'
+import { join } from 'node:path'
 
 gsCfg.cpCfg('mys', 'pushNews')
 export class mysNews extends plugin {
-  constructor(e) {
+  constructor() {
     super({
       name: '米游社公告',
       dsc: '#公告 #资讯 #活动',
@@ -42,7 +43,7 @@ export class mysNews extends plugin {
       ]
     })
 
-    this.file = './plugins/genshin/config/mys.pushNews.yaml'
+    this.file = join(process.cwd(),'./plugins/genshin/config/mys.pushNews.yaml')
 
     /** 定时任务 */
     this.task = {
@@ -56,7 +57,7 @@ export class mysNews extends plugin {
   async init() {
     if (fs.existsSync(this.file)) return
 
-    fs.copyFileSync('./plugins/genshin/defSet/mys/pushNews.yaml', this.file)
+    fs.copyFileSync(join(process.cwd(), './plugins/genshin/defSet/mys/pushNews.yaml'), this.file)
   }
 
   async news() {

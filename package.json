@@ -50,8 +50,8 @@
     "@types/node": "^20.8.5",
     "@types/redis": "^4.0.11",
     "@types/ws": "^8.5.7",
-    "afloat": "^1.1.13",
-    "alemonjs": "^1.2.0-rc.6",
+    "afloat": "^1.2.0-rc.0",
+    "alemonjs": "^1.2.0-rc.14",
     "prettier": "^3.0.3"
   },
   "workspaces": [

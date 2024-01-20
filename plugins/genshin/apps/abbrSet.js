@@ -6,7 +6,7 @@ import YAML from 'yaml'
 import lodash from 'lodash'
 
 export class abbrSet extends plugin {
-  constructor(e) {
+  constructor() {
     super({
       name: '别名设置',
       dsc: '角色别名设置',

@@ -1,11 +1,10 @@
 import plugin from '../../../lib/plugins/plugin.js'
 import User from '../model/user.js'
 import puppeteer from '../../../lib/puppeteer/puppeteer.js'
-import fs from 'fs'
 import MysInfo from '../model/mys/mysInfo.js'
 
 export class user extends plugin {
-  constructor (e) {
+  constructor () {
     super({
       name: '用户管理',
       dsc: 'CK用户管理',
@@ -22,7 +21,6 @@ export class user extends plugin {
         fnc: 'delDisable'
       }]
     })
-    this.User = new User(e)
   }
 
   checkAuth () {
