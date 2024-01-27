@@ -6,10 +6,6 @@ import { defineAlemonConfig, analysis } from 'alemonjs'
 export default defineAlemonConfig({
   // 登录解析
   login: analysis(login),
-  // 图片服务端口
-  server: {
-    state: process.argv.includes('ntqq')
-  },
   // 个人应用
   app: {
     init: false

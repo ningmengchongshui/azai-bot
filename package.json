@@ -51,7 +51,7 @@
     "@types/redis": "^4.0.11",
     "@types/ws": "^8.5.7",
     "afloat": "^1.2.0-rc.0",
-    "alemonjs": "^1.2.0-rc.14",
+    "alemonjs": "^1.2.0-rc.18",
     "prettier": "^3.0.3"
   },
   "workspaces": [
