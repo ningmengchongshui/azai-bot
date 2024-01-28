@@ -104,6 +104,8 @@ class Puppeteer {
 
       const body = (await page.$('#container')) || (await page.$('body'))
 
+      if (!body) return false
+
       const randData = {
         type: data.imgType || 'jpeg',
         omitBackground: data.omitBackground || false,

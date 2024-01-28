@@ -12,8 +12,11 @@
     "preserveConstEnums": true,
     "ignoreDeprecations": "5.0",
     "allowJs": false,
+    "declarationDir": "types",
     "suppressImplicitAnyIndexErrors": true,
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
   "ts-node": {
     "esm": true,
@@ -24,10 +27,12 @@
     "apps",
     "apps.ts",
     "main.ts",
-    "a.db.config.ts",
-    "a.login.config.ts",
+    "api.ts",
+    "renderers",
+    "lib",
     "afloat.config.ts",
-    "alemon.config.ts"
+    "alemon.config.ts",
+    "alemon.login.ts"
   ],
   "exclude": [
     "node_modules",

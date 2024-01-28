@@ -31,9 +31,10 @@ async function downFile(fileUrl, savePath, param = {}) {
   try {
     existsSmkdirs(dirname(savePath))
     console.debug(`[下载文件] ${fileUrl}`)
-    const response = await fetch(fileUrl, param)
+    const body = await fetch(fileUrl, param).then(res => res?.body)
+    if (!body) return false
     const streamPipeline = promisify(pipeline)
-    await streamPipeline(response.body, createWriteStream(savePath))
+    await streamPipeline(body, createWriteStream(savePath))
     return true
   } catch (err) {
     console.error(`下载文件错误：${err}`)

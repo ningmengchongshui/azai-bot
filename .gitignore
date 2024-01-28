@@ -12,6 +12,10 @@ node_modules
 # config
 alemon.toml
 
+# npm run tsc
+dist
+types
+
 # dev
 dev.ts
 

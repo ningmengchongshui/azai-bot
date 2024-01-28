@@ -1,8 +1,8 @@
-import { LoginMap } from 'alemonjs'
-export const login: LoginMap = {
+import { ALoginOptions } from 'alemonjs'
+export default ALoginOptions({
   // 测试机懒得改,自己改成自己的
   test: {
-    //
+    // qq 频道
     qq: {
       // 账号
       appID: '102040992',
@@ -13,7 +13,7 @@ export const login: LoginMap = {
       // 主人账号(不会看的可机器人带上@自己就会显示用户账号)
       masterID: '13348342918169126729'
     },
-    //
+    // 米游社大别野
     villa: {
       bot_id: 'bot_tl7fyj8YojTzhzWTICGY',
       secret: 'ibGutjhSx3mZISinUrPcmzKhEjheRr1TPpXjiFB6A4RWO',
@@ -22,4 +22,4 @@ export const login: LoginMap = {
         '-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCcw5zU/MD+HvVGKPYlI1VqtUK0\niaWfnSqdRCmsik2Q5zU6/bV5Cnp8Jog9XfZlkELR9cRfQDKlbM2YWEJKBXFlEoHg\n8/mOnJYxLhFhphx3H8bTbWOAXqPta5vs/mhx1DSZ8QWm6veql8RbLYalBsa0cZBM\nAXOJS+y0YTdkpztycQIDAQAB\n-----END PUBLIC KEY-----\n'
     }
   }
-}
+})

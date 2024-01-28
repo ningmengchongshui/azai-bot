@@ -53,30 +53,30 @@
     ],
     "description": "plugin文件模板"
   },
-  "App JavaScript": {
+  "App javascript Template": {
     "scope": "javascript",
     "prefix": "createApp",
     "body": [
       "import { createApp } from 'alemonjs'",
       "createApp(import.meta.url).use({}).mount()"
     ],
-    "description": "APP 模板"
+    "description": "APP Template"
   },
-  "App TypeScript": {
+  "App typescript Template": {
     "scope": "typescript",
     "prefix": "createApp",
     "body": [
       "import { createApp } from 'alemonjs'",
       "createApp(import.meta.url).use({}).mount()"
     ],
-    "description": "APP 模板"
+    "description": "APP Template"
   },
   "Vue Template": {
     "scope": "vue",
     "prefix": "template",
     "body": [
       "<script>",
-      "  createApp({",
+      "Vue.createApp({",
       "    setup: () => ({",
       "      data: BOT_DATA",
       "    })",
@@ -89,6 +89,6 @@
       "<style>",
       "</style>"
     ],
-    "description": "APP 模板"
+    "description": "Vue Template"
   }
 }

@@ -24,9 +24,8 @@ mkdirSync('./data', { recursive: true })
  * 数据库redis
  * ***********
  */
-import { redis, Redis } from './redis.js'
+import { redis } from './redis.js'
 import { RedisClientType } from 'redis'
-import { Redis as ioRedisClientType } from 'ioredis'
 /**
  * ***********
  * yunzai  redis - redis@4.6
@@ -37,11 +36,7 @@ import { Redis as ioRedisClientType } from 'ioredis'
 declare global {
   var redis: RedisClientType
 }
-declare global {
-  var Redis: ioRedisClientType
-}
 global.redis = redis as RedisClientType
-global.Redis = Redis as ioRedisClientType
 /**
  * *********
  * 必要存储
