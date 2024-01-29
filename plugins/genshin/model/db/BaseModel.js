@@ -1,6 +1,5 @@
 import { Sequelize, DataTypes, Model } from 'sequelize'
-// import { Data } from '#miao'
-import { Data } from '../../../miao-plugin/components/index.js'
+import { Data } from '#miao'
 
 Data.createDir('/data/db', 'root')
 let dbPath = process.cwd() + '/data/db/data.db'

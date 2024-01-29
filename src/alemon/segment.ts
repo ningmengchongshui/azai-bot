@@ -75,7 +75,8 @@ const Segment = {
     }
     // url
     return val
-  }
+  },
+  button: () => {}
 }
 declare global {
   var segment: typeof Segment
