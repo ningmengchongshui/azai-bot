@@ -71,18 +71,23 @@ class UserDB extends BaseModel {
   async saveDB (user) {
     let db = this
     let ltuids = []
+
     lodash.forEach(user.mysUsers, (mys) => {
       if (mys.ck && mys.ltuid) {
         ltuids.push(mys.ltuid)
       }
     })
+
     db.ltuids = ltuids.join(',')
+
     let games = {}
+
     lodash.forEach(user._games, (gameDs, game) => {
       games[game] = {
         uid: gameDs.uid,
         data: {}
       }
+      //
       lodash.forEach(gameDs.data, (ds, uid) => {
         games[game].data[uid] = {
           uid: ds.uid,
@@ -90,8 +95,14 @@ class UserDB extends BaseModel {
         }
       })
     })
-    db.games = games
-    await this.save()
+    /**
+     * todu
+     * 修复无uid载入bug
+     */
+    if( (games.gs?.uid && games.gs?.uid != '') || games.sr?.uid && games.sr?.uid != '' ){
+      db.games = games
+      await this.save()
+    }
   }
 }
 

@@ -49,7 +49,7 @@ export class gacha extends plugin {
     let nowCount = num
     if (this.GachaData.type == 'weapon') nowCount = weaponNum
 
-    if (this.GachaData.set.LimitSeparate == 1) {
+    if (this.GachaData.set?.LimitSeparate == 1) {
       if (nowCount < this.GachaData.set.count * 10) return false
     } else {
       if (num + weaponNum < this.GachaData.set.count * 10) return false
