@@ -1,5 +1,6 @@
 import { ALoginOptions } from 'alemonjs'
-export default ALoginOptions({
+import { type IcqqLoginMap } from 'alemon-icqq'
+export default ALoginOptions<IcqqLoginMap>({
   // 测试机懒得改,自己改成自己的
   test: {
     // qq 频道
