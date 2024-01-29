@@ -3,11 +3,6 @@ import { type IcqqLoginMap } from 'alemon-icqq'
 export default ALoginOptions<IcqqLoginMap>({
   // 测试机懒得改,自己改成自己的
   test: {
-    icqq: {
-      sign_api_addr: 'https://sign.sjtpab.tk/8993/sign?key=1',
-      account: 794161769,
-      password: 'Qq002580'
-    },
     // qq 频道
     qq: {
       // 账号
