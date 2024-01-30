@@ -9,18 +9,15 @@ node_modules
 /config/config
 /resources
 
-# config
-alemon.toml
-
 # npm run tsc
 dist
 types
-
-# dev
-dev.ts
 
 # Logs
 logs
 log
 *.log
 *.logs
+
+#plugins
+plugins/genshin/config
