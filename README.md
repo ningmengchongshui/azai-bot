@@ -103,11 +103,31 @@ npm install afloat@latest
 
 `alemon.login.ts`
 
-> 账户配置
+```ts
+import { ALoginOptions } from 'alemonjs'
+import { type IcqqLoginMap } from 'alemon-icqq'
+export default ALoginOptions<IcqqLoginMap>({
+  test: {
+    icqq: {
+      // 签名地址，请自行填写
+      sign_api_addr: '',
+      // 账号密码，请自行填写
+      account: 0,
+      // 密码，请自行填写
+      password: ''
+    }
+  }
+})
+```
 
 `alemon.env`
 
-> 数据库配置
+```env
+ALEMONJS_REDIS_HOST = 'localhost'
+ALEMONJS_REDIS_PORT =  6379
+ALEMONJS_REDIS_PASSWORD = ''
+ALEMONJS_REDIS_DB = 2
+```
 
 # Tools
 
