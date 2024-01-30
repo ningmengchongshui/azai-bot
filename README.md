@@ -1,10 +1,57 @@
 # Azai-Bot
 
+### Ecosystem
+
+| Project           | Status                                               | Description     |
+| ----------------- | ---------------------------------------------------- | --------------- |
+| [alemonjs]        | [![alemonjs-status]][alemonjs-package]               | 标准应用解析器  |
+| [create-alemonjs] | [![create-alemonjs-status]][create-alemonjs-package] | 模板创建脚手架  |
+| [afloat]          | [![afloat-status]][afloat-package]                   | 应用构建工具    |
+| [alemon-ffmpeg]   | [![alemon-ffmpeg-status]][alemon-ffmpeg-package]     | ffmpeg 自动下载 |
+| [alemon-onebot]   | [![alemon-onebot-status]][alemon-onebot-package]     | OneBot 协议     |
+| [alemon-icqq]     | [![alemon-icqq-status]][alemon-icqq-package]         | icqq 协议       |
+
+>
+
+[alemonjs]: https://github.com/ningmengchongshui/alemonjs
+[alemonjs-status]: https://img.shields.io/npm/v/alemonjs.svg
+[alemonjs-package]: https://www.npmjs.com/package/alemonjs
+
+>
+
+[create-alemonjs]: https://github.com/ningmengchongshui/alemonjs/tree/create-alemonjs
+[create-alemonjs-status]: https://img.shields.io/npm/v/create-alemonjs.svg
+[create-alemonjs-package]: https://www.npmjs.com/package/create-alemonjs
+
+>
+
+[afloat]: https://github.com/ningmengchongshui/alemonjs/tree/rollup
+[afloat-status]: https://img.shields.io/npm/v/afloat.svg
+[afloat-package]: https://www.npmjs.com/package/afloat
+
+>
+
+[alemon-ffmpeg]: https://github.com/kongxiangyiren/alemon-ffmpeg
+[alemon-ffmpeg-status]: https://img.shields.io/npm/v/alemon-ffmpeg.svg
+[alemon-ffmpeg-package]: https://www.npmjs.com/package/alemon-ffmpeg
+
+>
+
+[alemon-onebot]: https://github.com/ningmengchongshui/alemon-onebot
+[alemon-onebot-status]: https://img.shields.io/npm/v/alemon-onebot.svg
+[alemon-onebot-package]: https://www.npmjs.com/package/alemon-onebot
+
+>
+
+[alemon-icqq]: https://github.com/ningmengchongshui/alemon-icqq
+[alemon-icqq-status]: https://img.shields.io/npm/v/alemon-icqq.svg
+[alemon-icqq-package]: https://www.npmjs.com/package/alemon-icqq
+
 > 必要环境 Windows/Linux + Chrome/Chromium/Edge
 
 > 必要环境 18.18.2>Node.js>16.14.0 + Redis>5.0.0
 
-- [拉取Azai-Bot项目](https://alemonjs.com/)
+- 拉取项目
 
 ```sh
 ## github
