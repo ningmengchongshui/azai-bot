@@ -7,6 +7,7 @@
   "type": "module",
   "private": true,
   "scripts": {
+    "app": "afloat app",
     "dev": "afloat dev",
     "image": "afloat image",
     "build": "afloat build",
