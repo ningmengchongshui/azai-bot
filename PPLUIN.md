@@ -16,7 +16,7 @@
 import { createApp } from 'alemonjs'
 import * as apps from './index.js'
 createApp(import.meta.url)
-.reSetEvent(global.YUNZAI_EVENT)
+.event(global.YUNZAI_EVENT)
 .replace(/^(\/|#)/,'#')
 .use(apps)
 .mount()
@@ -35,9 +35,9 @@ const xiaoyao = global.YUNZAIV2(apps['rule'], apps)
 // 创建应用
 createApp(import.meta.url)
 // 重定义 e
-.reSetEvent(global.YUNZAI_GENSHIN)
+.event(global.YUNZAI_GENSHIN)
 // 扩展参数
-.setArg(() => [{ render }])
+.arg(() => [{ render }])
 // 正则替换
 .replace(/^(\/|#)/,'#')
 // 应用

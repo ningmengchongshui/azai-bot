@@ -63,25 +63,9 @@ reg: /^(#|\/)?帮助$/
 reg: '^(#|/)?帮助$',
 ```
 
-- 删除原神*星铁系列功能
-
-```sh
-rm -rf ./lib/runtime.js
-rm -rf ./src/yunzai/runtime.ts
-rm -rf ./plugins
-```
-
-# Plugin Parsing
-
-[如何有效加载Yunzai插件?](./PPLUIN.md)
-
 # REDIS 6379 ERR
 
 [为何出现6379提示?](./REDIS.md)
-
-# Database
-
-[如何正确使用数据库?](./DATABASE.md)
 
 # Yunzai
 
