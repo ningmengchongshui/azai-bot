@@ -47,6 +47,8 @@
 [alemon-icqq-status]: https://img.shields.io/npm/v/alemon-icqq.svg
 [alemon-icqq-package]: https://www.npmjs.com/package/alemon-icqq
 
+## Clone
+
 > 必要环境 Windows/Linux + Chrome/Chromium/Edge
 
 > 必要环境 18.18.2>Node.js>16.14.0 + Redis>5.0.0
