@@ -14,9 +14,7 @@
     "allowJs": false,
     "declarationDir": "types",
     "suppressImplicitAnyIndexErrors": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "typeRoots": ["node_modules/@types"]
   },
   "ts-node": {
     "esm": true,
