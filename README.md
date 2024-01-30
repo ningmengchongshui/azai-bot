@@ -21,10 +21,8 @@ cd azai-bot
 - 拉取依赖
 
 ```sh
-npm install
-# 无法连接可使用
-# npm install pnpm -g
-# pnpm install
+npm install pnpm -g
+pnpm install
 # 外服请先删除.cnpmrc
 ```
 
@@ -54,11 +52,11 @@ npm install afloat@latest
 
 [https://alemonjs.com](https://alemonjs.com/)
 
-`a.login.config.ts`
+`alemon.login.ts`
 
 > 账户配置
 
-`a.db.config.ts`
+`alemon.env`
 
 > 数据库配置
 
@@ -90,9 +88,11 @@ node --no-warnings=ExperimentalWarning --loader ts-node/esm alemon.config.ts
 
 - [https://alemonjs.com/](https://alemonjs.com/)
 
-- [Miao-yunzai](https://gitee.com/yoimiya-kokomi/Miao-Yunzai)
+- [Miao-Yunzai](https://gitee.com/yoimiya-kokomi/Miao-Yunzai)
 
-- [plugins warehouse](https://gitee.com/yhArcadia/Yunzai-Bot-plugins-index)
+- [miao-plugin](https://gitee.com/yoimiya-kokomi/miao-plugin)
+
+- [Yunzai-Bot-plugins-index](https://gitee.com/yhArcadia/Yunzai-Bot-plugins-index)
 
 # Native Development
 

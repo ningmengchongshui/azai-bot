@@ -2,7 +2,7 @@
 node_modules
 
 # alemon dev/config
-.data
+/.data
 /data
 /public/defset
 /temp
@@ -20,4 +20,4 @@ log
 *.logs
 
 #plugins
-plugins/genshin/config
+/plugins/genshin/config
