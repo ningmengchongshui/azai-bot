@@ -5,6 +5,9 @@
 !genshin/**
 genshin/config/*
 
+!miao-plugin
+!miao-plugin/**
+
 !system
 !system/**
 

@@ -34,6 +34,10 @@ const Segment = {
    * @returns
    */
   at: (uid: string) => {
+    if (ars.includes('icqq')) {
+      if (uid == 'all') return `<@all>`
+      return `<@${uid}>`
+    }
     if (
       ars.includes('villa') ||
       ars.includes('qq') ||

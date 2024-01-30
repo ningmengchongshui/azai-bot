@@ -18,12 +18,6 @@ git clone --depth=1 https://gitee.com/ningmengchongshui/azai-bot.git
 cd azai-bot
 ```
 
-- [拉取miao-plugin项目](https://gitee.com/yoimiya-kokomi/miao-plugin)
-
-```sh
-git clone --depth=1 https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin
-```
-
 - 拉取依赖
 
 ```sh

@@ -3,12 +3,6 @@ import { join } from 'path'
 import { importPath } from 'alemonjs'
 /**
  * *************
- * 自定义时间提示
- * *************
- */
-import './alemon/logs.js'
-/**
- * *************
  * A-Yunzai global
  * *************
  */

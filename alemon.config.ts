@@ -1,5 +1,5 @@
 import 'afloat/utils/logs'
-import './src/index.js'
+import './lib/src/index.js'
 import { defineConfig } from 'alemonjs'
 import icqq from 'alemon-icqq'
 export default defineConfig({
