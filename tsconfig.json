@@ -14,23 +14,22 @@
     "allowJs": false,
     "declarationDir": "types",
     "suppressImplicitAnyIndexErrors": true,
-    "typeRoots": ["node_modules/@types"]
+    "typeRoots": [
+      "node_modules/@types"
+    ]
   },
   "ts-node": {
     "esm": true,
+    "transpileOnly": true,
     "experimentalSpecifierResolution": "node"
   },
   "include": [
     "plugins",
-    "apps",
-    "apps.ts",
-    "main.ts",
-    "api.ts",
     "renderers",
     "lib",
-    "afloat.config.ts",
-    "alemon.config.ts",
-    "alemon.login.ts"
+    "afloat.*.ts",
+    "alemon.*.ts",
+    "alemon.*.ts"
   ],
   "exclude": [
     "node_modules",

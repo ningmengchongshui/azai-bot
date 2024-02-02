@@ -1,13 +1,12 @@
-import 'afloat/utils/logs'
-import './lib/src/index.js'
 import { defineConfig } from 'alemonjs'
 import icqq from 'alemon-icqq'
+import './lib/src/index.js'
 export default defineConfig({
+  platforms: [icqq],
   // 个人应用
   app: {
     init: false
   },
-  platforms: [icqq],
   // 事件过滤
   shieldEvent: ['poke', 'notice.*.poke']
 })

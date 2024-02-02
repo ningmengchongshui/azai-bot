@@ -51,8 +51,8 @@
     "@types/node": "^20.8.5",
     "@types/redis": "^4.0.11",
     "@types/ws": "^8.5.7",
-    "afloat": "^1.2.0-rc.6",
-    "alemonjs": "^1.2.0-rc.22",
+    "afloat": "^1.2.0-rc.10",
+    "alemonjs": "^1.2.0-rc.26",
     "alemon-icqq": "^1.0.0-rc.1",
     "prettier": "^3.0.3"
   },
