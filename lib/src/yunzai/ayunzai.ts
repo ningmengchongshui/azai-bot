@@ -47,23 +47,3 @@ declare global {
   var YUNZAIV2: typeof assignPropertiesAndMethods
 }
 global.YUNZAIV2 = assignPropertiesAndMethods
-
-/**
- *
- * @param e
- * @returns
- */
-async function reSetEvent(e: any) {
-  if (e.attribute == 'group') e.isGroup = true
-  e.isSr = true
-  e.isGs = true
-  e.sender = {}
-  e.game === 'sr'
-  e.sender.card = e.user_name
-  e.checkAuth = (val: any) => val
-  return e
-}
-declare global {
-  var YUNZAI_EVENT: typeof reSetEvent
-}
-global.YUNZAI_EVENT = reSetEvent

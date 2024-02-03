@@ -27,7 +27,7 @@ async function loadPlugins(dir) {
             try {
                 const { apps } = await import(`file://${index}`)
                 const app = createSubApp(appname)
-                app.event(global?.YUNZAI_GENSHIN ?? global.YUNZAI_EVENT ?? (e => e))
+                app.event(global?.YUNZAI_GENSHIN ?? (e => e))
                 app.replace(/^(\/|#)/, '#')
                 app.use(apps)
                 app.mount()

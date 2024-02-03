@@ -27,9 +27,9 @@ async function reSetgenShin(e: any) {
   } else {
     e.isGroup = false
   }
-  await runtime.init(e)
-  // 判断是否是星铁命令，若是星铁命令则标准化处理
-  // e.isSr = true，且命令标准化为 #星铁 开头
+
+  e.runtime = await runtime.init(e)
+
   Object.defineProperty(e, 'isSr', {
     get: () => e.game === 'sr',
     set: v => (e.game = v ? 'sr' : 'gs')

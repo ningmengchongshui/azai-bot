@@ -1,6 +1,6 @@
 import { existsSync } from 'fs'
 import { join } from 'path'
-import { importPath } from 'alemonjs'
+import { getAppPath } from 'alemonjs'
 /**
  * *************
  * A-Yunzai global
@@ -19,7 +19,7 @@ import './yunzai/ayunzai.js'
  * *********
  */
 const pathToFile = './yunzai/runtime.ts'
-if (existsSync(join(importPath(import.meta.url).cwd(), pathToFile))) {
+if (existsSync(join(getAppPath(import.meta.url), pathToFile))) {
   await import(pathToFile)
 }
 /**
