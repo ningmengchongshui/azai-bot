@@ -8,8 +8,6 @@
 | [create-alemonjs] | [![create-alemonjs-status]][create-alemonjs-package] | 模板创建脚手架  |
 | [afloat]          | [![afloat-status]][afloat-package]                   | 应用构建工具    |
 | [alemon-ffmpeg]   | [![alemon-ffmpeg-status]][alemon-ffmpeg-package]     | ffmpeg 自动下载 |
-| [alemon-onebot]   | [![alemon-onebot-status]][alemon-onebot-package]     | OneBot 协议     |
-| [alemon-icqq]     | [![alemon-icqq-status]][alemon-icqq-package]         | icqq 协议       |
 
 >
 
@@ -35,17 +33,6 @@
 [alemon-ffmpeg-status]: https://img.shields.io/npm/v/alemon-ffmpeg.svg
 [alemon-ffmpeg-package]: https://www.npmjs.com/package/alemon-ffmpeg
 
->
-
-[alemon-onebot]: https://github.com/ningmengchongshui/alemon-onebot
-[alemon-onebot-status]: https://img.shields.io/npm/v/alemon-onebot.svg
-[alemon-onebot-package]: https://www.npmjs.com/package/alemon-onebot
-
->
-
-[alemon-icqq]: https://github.com/ningmengchongshui/alemon-icqq
-[alemon-icqq-status]: https://img.shields.io/npm/v/alemon-icqq.svg
-[alemon-icqq-package]: https://www.npmjs.com/package/alemon-icqq
 
 ## Clone
 
@@ -102,23 +89,6 @@ npm install afloat@latest
 [https://alemonjs.com](https://alemonjs.com/)
 
 `alemon.login.ts`
-
-```ts
-import { ALoginOptions } from 'alemonjs'
-import { type IcqqLoginMap } from 'alemon-icqq'
-export default ALoginOptions<IcqqLoginMap>({
-  test: {
-    icqq: {
-      // 签名地址，请自行填写
-      sign_api_addr: '',
-      // 账号密码，请自行填写
-      account: 0,
-      // 密码，请自行填写
-      password: ''
-    }
-  }
-})
-```
 
 `alemon.env`
 
