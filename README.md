@@ -1,32 +1,5 @@
 # Azai-Bot
 
-### Ecosystem
-
-| Project           | Status                                               | Description     |
-| ----------------- | ---------------------------------------------------- | --------------- |
-| [alemonjs]        | [![alemonjs-status]][alemonjs-package]               | 标准应用解析器  |
-| [create-alemonjs] | [![create-alemonjs-status]][create-alemonjs-package] | 模板创建脚手架  |
-| [afloat]          | [![afloat-status]][afloat-package]                   | 应用构建工具    |
-
->
-
-[alemonjs]: https://github.com/ningmengchongshui/alemonjs
-[alemonjs-status]: https://img.shields.io/npm/v/alemonjs.svg
-[alemonjs-package]: https://www.npmjs.com/package/alemonjs
-
->
-
-[create-alemonjs]: https://github.com/ningmengchongshui/alemonjs/tree/create-alemonjs
-[create-alemonjs-status]: https://img.shields.io/npm/v/create-alemonjs.svg
-[create-alemonjs-package]: https://www.npmjs.com/package/create-alemonjs
-
->
-
-[afloat]: https://github.com/ningmengchongshui/alemonjs/tree/rollup
-[afloat-status]: https://img.shields.io/npm/v/afloat.svg
-[afloat-package]: https://www.npmjs.com/package/afloat
-
-
 ## Clone
 
 > 必要环境 Windows/Linux + Chrome/Chromium/Edge
@@ -47,6 +20,12 @@ git clone --depth=1 https://gitee.com/ningmengchongshui/azai-bot.git
 cd azai-bot
 ```
 
+- 拉取插件
+
+```sh
+git clone --depth=1  https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin
+```
+
 - 拉取依赖
 
 ```sh
@@ -59,22 +38,6 @@ pnpm install
 
 ```sh
 npm run app qq #qq测试机
-```
-
-# Update
-
-- pluings
-
-```sh
-npm run pull:l # linux
-npm run pull:W # windows
-```
-
-- core
-
-```sh
-npm install alemonjs@latest
-npm install afloat@latest
 ```
 
 # Open Platform
