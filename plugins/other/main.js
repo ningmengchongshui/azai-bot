@@ -4,7 +4,9 @@ const app = createApp(import.meta.url)
 app.event(global?.YUNZAI_GENSHIN  ?? (e => e))
 .replace(global.YUNZAI_REG,'#星铁')
 .replace(/^(\/|#)/,'#')
-app.use(apps)
+for(const key in apps){
+  app.use(apps[key])
+}
 app.mount()
 // 子应用识别
 await import('./sub.js')

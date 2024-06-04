@@ -29,7 +29,9 @@ async function loadPlugins(dir) {
                 const app = createSubApp(appname)
                 app.event(global?.YUNZAI_GENSHIN ?? (e => e))
                 app.replace(/^(\/|#)/, '#')
-                app.use(apps)
+                for(const key in apps){
+                    app.use(apps[key])
+                }
                 app.mount()
                 console.log('[APP]', appname)
             } catch (err) {
