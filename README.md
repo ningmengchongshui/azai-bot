@@ -40,30 +40,21 @@ pnpm install
 npm run app qq #qq测试机
 ```
 
+> 如果发现插件解析错误,请删除原插件里的main.js文件
+
 # Open Platform
 
+机器人是基于`AlemonJS`改造成`Miao-Yunzai`的
+
+因此，你应该阅读该文档进行登录。
+
 [https://alemonjs.com](https://alemonjs.com/)
-
-`alemon.login.ts`
-
-`alemon.env`
-
-```env
-ALEMONJS_REDIS_HOST = 'localhost'
-ALEMONJS_REDIS_PORT =  6379
-ALEMONJS_REDIS_PASSWORD = ''
-ALEMONJS_REDIS_DB = 2
-```
 
 # Tools
 
 环境部署铺助工具[Bot-Help](https://gitee.com/ningmengchongshui/bot-help)
 
 > start： 1 环境部署 --> 1. 安装node && 3.安装redis
-
-# Document
-
-[了解更多细节与内容](https://gitee.com/ningmengchongshui/azai-bot/tree/md/)
 
 # Unknown file ".ts"
 
@@ -80,8 +71,6 @@ node --no-warnings=ExperimentalWarning --loader ts-node/esm alemon.config.ts
 ```
 
 # Related Links
-
-- [https://alemonjs.com/](https://alemonjs.com/)
 
 - [Miao-Yunzai](https://gitee.com/yoimiya-kokomi/Miao-Yunzai)
 
