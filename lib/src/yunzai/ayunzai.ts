@@ -3,7 +3,7 @@
  * yunzai
  * *********
  */
-import Plugins from '../../plugins/plugin.js'
+import { plugin as Plugins } from '../../plugins/index.js'
 import renderer from '../../renderer/Renderer.js'
 declare global {
   var plugin: typeof Plugins
