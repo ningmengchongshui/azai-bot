@@ -8,5 +8,3 @@ for(const key in apps){
   app.use(apps[key])
 }
 app.mount()
-// 子应用识别
-await import('./sub.js')

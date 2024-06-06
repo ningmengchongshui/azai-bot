@@ -5,6 +5,10 @@ log_level: info
 ignore_self: true
 # 被风控时是否尝试用分片发送
 resend: false
+# 发送消息错误时是否通知主人
+sendmsg_error: false
+# 重启API端口 仅ksr.js生效
+restart_port: 27881
 # ffmpeg
 ffmpeg_path:
 ffprobe_path:
@@ -23,6 +27,9 @@ proxyAddress:
 online_msg: true
 # 上线推送通知的冷却时间
 online_msg_exp: 86400
+
+# 是否跳过登录ICQQ
+skip_login: false
 
 # 签名API地址(如:http://127.0.0.1:8080/sign?key=114514)
 sign_api_addr:

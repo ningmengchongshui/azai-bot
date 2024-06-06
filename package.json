@@ -17,6 +17,8 @@
     "logs": "pm2 logs",
     "monit": "pm2 monit",
     "pm2": "pm2",
+    "miao": "ts-node miao.ts",
+    "trss": "ts-node trss.ts",
     "format": "prettier --write ."
   },
   "dependencies": {
