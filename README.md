@@ -14,16 +14,11 @@ git clone --depth=1 https://github.com/ningmengchongshui/azai-bot.git
 cd azai-bot
 ```
 
-```sh
-## gitee
-git clone --depth=1 https://gitee.com/ningmengchongshui/azai-bot.git
-cd azai-bot
-```
-
 - 拉取插件
 
 ```sh
-git clone --depth=1  https://gitee.com/yoimiya-kokomi/miao-plugin.git ./plugins/miao-plugin
+## A崽版miao-plugin
+git clone --depth=1  https://gitee.com/ningmengchongshui/azai-bot.git  ./plugins/miao-plugin
 ```
 
 - 拉取依赖
