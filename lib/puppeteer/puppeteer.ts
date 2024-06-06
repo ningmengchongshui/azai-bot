@@ -3,7 +3,7 @@ import fs, { mkdirSync } from 'fs'
 import lodash from 'lodash'
 import chokidar from 'chokidar'
 import puppeteer, { Browser, PuppeteerLaunchOptions } from 'puppeteer'
-import { Options } from '../src/puppeteerrc.js'
+import { Options } from '../../src/puppeteerrc.js'
 
 const EveryoneError = (err: any) => {
   console.error(err)

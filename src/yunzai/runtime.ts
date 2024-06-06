@@ -3,7 +3,7 @@
  * yunzai.GENSHIN
  * *********
  */
-import Runtime from '../../plugins/runtime.js'
+import Runtime from '../../lib/plugins/runtime.js'
 declare global {
   var runtime: typeof Runtime
 }

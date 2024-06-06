@@ -1,4 +1,4 @@
-import './lib/src/index.js'
+import './src/index.js'
 import { join } from 'path'
 import { existsSync } from 'fs'
 import { defineConfig } from 'alemonjs'

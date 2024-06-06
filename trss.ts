@@ -4,7 +4,7 @@ import fs from 'node:fs'
 import { execSync } from 'child_process'
 import YAML from 'yaml'
 
-function exec(cmd) {
+function exec(cmd: string) {
   try {
     console.log(`执行命令 [${cmd}]`)
     console.log(execSync(cmd).toString())
@@ -15,7 +15,7 @@ function exec(cmd) {
   }
 }
 
-function rm(file) {
+function rm(file: string) {
   try {
     if (!fs.existsSync(file)) return true
     return process.platform == 'win32'
