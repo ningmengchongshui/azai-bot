@@ -18,7 +18,7 @@ cd azai-bot
 
 ```sh
 ## A崽版miao-plugin
-git clone --depth=1  https://gitee.com/ningmengchongshui/azai-bot.git  ./plugins/miao-plugin
+git clone --depth=1  https://gitee.com/ningmengchongshui/miao-plugin.git  ./plugins/miao-plugin
 ```
 
 - 拉取依赖
