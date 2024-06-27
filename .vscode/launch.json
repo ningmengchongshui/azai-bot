@@ -2,26 +2,8 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "command": "npm run app kook",
-      "name": "AlemonJS kook Debug",
-      "request": "launch",
-      "type": "node-terminal"
-    },
-    {
-      "command": "npm run app qq",
-      "name": "AlemonJS qq Debug",
-      "request": "launch",
-      "type": "node-terminal"
-    },
-    {
-      "command": "npm run app ntqq",
-      "name": "AlemonJS ntqq Debug",
-      "request": "launch",
-      "type": "node-terminal"
-    },
-    {
-      "command": "npm run app discord",
-      "name": "AlemonJS discord Debug",
+      "command": "node --no-warnings=ExperimentalWarning --loader ts-node/esm src/main.ts",
+      "name": "Debug",
       "request": "launch",
       "type": "node-terminal"
     }

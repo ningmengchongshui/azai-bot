@@ -12,6 +12,6 @@ if (fs.existsSync(dir)) {
 }
 console.log('config', config)
 /**
- * @type {import("pm2/pm2.config.cjs")}
+ * @type {import("./src/yunzai-pm2.d.ts").AppsStartOptions}
  */
 module.exports = config
