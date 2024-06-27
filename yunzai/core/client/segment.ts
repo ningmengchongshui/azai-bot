@@ -1,5 +1,11 @@
 import { ABuffer } from 'alemonjs'
 const ars = [...process.argv.slice(2)]
+
+/**
+ *  这里应该是设置对象代理。在 调用reply之前。
+ * 通知修改
+ */
+
 const Segment = {
   /**
    * 图片
@@ -82,7 +88,5 @@ const Segment = {
   },
   button: () => {}
 }
-declare global {
-  var segment: typeof Segment
-}
-global.segment = Segment
+
+export { Segment }

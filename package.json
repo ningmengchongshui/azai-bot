@@ -1,6 +1,6 @@
 {
   "name": "ayunzai",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "A崽机器人",
   "author": "ningmengchongshui",
   "license": "GPL-2.0",
@@ -8,8 +8,8 @@
   "private": true,
   "scripts": {
     "app": "ts-node app.ts",
-    "dev": "nodemon -q",
     "login": "node app.js login",
+    "dev": "nodemon -q",
     "image": "node image.js",
     "build": "rollup --config rollup.config.js",
     "start": "pm2 startOrRestart pm2.config.cjs",

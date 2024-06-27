@@ -17,6 +17,18 @@ import Runtime from '../middleware/runtime.js'
 import { PLUGINS_PATH } from '../../config/system.js'
 
 /**
+ * ***********
+ * 支持icqq的构造方式。
+ * 
+ * 重写 reply 为  yunzai的处理方式
+ * 
+ * 即可实现 登录alemonjs框架
+ * 
+ * alemonjs.on 收到消息，发送给插件
+ * 
+ */
+
+/**
  * 加载插件
  */
 class PluginsLoader {
@@ -708,6 +720,11 @@ class PluginsLoader {
        *
        */
       e.replyNew = e.reply
+
+
+      /**
+       * reply 作为回复器，需要重写。
+       */
 
       /**
        * 去除
