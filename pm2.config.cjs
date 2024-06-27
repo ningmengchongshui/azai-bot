@@ -10,7 +10,6 @@ if (fs.existsSync(dir)) {
     return item
   })
 }
-console.log('config', config)
 /**
  * @type {import("./src/yunzai-pm2.d.ts").AppsStartOptions}
  */

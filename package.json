@@ -1,13 +1,13 @@
 {
   "name": "ayunzai",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "A崽机器人",
   "author": "ningmengchongshui",
   "license": "GPL-2.0",
   "type": "module",
   "private": true,
   "scripts": {
-    "app": "ts-node app.ts",
+    "app": "node app.js",
     "login": "node app.js login",
     "dev": "nodemon -q",
     "image": "node image.js",

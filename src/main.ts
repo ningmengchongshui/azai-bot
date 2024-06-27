@@ -1,19 +1,9 @@
 import 'yunzai/init'
-import { existsSync } from 'fs'
-import { join } from 'path'
-import { getAppPath } from 'alemonjs'
-
 /**
- * tudo
- * yunzai 登录 修改未 alemojs登录方式
+ * 创建alemonjs - bot
  */
-
-/**
- * *********
- * yunzai.runtime
- * *********
- */
-const pathToFile = './yunzai/runtime.ts'
-if (existsSync(join(getAppPath(import.meta.url), pathToFile))) {
-  await import(pathToFile)
-}
+import { createBot } from 'alemonjs'
+import configs from '../alemon.config.js'
+import logins from '../alemon.login.js'
+// 创建bot
+createBot(configs, logins)
